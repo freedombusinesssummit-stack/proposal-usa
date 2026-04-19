@@ -31,7 +31,7 @@ export default function AudienceSlides() {
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <AnimatedSection delay={80}>
               <div className="card-green h-full">
-                <div className="text-3xl font-black text-green-600 mb-1">60%</div>
+                <div className="text-3xl font-black text-lime-400 mb-1">60%</div>
                 <p className="font-bold text-gray-900 mb-1">B2C Clients</p>
                 <p className="text-sm text-gray-600">Entrepreneurs, investors, expats & families seeking relocation, residency, and investment opportunities</p>
               </div>
@@ -47,10 +47,10 @@ export default function AudienceSlides() {
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <AnimatedSection delay={180}>
               <div className="card">
-                <p className="text-xs font-bold text-green-600 uppercase tracking-widest mb-4">Individuals</p>
+                <p className="text-xs font-bold text-lime-400 uppercase tracking-widest mb-4">Individuals</p>
                 {["Digital Entrepreneurs / Consultants","HNWI / Investors","Relocating Expats / Families","Agency & E-Commerce Owners"].map((a, i) => (
                   <div key={i} className="flex items-center gap-2 py-2 border-b border-gray-100 last:border-0">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-lime-500 flex-shrink-0" />
                     <span className="text-sm text-gray-700 font-medium">{a}</span>
                   </div>
                 ))}
@@ -58,10 +58,10 @@ export default function AudienceSlides() {
             </AnimatedSection>
             <AnimatedSection delay={220}>
               <div className="card">
-                <p className="text-xs font-bold text-green-600 uppercase tracking-widest mb-4">Service Providers</p>
+                <p className="text-xs font-bold text-lime-400 uppercase tracking-widest mb-4">Service Providers</p>
                 {["Legal, Tax, Banking, Visa, Relocation","Real Estate Developers & Property Agencies","Mobility and Investment Migration firms","Investment Companies & Family Offices"].map((a, i) => (
                   <div key={i} className="flex items-center gap-2 py-2 border-b border-gray-100 last:border-0">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-lime-500 flex-shrink-0" />
                     <span className="text-sm text-gray-700 font-medium">{a}</span>
                   </div>
                 ))}
@@ -80,7 +80,7 @@ export default function AudienceSlides() {
                   { label: "Healthcare & MedTech", pct: "5%" },
                 ].map((ind, i) => (
                   <div key={i} className="bg-white border border-gray-200 rounded-xl p-3 text-center">
-                    <div className="text-lg font-black text-green-600 mb-0.5">{ind.pct}</div>
+                    <div className="text-lg font-black text-lime-400 mb-0.5">{ind.pct}</div>
                     <div className="text-xs text-gray-500 font-medium">{ind.label}</div>
                   </div>
                 ))}
@@ -102,7 +102,7 @@ export default function AudienceSlides() {
               <AnimatedSection key={i} delay={i * 60}>
                 <div className="card hover:shadow-sm transition-shadow">
                   <div className="flex items-center gap-4">
-                    <span className="text-xl font-black text-green-600 w-14 text-right flex-shrink-0">{r.pct}%</span>
+                    <span className="text-xl font-black text-lime-400 w-14 text-right flex-shrink-0">{r.pct}%</span>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1.5">
                         <p className="font-semibold text-sm text-gray-900">{r.role}</p>
@@ -120,7 +120,7 @@ export default function AudienceSlides() {
           <AnimatedSection delay={450}>
             <div className="card-green mt-6">
               <p className="text-sm text-gray-700">
-                <strong className="text-gray-900">Takeaway:</strong> The audience is founder-heavy — over <strong className="text-green-600">75% are entrepreneurs or senior executives</strong> with direct authority over investment, expansion, and partnership decisions.
+                <strong className="text-gray-900">Takeaway:</strong> The audience is founder-heavy — over <strong className="text-lime-400">75% are entrepreneurs or senior executives</strong> with direct authority over investment, expansion, and partnership decisions.
               </p>
             </div>
           </AnimatedSection>
@@ -140,7 +140,7 @@ export default function AudienceSlides() {
               <AnimatedSection key={i} delay={i * 70}>
                 <div className="card">
                   <div className="flex items-start gap-4 mb-3">
-                    <span className="text-2xl font-black text-green-600 w-14 text-right flex-shrink-0">{b.pct}%</span>
+                    <span className="text-2xl font-black text-lime-400 w-14 text-right flex-shrink-0">{b.pct}%</span>
                     <div>
                       <p className="font-bold text-gray-900 mb-0.5">{b.label}</p>
                       <p className="text-sm text-gray-500">{b.note}</p>
@@ -158,7 +158,7 @@ export default function AudienceSlides() {
           <AnimatedSection delay={450}>
             <div className="card-green mt-6">
               <p className="text-sm text-gray-700">
-                <strong className="text-gray-900">Takeaway:</strong> Mobility-first mindset — <strong className="text-green-600">68% want</strong> residency or citizenship. <strong className="text-gray-900">The #1 need is "trusted service providers."</strong>
+                <strong className="text-gray-900">Takeaway:</strong> Mobility-first mindset — <strong className="text-lime-400">68% want</strong> residency or citizenship. <strong className="text-gray-900">The #1 need is "trusted service providers."</strong>
               </p>
             </div>
           </AnimatedSection>

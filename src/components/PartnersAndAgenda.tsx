@@ -54,7 +54,7 @@ export default function PartnersAndAgenda() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
               {prevSpeakers.map((s, i) => (
                 <div key={i} className="text-center">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm mx-auto mb-2 text-white bg-green-600">{s.init}</div>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm mx-auto mb-2 text-white bg-lime-300">{s.init}</div>
                   <p className="text-xs font-bold text-gray-900">{s.name}</p>
                   <p className="text-xs text-gray-400 mt-0.5">{s.org}</p>
                 </div>
@@ -81,7 +81,7 @@ export default function PartnersAndAgenda() {
           </AnimatedSection>
           <div className="grid md:grid-cols-2 gap-8">
             {[
-              { label: "Day 1: Inbound Mobility to the US", color: "#16a34a", bg: "#f0fdf4", border: "#bbf7d0", sessions: agenda.day1 },
+              { label: "Day 1: Inbound Mobility to the US", color: "#70e000", bg: "#f0fdf4", border: "#bbf7d0", sessions: agenda.day1 },
               { label: "Day 2: Outbound Mobility from the US", color: "#9333ea", bg: "#faf5ff", border: "#e9d5ff", sessions: agenda.day2 },
             ].map((day, di) => (
               <div key={di}>

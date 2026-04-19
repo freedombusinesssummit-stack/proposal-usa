@@ -15,10 +15,11 @@
   }
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: #f1f5f9; }
-  ::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb { background: #9ef01a; border-radius: 2px; }
 }
 
 @layer components {
+  /* Layout */
   .wrap {
     max-width: 1000px;
     margin-left: auto;
@@ -27,6 +28,7 @@
     padding-right: 28px;
   }
 
+  /* Cards */
   .card {
     background: #ffffff;
     border: 1px solid #e5e7eb;
@@ -40,17 +42,33 @@
     padding: 20px;
   }
   .card-green {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
+    background: #f3ffe3;
+    border: 1px solid #b5f55a;
     border-radius: 12px;
     padding: 20px;
   }
 
+  /* Pill badge — dark with lime text like screenshot */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background: #111827;
+    color: #9ef01a;
+    border: none;
+  }
+
+  /* Green badge (subtle) */
   .badge {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 3px 10px;
+    padding: 4px 10px;
     border-radius: 6px;
     font-size: 11px;
     font-weight: 700;
@@ -61,6 +79,7 @@
     border: 1px solid #86efac;
   }
 
+  /* Section label */
   .section-label {
     display: block;
     font-size: 11px;
@@ -71,6 +90,7 @@
     margin-bottom: 8px;
   }
 
+  /* Progress */
   .progress-track {
     height: 6px;
     background: #e5e7eb;
@@ -79,32 +99,50 @@
   }
   .progress-fill {
     height: 100%;
-    background: #16a34a;
+    background: linear-gradient(90deg, #9ef01a, #70e000);
     border-radius: 999px;
   }
 
+  /* Buttons */
   .btn-green {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 10px 20px;
-    background: #16a34a;
-    color: white;
+    padding: 12px 24px;
+    background: #9ef01a;
+    color: #111827;
     border-radius: 8px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    transition: opacity 0.15s;
+    transition: all 0.15s;
     border: none;
     cursor: pointer;
   }
-  .btn-green:hover { opacity: 0.9; }
+  .btn-green:hover { background: #80cc10; transform: translateY(-1px); }
+
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 24px;
+    background: #111827;
+    color: #9ef01a;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-dark:hover { background: #1f2937; transform: translateY(-1px); }
 
   .btn-outline {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background: white;
     color: #374151;
     border-radius: 8px;
@@ -112,16 +150,10 @@
     font-weight: 600;
     text-decoration: none;
     border: 1px solid #e5e7eb;
-    transition: border-color 0.15s, background 0.15s;
+    transition: all 0.15s;
     cursor: pointer;
   }
-  .btn-outline:hover { border-color: #d1d5db; background: #f9fafb; }
-
-  .section-divider {
-    border: none;
-    border-top: 1px solid #f3f4f6;
-    margin: 0;
-  }
+  .btn-outline:hover { border-color: #9ef01a; color: #111827; }
 
   /* Animate in */
   .anim {
@@ -132,5 +164,35 @@
   .anim.in {
     opacity: 1;
     transform: none;
+  }
+
+  /* MagicUI shimmer border effect */
+  .shimmer-border {
+    position: relative;
+    border-radius: 12px;
+    background: linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(135deg, #9ef01a, #38bdf8, #9ef01a) border-box;
+    border: 2px solid transparent;
+  }
+
+  /* Feature card with lime left border */
+  .feature-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #9ef01a;
+    border-radius: 12px;
+    padding: 20px 24px;
+    transition: all 0.2s;
+  }
+  .feature-card:hover {
+    border-left-color: #70e000;
+    box-shadow: 0 4px 20px rgba(158, 240, 26, 0.12);
+    transform: translateY(-2px);
+  }
+
+  /* Glow effect */
+  .lime-glow {
+    box-shadow: 0 0 0 1px rgba(158, 240, 26, 0.3),
+                0 4px 24px rgba(158, 240, 26, 0.2);
   }
 }

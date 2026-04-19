@@ -33,7 +33,7 @@ export default function IntelSlides() {
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Mobility Score Index</p>
                   <div className="grid grid-cols-3 gap-2 mb-5">
                     {[
-                      { tier: "HOT", color: "#16a34a", bg: "#f0fdf4", border: "#bbf7d0" },
+                      { tier: "HOT", color: "#70e000", bg: "#f0fdf4", border: "#bbf7d0" },
                       { tier: "WARM", color: "#d97706", bg: "#fffbeb", border: "#fde68a" },
                       { tier: "COLD", color: "#9ca3af", bg: "#f9fafb", border: "#e5e7eb" },
                     ].map((t, i) => (
@@ -52,7 +52,7 @@ export default function IntelSlides() {
                     <div key={i} className="mb-3">
                       <div className="flex justify-between text-xs mb-1.5">
                         <span className="text-gray-500">{item.label}</span>
-                        <span className="font-bold text-green-600">{item.score}%</span>
+                        <span className="font-bold text-lime-400">{item.score}%</span>
                       </div>
                       <div className="progress-track">
                         <div className="progress-fill" style={{ width: `${item.score}%` }} />
@@ -61,11 +61,11 @@ export default function IntelSlides() {
                   ))}
                 </div>
                 <div className="card-muted">
-                  <p className="text-xs font-bold text-green-600 uppercase tracking-widest mb-2">Custom Question Block</p>
+                  <p className="text-xs font-bold text-lime-400 uppercase tracking-widest mb-2">Custom Question Block</p>
                   <p className="text-sm text-gray-600 mb-3">Your tailored questions inside our survey funnel collect exactly the data you want.</p>
                   {["Pain points", "Budget qualifier", "Timeline", "Region of interest"].map((q, i) => (
                     <div key={i} className="flex items-center gap-2 text-xs text-gray-500 mb-1.5">
-                      <span className="font-bold text-green-600">{i + 1}.</span> {q}
+                      <span className="font-bold text-lime-400">{i + 1}.</span> {q}
                     </div>
                   ))}
                 </div>
@@ -93,7 +93,7 @@ export default function IntelSlides() {
               <AnimatedSection key={i} delay={i * 80}>
                 <div className={`h-full rounded-xl p-5 border ${s.accent ? "card-green" : "card"}`}>
                   <div className="text-2xl mb-2">{s.icon}</div>
-                  <p className="text-xs font-bold text-green-600 uppercase tracking-widest mb-1">Step {s.step}</p>
+                  <p className="text-xs font-bold text-lime-400 uppercase tracking-widest mb-1">Step {s.step}</p>
                   <p className="font-bold text-gray-900 mb-3">{s.title}</p>
                   <div className="space-y-1.5">
                     {s.items.map((item, j) => (
@@ -109,7 +109,7 @@ export default function IntelSlides() {
           <AnimatedSection delay={400}>
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { phase: "Pre Event", color: "#16a34a", bg: "#f0fdf4", border: "#bbf7d0", items: ["Geo-targeted video ads", "Press release metrics & reach", "Registration via UTM tracking", "CTR to landing page"] },
+                { phase: "Pre Event", color: "#70e000", bg: "#f0fdf4", border: "#bbf7d0", items: ["Geo-targeted video ads", "Press release metrics & reach", "Registration via UTM tracking", "CTR to landing page"] },
                 { phase: "Event Day", color: "#d97706", bg: "#fffbeb", border: "#fde68a", items: ["Keynote or Panel Talk", "Partner logo in live-stream", "Free lead offer (ebook/consult)", "Social mentions via hashtag"] },
                 { phase: "Post Event", color: "#2563eb", bg: "#eff6ff", border: "#bfdbfe", items: ["Full attendee survey", "Behavior & interest data", "Dedicated email broadcast", "Qualified lead count + CTR"] },
               ].map((phase, i) => (
