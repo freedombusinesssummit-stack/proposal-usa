@@ -11,105 +11,81 @@ const roles = [
 ];
 
 const behavioral = [
-  { label: "Relocation / Second Residency", pct: 68, note: "2 out of 3 want actionable advice on visas, residencies, or citizenship. Validates strong alignment with FBS theme." },
-  { label: "Building & Scaling Borderless Businesses", pct: 66, note: "Founders need guidance on cross-border operations, compliance, and business systems. SEA, EU, US are key targets." },
-  { label: "Tax Optimization & Company Formations", pct: 56, note: "More than half ready for practical steps — Singapore, Malaysia, HK setups dominate. Perfect for workshops." },
-  { label: "Real Estate Investment Opportunities", pct: 46, note: "Nearly half are investor-minded. Indicates readiness to diversify income geographically." },
-  { label: "Health, Mobility & Security", pct: 29, note: "Lifestyle and family-focused relocators. Opportunity for insurance, medical, and wellness providers." },
+  { label: "Relocation / Second Residency", pct: 68, note: "2 out of 3 want actionable advice on visas, residencies, or citizenship." },
+  { label: "Building & Scaling Borderless Businesses", pct: 66, note: "Founders need guidance on cross-border operations and compliance." },
+  { label: "Tax Optimization & Company Formations", pct: 56, note: "More than half ready for practical steps — Singapore, Malaysia, HK setups dominate." },
+  { label: "Real Estate Investment Opportunities", pct: 46, note: "Nearly half are investor-minded. Readiness to diversify income geographically." },
+  { label: "Health, Mobility & Security", pct: 29, note: "Lifestyle and family-focused relocators. Opportunity for wellness providers." },
 ];
 
 export default function AudienceSlides() {
   return (
     <>
       {/* AUDIENCE PROFILE */}
-      <section
-        id="audience"
-        className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-        style={{ background: "#0d0d0d" }}
-      >
-        <div
-          className="absolute top-0 right-0 w-1/2 h-full pointer-events-none opacity-30"
-          style={{ background: "radial-gradient(ellipse at right top, rgba(173,255,47,0.08) 0%, transparent 60%)" }}
-        />
-        <div className="relative max-w-7xl mx-auto px-6 py-24 w-full">
-          <AnimatedSection animation="fade-up">
-            <div className="flex items-center gap-3 mb-12">
-              <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style={{ background: "#ADFF2F", color: "#0A0A0A" }}>
-                Audience Profile
-              </span>
-              <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.08)" }} />
-              <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.3)" }}>Slide 04</span>
-            </div>
+      <section id="audience" className="py-16 border-b border-gray-100">
+        <div className="container">
+          <AnimatedSection>
+            <p className="section-label">Audience Profile</p>
+            <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Who's in the Room</h2>
+            <p className="text-gray-500 mb-8">Our audience is a blend of direct clients B2C and high-value industry partners B2B, giving sponsors exposure and network effect.</p>
           </AnimatedSection>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <AnimatedSection animation="fade-up" delay={100}>
-                <h2 className="font-black tracking-tighter mb-6" style={{ fontSize: "clamp(32px, 4vw, 52px)" }}>
-                  Who's in the Room
-                </h2>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center gap-4 p-4 rounded-xl" style={{ background: "rgba(173,255,47,0.06)", border: "1px solid rgba(173,255,47,0.15)" }}>
-                    <span className="font-black text-3xl" style={{ color: "#ADFF2F" }}>60%</span>
-                    <div>
-                      <p className="font-bold text-white">B2C Clients</p>
-                      <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>Entrepreneurs, investors, expats & families seeking relocation and residency</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 p-4 rounded-xl glass">
-                    <span className="font-black text-3xl text-white">40%</span>
-                    <div>
-                      <p className="font-bold text-white">B2B Partners</p>
-                      <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>Service providers, agencies looking for cross-referrals and deals</p>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
-                  Speakers receive segmented B2C and B2B data lists from this audience.
-                </p>
-              </AnimatedSection>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <AnimatedSection animation="slide-right" delay={200}>
-                <div className="rounded-2xl p-6 h-full" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
-                  <p className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: "#ADFF2F" }}>Individuals</p>
-                  {["Digital Entrepreneurs", "HNWI / Investors", "Relocating Expats", "Agency Owners", "E-Commerce Founders"].map((a, i) => (
-                    <div key={i} className="py-2 text-sm font-medium border-b last:border-0" style={{ borderColor: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.7)" }}>
-                      {a}
-                    </div>
-                  ))}
-                </div>
-              </AnimatedSection>
-              <AnimatedSection animation="slide-right" delay={300}>
-                <div className="rounded-2xl p-6 h-full" style={{ background: "rgba(173,255,47,0.04)", border: "1px solid rgba(173,255,47,0.12)" }}>
-                  <p className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: "#ADFF2F" }}>Service Providers</p>
-                  {["Legal, Tax, Banking", "Real Estate Developers", "Migration Firms", "Investment Companies", "Family Offices"].map((a, i) => (
-                    <div key={i} className="py-2 text-sm font-medium border-b last:border-0" style={{ borderColor: "rgba(173,255,47,0.1)", color: "rgba(255,255,255,0.7)" }}>
-                      {a}
-                    </div>
-                  ))}
-                </div>
-              </AnimatedSection>
-            </div>
+          <div className="grid md:grid-cols-2 gap-4 mb-8">
+            <AnimatedSection delay={100}>
+              <div className="card" style={{ borderColor: "#bbf7d0", background: "#f0fdf4" }}>
+                <div className="font-black text-3xl mb-1" style={{ color: "#16a34a" }}>60%</div>
+                <p className="font-semibold text-gray-900 mb-1">B2C Clients</p>
+                <p className="text-sm text-gray-600">Entrepreneurs, investors, expats & families seeking relocation, residency, and investment opportunities</p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={150}>
+              <div className="card">
+                <div className="font-black text-3xl text-gray-900 mb-1">40%</div>
+                <p className="font-semibold text-gray-900 mb-1">B2B Partners</p>
+                <p className="text-sm text-gray-600">Service providers, agencies looking for partnerships, cross-referrals and deals</p>
+              </div>
+            </AnimatedSection>
           </div>
 
-          {/* Industry breakdown */}
-          <AnimatedSection animation="fade-up" delay={400}>
-            <div className="mt-12">
-              <p className="text-xs font-black uppercase tracking-widest mb-6" style={{ color: "rgba(255,255,255,0.3)" }}>Industry Breakdown</p>
+          <div className="grid md:grid-cols-2 gap-4 mb-8">
+            <AnimatedSection delay={200}>
+              <div className="card">
+                <p className="text-xs font-bold text-green-DEFAULT uppercase tracking-widest mb-4">Individuals</p>
+                {["Digital Entrepreneurs / Consultants", "HNWI / Investors", "Relocating Expats / Families", "Agency & E-Commerce Owners"].map((a, i) => (
+                  <div key={i} className="flex items-center gap-2 py-2 border-b border-gray-100 last:border-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-DEFAULT flex-shrink-0" />
+                    <span className="text-sm text-gray-700 font-medium">{a}</span>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+            <AnimatedSection delay={250}>
+              <div className="card">
+                <p className="text-xs font-bold text-green-DEFAULT uppercase tracking-widest mb-4">Service Providers</p>
+                {["Legal, Tax, Banking, Visa, Relocation", "Real Estate Developers & Property Agencies", "Mobility and Investment Migration firms", "Investment Companies & Family Offices"].map((a, i) => (
+                  <div key={i} className="flex items-center gap-2 py-2 border-b border-gray-100 last:border-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-DEFAULT flex-shrink-0" />
+                    <span className="text-sm text-gray-700 font-medium">{a}</span>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection delay={300}>
+            <div className="card-muted">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Industry Breakdown</p>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                 {[
-                  { label: "Technology, IT & AI", pct: "24%", note: "AI agents, tech startups" },
-                  { label: "Real Estate & Property", pct: "14.7%", note: "Golden Visa overlap" },
-                  { label: "Finance & Consulting", pct: "12%", note: "Tax advisors, fintech" },
-                  { label: "Law & Government", pct: "8%", note: "Immigration attorneys" },
-                  { label: "Healthcare & MedTech", pct: "5%", note: "Cardiology, mental health" },
+                  { label: "Technology, IT & AI", pct: "24%" },
+                  { label: "Real Estate & Property", pct: "14.7%" },
+                  { label: "Finance & Consulting", pct: "12%" },
+                  { label: "Law & Government", pct: "8%" },
+                  { label: "Healthcare & MedTech", pct: "5%" },
                 ].map((ind, i) => (
-                  <div key={i} className="rounded-xl p-4 text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-                    <div className="font-black text-xl mb-1" style={{ color: "#ADFF2F" }}>{ind.pct}</div>
-                    <div className="text-xs font-bold text-white mb-1">{ind.label}</div>
-                    <div className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>{ind.note}</div>
+                  <div key={i} className="bg-white border border-gray-200 rounded-lg p-3 text-center">
+                    <div className="font-black text-lg mb-0.5" style={{ color: "#16a34a" }}>{ind.pct}</div>
+                    <div className="text-xs text-gray-500 font-medium">{ind.label}</div>
                   </div>
                 ))}
               </div>
@@ -118,122 +94,81 @@ export default function AudienceSlides() {
         </div>
       </section>
 
-      {/* AUDIENCE SNAPSHOT */}
-      <section
-        id="snapshot"
-        className="relative min-h-screen flex flex-col justify-center overflow-hidden grid-bg"
-        style={{ background: "#0A0A0A" }}
-      >
-        <div className="relative max-w-7xl mx-auto px-6 py-24 w-full">
-          <AnimatedSection animation="fade-up">
-            <div className="flex items-center gap-3 mb-12">
-              <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style={{ background: "#ADFF2F", color: "#0A0A0A" }}>
-                Audience Snapshot
-              </span>
-              <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.08)" }} />
-              <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.3)" }}>Slide 05</span>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection animation="fade-up" delay={100}>
-            <h2 className="font-black tracking-tighter mb-12" style={{ fontSize: "clamp(32px, 4vw, 52px)" }}>
-              Position & Role Breakdown
-            </h2>
+      {/* SNAPSHOT */}
+      <section id="snapshot" className="py-16 border-b border-gray-100" style={{ background: "#f9fafb" }}>
+        <div className="container">
+          <AnimatedSection>
+            <p className="section-label">Audience Snapshot</p>
+            <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-8" style={{ letterSpacing: "-0.5px" }}>Position & Role Breakdown</h2>
           </AnimatedSection>
 
           <div className="space-y-3">
             {roles.map((r, i) => (
-              <AnimatedSection key={i} animation="slide-left" delay={i * 80}>
-                <div className="flex items-center gap-6 p-5 rounded-2xl group hover:bg-white/3 transition-all" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
-                  <div className="font-black text-2xl tracking-tight min-w-[64px]" style={{ color: "#ADFF2F" }}>{r.pct}%</div>
-                  <div className="flex-1">
-                    <div className="h-2 rounded-full mb-1 overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
-                      <div
-                        className="h-full rounded-full transition-all duration-1000"
-                        style={{ width: `${r.pct}%`, background: "linear-gradient(90deg, #ADFF2F, #8FD400)" }}
-                      />
+              <AnimatedSection key={i} delay={i * 70}>
+                <div className="card hover:shadow-sm transition-shadow">
+                  <div className="flex items-center gap-4">
+                    <span className="font-black text-xl w-12 text-right flex-shrink-0" style={{ color: "#16a34a" }}>{r.pct}%</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between mb-1.5">
+                        <p className="font-semibold text-sm text-gray-900 truncate">{r.role}</p>
+                        <span className="text-xs text-gray-400 ml-4 flex-shrink-0 hidden md:block">{r.note}</span>
+                      </div>
+                      <div className="progress-track">
+                        <div className="progress-fill" style={{ width: `${r.pct}%` }} />
+                      </div>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <p className="font-bold text-sm text-white">{r.role}</p>
-                  </div>
-                  <div className="text-xs hidden md:block min-w-[240px]" style={{ color: "rgba(255,255,255,0.35)" }}>{r.note}</div>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
-          <AnimatedSection animation="fade-up" delay={600}>
-            <div className="mt-8 p-6 rounded-2xl" style={{ background: "rgba(173,255,47,0.06)", border: "1px solid rgba(173,255,47,0.2)" }}>
-              <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.7)" }}>
-                <span style={{ color: "#ADFF2F" }}>Takeaway: </span>
-                The audience is founder-heavy and decision-maker dominant — over{" "}
-                <strong className="text-white">75% are entrepreneurs or senior executives</strong> with direct authority over investment, expansion, and partnership decisions.
+          <AnimatedSection delay={500}>
+            <div className="card mt-6" style={{ borderColor: "#bbf7d0", background: "#f0fdf4" }}>
+              <p className="text-sm text-gray-700">
+                <strong className="text-gray-900">Takeaway:</strong> The audience is founder-heavy and decision-maker dominant — over{" "}
+                <strong style={{ color: "#16a34a" }}>75% are entrepreneurs or senior executives</strong> with direct authority over investment, expansion, and partnership decisions.
               </p>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* BEHAVIORAL INSIGHTS */}
-      <section
-        id="behavioral"
-        className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-        style={{ background: "#0d0d0d" }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 50% 50% at 100% 50%, rgba(173,255,47,0.05) 0%, transparent 60%)" }}
-        />
-        <div className="relative max-w-7xl mx-auto px-6 py-24 w-full">
-          <AnimatedSection animation="fade-up">
-            <div className="flex items-center gap-3 mb-12">
-              <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style={{ background: "#ADFF2F", color: "#0A0A0A" }}>
-                Behavioral Insights
-              </span>
-              <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.08)" }} />
-              <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.3)" }}>Slide 06</span>
-            </div>
+      {/* BEHAVIORAL */}
+      <section id="behavioral" className="py-16 border-b border-gray-100">
+        <div className="container">
+          <AnimatedSection>
+            <p className="section-label">Behavioral Insights</p>
+            <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Top Priority Needs</h2>
+            <p className="text-gray-500 mb-8">Multiple selections allowed — what respondents actively seek from FBS.</p>
           </AnimatedSection>
 
-          <AnimatedSection animation="fade-up" delay={100}>
-            <h2 className="font-black tracking-tighter mb-12" style={{ fontSize: "clamp(32px, 4vw, 52px)" }}>
-              Top Priority Needs
-            </h2>
-          </AnimatedSection>
-
-          <div className="space-y-6">
+          <div className="space-y-4">
             {behavioral.map((b, i) => (
-              <AnimatedSection key={i} animation="fade-up" delay={i * 100}>
-                <div className="group">
-                  <div className="flex items-start gap-6 mb-2">
-                    <span className="font-black text-4xl tracking-tighter min-w-[80px]" style={{ color: "#ADFF2F" }}>{b.pct}%</span>
-                    <div className="flex-1 pt-2">
-                      <p className="font-black text-lg text-white mb-1">{b.label}</p>
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>{b.note}</p>
+              <AnimatedSection key={i} delay={i * 80}>
+                <div className="card">
+                  <div className="flex items-start gap-4 mb-3">
+                    <span className="font-black text-2xl w-14 text-right flex-shrink-0" style={{ color: "#16a34a" }}>{b.pct}%</span>
+                    <div>
+                      <p className="font-bold text-gray-900 mb-0.5">{b.label}</p>
+                      <p className="text-sm text-gray-500">{b.note}</p>
                     </div>
                   </div>
-                  <div className="ml-[104px] h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
-                    <div
-                      className="h-full rounded-full transition-all duration-1000"
-                      style={{
-                        width: `${b.pct}%`,
-                        background: `linear-gradient(90deg, #ADFF2F ${b.pct - 20}%, #8FD400)`,
-                        opacity: 0.8,
-                      }}
-                    />
+                  <div className="ml-[72px]">
+                    <div className="progress-track">
+                      <div className="progress-fill" style={{ width: `${b.pct}%`, opacity: 0.8 }} />
+                    </div>
                   </div>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
-          <AnimatedSection animation="fade-up" delay={600}>
-            <div className="mt-10 p-6 rounded-2xl" style={{ background: "rgba(0,0,0,0.4)", border: "1px solid rgba(255,255,255,0.08)" }}>
-              <p className="font-bold text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-                <span style={{ color: "#ADFF2F" }}>Takeaway: </span>
-                Mobility-first mindset: <strong className="text-white">68% want</strong> residency or citizenship — meaning they're already thinking in terms of multiple jurisdictions & diversification.{" "}
-                <strong className="text-white">The #1 need is "trusted service providers."</strong>
+          <AnimatedSection delay={500}>
+            <div className="card mt-6" style={{ borderColor: "#bbf7d0", background: "#f0fdf4" }}>
+              <p className="text-sm text-gray-700">
+                <strong className="text-gray-900">Takeaway:</strong> Mobility-first mindset — <strong style={{ color: "#16a34a" }}>68% want</strong> residency or citizenship.{" "}
+                <strong className="text-gray-900">The #1 need is "trusted service providers."</strong>
               </p>
             </div>
           </AnimatedSection>

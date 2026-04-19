@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,77 +7,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        inter: ["Inter", "sans-serif"],
-      },
       colors: {
-        lime: {
-          DEFAULT: "#ADFF2F",
-          dark: "#8FD400",
-          light: "#D4FF7A",
+        green: {
+          DEFAULT: "#16a34a",
+          light: "#dcfce7",
+          mid: "#86efac",
+          dark: "#15803d",
         },
-        carbon: {
-          DEFAULT: "#0A0A0A",
-          50: "#F5F5F5",
-          100: "#E8E8E8",
-          200: "#D0D0D0",
-          300: "#A0A0A0",
-          400: "#707070",
-          500: "#505050",
-          600: "#303030",
-          700: "#1A1A1A",
-          800: "#111111",
-          900: "#0A0A0A",
-        },
-      },
-      animation: {
-        "fade-up": "fadeUp 0.6s ease forwards",
-        "fade-in": "fadeIn 0.5s ease forwards",
-        "slide-in-left": "slideInLeft 0.6s ease forwards",
-        "slide-in-right": "slideInRight 0.6s ease forwards",
-        "scale-in": "scaleIn 0.5s ease forwards",
-        "count-up": "countUp 1s ease forwards",
-        shimmer: "shimmer 2s linear infinite",
-        float: "float 6s ease-in-out infinite",
-        "pulse-lime": "pulseLime 2s ease-in-out infinite",
-      },
-      keyframes: {
-        fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        slideInLeft: {
-          "0%": { opacity: "0", transform: "translateX(-40px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        slideInRight: {
-          "0%": { opacity: "0", transform: "translateX(40px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        scaleIn: {
-          "0%": { opacity: "0", transform: "scale(0.9)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        pulseLime: {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(173,255,47,0.4)" },
-          "50%": { boxShadow: "0 0 0 12px rgba(173,255,47,0)" },
+        gray: {
+          50: "#f9fafb",
+          100: "#f3f4f6",
+          200: "#e5e7eb",
+          300: "#d1d5db",
+          400: "#9ca3af",
+          500: "#6b7280",
+          600: "#4b5563",
+          700: "#374151",
+          800: "#1f2937",
+          900: "#111827",
         },
       },
+      maxWidth: { container: "1000px" },
+      fontFamily: { inter: ["Inter", "sans-serif"] },
     },
   },
   plugins: [],
 };
-
 export default config;
