@@ -1,6 +1,38 @@
 "use client";
 import AnimatedSection from "./AnimatedSection";
 
+const CONTACTS = [
+  {
+    init: "DD",
+    name: "Denys Dovgal",
+    role: "CEO · Freedom Business Summit",
+    lime: true,
+    links: [
+      { icon: "📧", label: "denis@fsummit.net", href: "mailto:denis@fsummit.net" },
+      { icon: "💬", label: "WhatsApp: +1 415 316 36 38", href: "https://wa.me/14153163638" },
+    ],
+  },
+  {
+    init: "ED",
+    name: "Eleonora Davtyan",
+    role: "Partners & Sponsorships",
+    lime: false,
+    links: [
+      { icon: "📧", label: "eleonora@fsummit.net", href: "mailto:eleonora@fsummit.net" },
+    ],
+  },
+  {
+    init: "KA",
+    name: "Kristine Aghabekyan",
+    role: "Partners & Sponsorships",
+    lime: true,
+    links: [
+      { icon: "📧", label: "kristine@fsummit.net", href: "mailto:kristine@fsummit.net" },
+      { icon: "💬", label: "WhatsApp: +374 98 625 147", href: "https://wa.me/37498625147" },
+    ],
+  },
+];
+
 export default function ContactSlide() {
   return (
     <section id="contact" className="py-14 bg-white">
@@ -11,92 +43,63 @@ export default function ContactSlide() {
           <p className="text-carbon-500 mb-8 max-w-lg">We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on May 10th.</p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Left: reasons */}
-          <AnimatedSection delay={80}>
-            <div className="space-y-3 mb-8">
-              {[
-                "Data-driven virtual summit — real intent signals",
-                "100% global distribution and media exposure",
-                "Full funnel intent tracking from day one",
-                "Exclusivity per category and jurisdiction",
-                "Decision-maker dominant audience (75% founders/execs)",
-              ].map((r, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: "#f8fff0", border: "1px solid #b5f55a" }}>
-                  <span className="font-bold flex-shrink-0" style={{ color: "#70e000" }}>→</span>
-                  <p className="text-sm text-carbon-700 font-medium">{r}</p>
-                </div>
-              ))}
-            </div>
-            <a href="mailto:denis@fsummit.net" className="btn-green">Become a Partner →</a>
-          </AnimatedSection>
+        {/* Reasons */}
+        <AnimatedSection delay={80}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-10">
+            {[
+              "Data-driven virtual summit — real intent signals",
+              "100% global distribution and media exposure",
+              "Full funnel intent tracking from day one",
+              "Exclusivity per category and jurisdiction",
+              "Decision-maker dominant audience (75% founders/execs)",
+            ].map((r, i) => (
+              <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#f8fff0", border: "1px solid #b5f55a" }}>
+                <span className="font-bold flex-shrink-0 text-lg leading-none mt-0.5" style={{ color: "#70e000" }}>→</span>
+                <p className="text-sm text-carbon-700 font-medium">{r}</p>
+              </div>
+            ))}
+          </div>
+          <a href="mailto:denis@fsummit.net" className="btn-green mb-12 inline-flex">Become a Partner →</a>
+        </AnimatedSection>
 
-          {/* Right: contact cards */}
-          <AnimatedSection delay={150}>
-            <div className="space-y-4">
-              {/* Denys */}
-              <div className="card">
+        {/* 3 contact cards — horizontal */}
+        <AnimatedSection delay={150}>
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            {CONTACTS.map((c, i) => (
+              <div key={i} className="card" style={c.lime ? { borderLeft: "3px solid #9ef01a" } : {}}>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm text-carbon-900" style={{ background: "#9ef01a" }}>DD</div>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0"
+                    style={c.lime ? { background: "#9ef01a", color: "#111827" } : { background: "#f3f4f6", color: "#6b7280" }}>
+                    {c.init}
+                  </div>
                   <div>
-                    <p className="font-bold text-carbon-900">Denys Dovgal</p>
-                    <p className="text-xs text-carbon-500">CEO · Freedom Business Summit</p>
+                    <p className="font-bold text-carbon-900 text-sm">{c.name}</p>
+                    <p className="text-xs text-carbon-500">{c.role}</p>
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <a href="mailto:denis@fsummit.net" className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
-                    <span>📧</span> denis@fsummit.net
-                  </a>
-                  <a href="https://wa.me/14153163638" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
-                    <span>💬</span> WhatsApp: +1 415 316 36 38
-                  </a>
+                  {c.links.map((l, j) => (
+                    <a key={j} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
+                      className="flex items-center gap-2 py-2 px-3 rounded-lg text-xs text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
+                      <span>{l.icon}</span> {l.label}
+                    </a>
+                  ))}
                 </div>
               </div>
+            ))}
+          </div>
+        </AnimatedSection>
 
-              {/* Eleonora */}
-              <div className="card">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm text-carbon-600 bg-carbon-100">ED</div>
-                  <div>
-                    <p className="font-bold text-carbon-900">Eleonora Davtyan</p>
-                    <p className="text-xs text-carbon-500">Partners & Sponsorships</p>
-                  </div>
-                </div>
-                <a href="mailto:promo@travelmba.net" className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
-                  <span>📧</span> promo@travelmba.net
-                </a>
-              </div>
-
-              {/* Kristine */}
-              <div className="card" style={{ borderLeft: "3px solid #9ef01a" }}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm text-carbon-900" style={{ background: "#9ef01a" }}>KA</div>
-                  <div>
-                    <p className="font-bold text-carbon-900">Kristine Aghabekyan</p>
-                    <p className="text-xs text-carbon-500">Partners & Sponsorships</p>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <a href="mailto:kristine@fsummit.net" className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
-                    <span>📧</span> kristine@fsummit.net
-                  </a>
-                  <a href="https://wa.me/37498625147" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 py-2 px-3 rounded-lg text-sm text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
-                    <span>💬</span> WhatsApp: +374 98 625 147
-                  </a>
-                </div>
-              </div>
-
-              {/* Website */}
-              <div className="card-green flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-carbon-500 font-medium mb-0.5">Website</p>
-                  <p className="font-bold text-carbon-900">fsummit.net/usa</p>
-                </div>
-                <a href="https://fsummit.net" target="_blank" rel="noopener noreferrer" className="btn-green text-sm py-2 px-4">Visit →</a>
-              </div>
+        {/* Website */}
+        <AnimatedSection delay={250}>
+          <div className="card-green flex items-center justify-between">
+            <div>
+              <p className="text-xs text-carbon-500 font-medium mb-0.5">Website</p>
+              <p className="font-bold text-carbon-900">fsummit.net/usa</p>
             </div>
-          </AnimatedSection>
-        </div>
+            <a href="https://fsummit.net" target="_blank" rel="noopener noreferrer" className="btn-green text-sm py-2 px-4">Visit →</a>
+          </div>
+        </AnimatedSection>
       </div>
 
       {/* Footer */}
@@ -104,7 +107,7 @@ export default function ContactSlide() {
         <div className="wrap">
           <div className="py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-md flex items-center justify-center font-black text-xs text-carbon-900" style={{ background: "#9ef01a" }}>FS</div>
+              <div className="w-6 h-6 rounded-md flex items-center justify-center font-black text-xs" style={{ background: "#9ef01a", color: "#111827" }}>FS</div>
               <span className="font-bold text-sm text-carbon-900">Freedom Business Summit</span>
             </div>
             <p className="text-xs text-carbon-400">© 2026 Freedom Business Summit · fsummit.net · All Rights Reserved</p>

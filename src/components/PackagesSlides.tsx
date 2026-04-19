@@ -2,7 +2,7 @@
 import AnimatedSection from "./AnimatedSection";
 
 function Cell({ val }: { val: string }) {
-  if (val === "✓") return <span className="font-bold" style={{ color: "#70e000" }}>✓</span>;
+  if (val === "✓") return <span className="font-bold text-lg" style={{ color: "#70e000" }}>✓</span>;
   if (val === "–") return <span className="text-carbon-300">–</span>;
   return <span className="text-xs font-semibold text-carbon-600">{val}</span>;
 }
@@ -80,51 +80,29 @@ export default function PackagesSlides() {
         <div className="wrap">
           <AnimatedSection>
             <span className="section-label">Engagement Flow</span>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-3" style={{ letterSpacing: "-0.5px" }}>
-              How the Partnership Works
-            </h2>
+            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-3" style={{ letterSpacing: "-0.5px" }}>How the Partnership Works</h2>
             <p className="text-carbon-500 mb-10">A structured 8–12 week journey from pre-event exposure to post-event lead delivery</p>
           </AnimatedSection>
-
           <div className="relative">
-            {/* Vertical line connector */}
             <div className="absolute left-6 top-6 bottom-6 w-0.5 hidden md:block" style={{ background: "linear-gradient(to bottom, #9ef01a, #70e000, #9ef01a)" }} />
-
             <div className="space-y-4">
               {FLOW.map((f, i) => (
                 <AnimatedSection key={i} delay={i * 90}>
-                  <div
-                    className="relative flex items-start gap-5 p-5 rounded-xl transition-all duration-300 hover:-translate-y-1 cursor-default"
-                    style={{
-                      background: f.green ? "#f8fff0" : "white",
-                      border: f.green ? "1px solid #b5f55a" : "1px solid #e5e7eb",
-                      boxShadow: f.green ? "0 2px 12px rgba(158,240,26,0.1)" : "none",
-                    }}
-                  >
-                    {/* Step number circle */}
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0 relative z-10"
-                      style={{ background: f.green ? "#9ef01a" : "#f3f4f6", color: f.green ? "#111827" : "#6b7280" }}
-                    >
+                  <div className="relative flex items-start gap-5 p-5 rounded-xl transition-all duration-300 hover:-translate-y-1 cursor-default"
+                    style={{ background: f.green ? "#f8fff0" : "white", border: f.green ? "1px solid #b5f55a" : "1px solid #e5e7eb", boxShadow: f.green ? "0 2px 12px rgba(158,240,26,0.1)" : "none" }}>
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0 relative z-10"
+                      style={{ background: f.green ? "#9ef01a" : "#f3f4f6", color: f.green ? "#111827" : "#6b7280" }}>
                       {i + 1}
                     </div>
                     <div className="flex-1 pt-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span
-                          className="font-black text-2xl leading-none"
-                          style={{ color: f.green ? "#70e000" : "#9ca3af" }}
-                        >
-                          {f.dir}
-                        </span>
+                        <span className="font-black text-2xl leading-none" style={{ color: f.green ? "#70e000" : "#9ca3af" }}>{f.dir}</span>
                         <span className="text-xs font-bold uppercase tracking-widest" style={{ color: f.green ? "#3d8000" : "#9ca3af" }}>
                           {f.green ? "You Receive" : "You Deliver"}
                         </span>
                       </div>
                       <p className="text-carbon-700 font-medium">{f.label}</p>
                     </div>
-                    {f.green && (
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ background: "#9ef01a" }} />
-                    )}
                   </div>
                 </AnimatedSection>
               ))}
@@ -141,23 +119,15 @@ export default function PackagesSlides() {
             <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Speaking & Partnership</h2>
             <p className="text-carbon-500 mb-8">For this event we allocated <strong className="text-carbon-900">8–10 partnerships/speaking slots only</strong>.</p>
           </AnimatedSection>
-
           <AnimatedSection delay={80}>
             <div className="card-green mb-8">
-              <p className="text-sm text-carbon-600 mb-2">Speakers & Partners don't invest into "Speaking Slot".</p>
-              <p className="font-bold text-carbon-900 mb-1">
-                You invest to get <span style={{ color: "#70e000" }}>Audience Insights</span> and access to <span style={{ color: "#70e000" }}>High-Intent Pre-Qualified Prospects.</span>
-              </p>
-              <p className="text-sm text-carbon-600">We turn your session into a <strong className="text-carbon-900">full-funnel engine.</strong></p>
+              <p className="text-sm text-carbon-600 mb-1">Speakers & Partners don't invest into "Speaking Slot".</p>
+              <p className="font-bold text-carbon-900">You invest to get <span style={{ color: "#70e000" }}>Audience Insights</span> and access to <span style={{ color: "#70e000" }}>High-Intent Pre-Qualified Prospects.</span></p>
             </div>
           </AnimatedSection>
-
           <div className="grid md:grid-cols-2 gap-4 mb-8">
             <AnimatedSection delay={130}>
-              <div
-                className="card hover:shadow-md transition-all h-full"
-                style={{ borderTop: "4px solid #9ef01a" }}
-              >
+              <div className="card hover:shadow-md transition-all h-full" style={{ borderTop: "4px solid #9ef01a" }}>
                 <span className="inline-block px-2 py-1 rounded text-xs font-bold mb-3" style={{ background: "#f3ffe3", color: "#3d8000", border: "1px solid #b5f55a" }}>Only ONE Brand Partner Per Event</span>
                 <h3 className="text-xl font-black text-carbon-900 mb-1">Brand Integration Partnership</h3>
                 <p className="text-sm text-carbon-500 mb-4">8–12 weeks integration</p>
@@ -176,7 +146,7 @@ export default function PackagesSlides() {
                 <span className="inline-block px-2 py-1 rounded text-xs font-bold mb-3 bg-carbon-100 text-carbon-600 border border-carbon-200">Limited Slots Per Industry</span>
                 <h3 className="text-xl font-black text-carbon-900 mb-1">Speaking & Visibility</h3>
                 <p className="text-sm text-carbon-500 mb-4">Per speaking slot</p>
-                <p className="text-sm text-carbon-600 leading-relaxed mb-6"><strong className="text-carbon-900">Pay-per-speaking-slot with light branding.</strong> Best for companies wanting to test the audience, gain speaking visibility, and collect leads without full sponsorship.</p>
+                <p className="text-sm text-carbon-600 leading-relaxed mb-6"><strong className="text-carbon-900">Pay-per-speaking-slot with light branding.</strong> Best for companies wanting to test the audience and collect leads without full sponsorship.</p>
                 <div className="flex items-end justify-between pt-4 border-t border-carbon-100">
                   <div>
                     <p className="text-xs text-carbon-400 font-medium mb-1">Early Bird from</p>
@@ -245,7 +215,7 @@ export default function PackagesSlides() {
             </div>
           </AnimatedSection>
 
-          {/* Speaking */}
+          {/* Speaking — renamed to $1950 Premium + Best Choice badge */}
           <AnimatedSection delay={150}>
             <h3 className="text-xl font-black text-carbon-900 mb-1">Speaking & Visibility</h3>
             <p className="text-sm text-carbon-500 mb-4">Limited slots per industry.</p>
@@ -254,7 +224,10 @@ export default function PackagesSlides() {
                 <thead>
                   <tr className="bg-carbon-50 border-b border-carbon-200">
                     <th className="px-4 py-3 text-xs font-bold text-carbon-500 uppercase tracking-wide w-1/2">Feature</th>
-                    <th className="px-4 py-3 text-xs font-bold uppercase tracking-wide text-center w-1/4 border-l border-carbon-200" style={{ background: "#f3ffe3", color: "#3d8000" }}>PREMIUM</th>
+                    <th className="px-4 py-3 text-xs font-bold uppercase tracking-wide text-center w-1/4 border-l border-carbon-200 relative" style={{ background: "#f3ffe3", color: "#3d8000" }}>
+                      <div>PREMIUM</div>
+                      <div className="text-xs font-bold px-2 py-0.5 rounded mt-1 inline-block" style={{ background: "#9ef01a", color: "#111827" }}>✦ Best Choice</div>
+                    </th>
                     <th className="px-4 py-3 text-xs font-bold text-carbon-700 uppercase tracking-wide text-center w-1/4 border-l border-carbon-200">BUSINESS</th>
                   </tr>
                 </thead>
@@ -267,7 +240,7 @@ export default function PackagesSlides() {
                       {cat.items.map((item: { label: string; p: string; b: string }, ii: number) => (
                         <tr key={`s${ci}${ii}`} className="border-t border-carbon-100 hover:bg-carbon-50 transition-colors">
                           <td className="px-4 py-2.5 text-sm text-carbon-700">{item.label}</td>
-                          <td className="px-4 py-2.5 text-center border-l border-carbon-100"><Cell val={item.p} /></td>
+                          <td className="px-4 py-2.5 text-center border-l border-carbon-100" style={{ background: "rgba(158,240,26,0.04)" }}><Cell val={item.p} /></td>
                           <td className="px-4 py-2.5 text-center border-l border-carbon-100"><Cell val={item.b} /></td>
                         </tr>
                       ))}
@@ -277,8 +250,12 @@ export default function PackagesSlides() {
               </table>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="card-green">
-                <p className="text-xs font-bold text-carbon-400 uppercase tracking-widest mb-2">PREMIUM · Early Bird</p>
+              {/* Premium - highlighted as best choice */}
+              <div className="card" style={{ borderColor: "#9ef01a", borderWidth: "2px", background: "#f8fff0" }}>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs font-bold text-carbon-400 uppercase tracking-widest">PREMIUM · Early Bird</p>
+                  <span className="text-xs font-black px-2 py-1 rounded-full" style={{ background: "#9ef01a", color: "#111827" }}>✦ Best Choice</span>
+                </div>
                 <p className="text-3xl font-black mb-1" style={{ color: "#70e000" }}>$1,950</p>
                 <p className="text-xs text-carbon-400 mb-3">Standard (May 10th): <span className="line-through">$2,450</span></p>
                 <a href="mailto:denis@fsummit.net" className="btn-green text-sm py-2 px-4">Claim Premium Slot →</a>

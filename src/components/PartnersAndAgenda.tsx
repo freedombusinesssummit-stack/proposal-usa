@@ -35,53 +35,58 @@ const agenda = {
 export default function PartnersAndAgenda() {
   return (
     <>
-      <section id="partners-prev" className="py-14 border-b border-gray-100 bg-gray-50">
+      {/* PARTNERS — dark background */}
+      <section id="partners-prev" className="py-14 border-b border-carbon-100" style={{ background: "#111827" }}>
         <div className="wrap">
           <AnimatedSection>
-            <span className="section-label">Track Record</span>
-            <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Our Previous Partners</h2>
-            <p className="text-gray-500 mb-8">Trusted by global brands across mobility, fintech, real estate and legal sectors</p>
+            <span className="section-label" style={{ color: "#9ef01a" }}>Track Record</span>
+            <h2 className="text-3xl font-black text-white tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Our Previous Partners</h2>
+            <p className="mb-8" style={{ color: "#9ca3af" }}>Trusted by global brands across mobility, fintech, real estate and legal sectors</p>
           </AnimatedSection>
           <AnimatedSection delay={80}>
             <div className="grid grid-cols-3 md:grid-cols-5 gap-2 mb-10">
               {prevPartners.map((p, i) => (
-                <div key={i} className="bg-white border border-gray-200 rounded-xl py-3 px-3 text-center text-xs font-semibold text-gray-600 hover:border-gray-300 transition-colors">{p}</div>
+                <div key={i} className="rounded-xl py-3 px-3 text-center text-xs font-semibold transition-all duration-200 hover:opacity-80 cursor-default"
+                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)" }}>
+                  {p}
+                </div>
               ))}
             </div>
           </AnimatedSection>
           <AnimatedSection delay={150}>
-            <p className="font-bold text-gray-900 mb-5">Our Previous Speakers</p>
+            <p className="font-bold text-white mb-5">Our Previous Speakers</p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
               {prevSpeakers.map((s, i) => (
                 <div key={i} className="text-center">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm mx-auto mb-2 text-white bg-lime-300">{s.init}</div>
-                  <p className="text-xs font-bold text-gray-900">{s.name}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{s.org}</p>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm mx-auto mb-2" style={{ background: "#9ef01a", color: "#111827" }}>{s.init}</div>
+                  <p className="text-xs font-bold text-white">{s.name}</p>
+                  <p className="text-xs mt-0.5" style={{ color: "#6b7280" }}>{s.org}</p>
                 </div>
               ))}
             </div>
           </AnimatedSection>
           <AnimatedSection delay={220}>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Media Coverage</p>
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#6b7280" }}>Media Coverage</p>
             <div className="flex flex-wrap gap-2">
               {mediaOutlets.map((m, i) => (
-                <span key={i} className="px-2.5 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-500">{m}</span>
+                <span key={i} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)" }}>{m}</span>
               ))}
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      <section id="agenda" className="py-14 border-b border-gray-100 bg-white">
+      {/* AGENDA */}
+      <section id="agenda" className="py-14 border-b border-carbon-100 bg-white">
         <div className="wrap">
           <AnimatedSection>
             <span className="section-label">Summit Agenda</span>
-            <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-1" style={{ letterSpacing: "-0.5px" }}>27–28 June 2026</h2>
-            <p className="text-gray-500 mb-8">11 AM to 3 PM (Eastern Standard Time) · Virtual Worldwide</p>
+            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-1" style={{ letterSpacing: "-0.5px" }}>27–28 June 2026</h2>
+            <p className="text-carbon-500 mb-8">11 AM to 3 PM (Eastern Standard Time) · Virtual Worldwide</p>
           </AnimatedSection>
           <div className="grid md:grid-cols-2 gap-8">
             {[
-              { label: "Day 1: Inbound Mobility to the US", color: "#70e000", bg: "#f0fdf4", border: "#bbf7d0", sessions: agenda.day1 },
+              { label: "Day 1: Inbound Mobility to the US", color: "#70e000", bg: "#f3ffe3", border: "#b5f55a", sessions: agenda.day1 },
               { label: "Day 2: Outbound Mobility from the US", color: "#9333ea", bg: "#faf5ff", border: "#e9d5ff", sessions: agenda.day2 },
             ].map((day, di) => (
               <div key={di}>
@@ -93,11 +98,11 @@ export default function PartnersAndAgenda() {
                     <AnimatedSection key={i} delay={80 + di * 80 + i * 55}>
                       <div className="card hover:shadow-sm transition-shadow">
                         <div className="flex items-start gap-3">
-                          <span className="font-black text-lg text-gray-200 w-5 flex-shrink-0">{s.num}</span>
-                          <p className="text-sm font-medium text-gray-800 flex-1 leading-snug">{s.topic}</p>
+                          <span className="font-black text-lg text-carbon-200 w-5 flex-shrink-0">{s.num}</span>
+                          <p className="text-sm font-medium text-carbon-800 flex-1 leading-snug">{s.topic}</p>
                           <div className="flex flex-col items-end gap-1 flex-shrink-0 ml-2">
                             <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: day.bg, color: day.color }}>{s.type}</span>
-                            <span className="text-xs text-gray-400">{s.time}</span>
+                            <span className="text-xs text-carbon-400">{s.time}</span>
                           </div>
                         </div>
                       </div>
