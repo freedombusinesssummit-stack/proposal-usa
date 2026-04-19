@@ -12,6 +12,7 @@
     background: #ffffff;
     color: #111827;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: #f1f5f9; }
@@ -24,8 +25,15 @@
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 28px;
-    padding-right: 28px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media (min-width: 640px) {
+    .wrap {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
   }
 
   /* Cards */
@@ -53,14 +61,22 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 5px 12px;
+    padding: 5px 10px;
     border-radius: 999px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.02em;
     background: #111827;
     color: #9ef01a;
     border: none;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 640px) {
+    .pill {
+      padding: 5px 12px;
+      font-size: 12px;
+    }
   }
 
   /* Green badge (subtle) */
@@ -108,7 +124,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 12px 24px;
+    padding: 11px 20px;
     background: #9ef01a;
     color: #111827;
     border-radius: 8px;
@@ -118,6 +134,7 @@
     transition: all 0.15s;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
   }
   .btn-green:hover { background: #80cc10; transform: translateY(-1px); }
 
@@ -125,7 +142,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 12px 24px;
+    padding: 11px 20px;
     background: #111827;
     color: #9ef01a;
     border-radius: 8px;
@@ -135,6 +152,7 @@
     transition: all 0.15s;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
   }
   .btn-dark:hover { background: #1f2937; transform: translateY(-1px); }
 
@@ -142,7 +160,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 12px 24px;
+    padding: 11px 20px;
     background: white;
     color: #374151;
     border-radius: 8px;
@@ -152,6 +170,7 @@
     border: 1px solid #e5e7eb;
     transition: all 0.15s;
     cursor: pointer;
+    white-space: nowrap;
   }
   .btn-outline:hover { border-color: #9ef01a; color: #111827; }
 
