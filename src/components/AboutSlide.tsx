@@ -1,7 +1,8 @@
 "use client";
 import AnimatedSection from "./AnimatedSection";
-import NumberTicker from "./NumberTicker";
+import { NumberTicker } from "@/components/magicui/number-ticker";
 import { Badge } from "@/components/ui/badge";
+import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
 
 const FEATURES = [
   { icon: "📡", title: "Real Intent Signals", text: "Data-driven virtual summit capturing real mobility intent — not vanity traffic." },

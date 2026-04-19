@@ -312,3 +312,59 @@
   z-index: 0;
 }
 .spotlight-card:hover::before { opacity: 1; }
+
+/* MagicUI Animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes shimmer-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes border-beam-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fade-up-stagger {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Bento grid card shimmer on hover */
+.bento-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.bento-card:hover {
+  border-color: rgba(158, 240, 26, 0.4);
+  box-shadow: 0 8px 30px rgba(158, 240, 26, 0.1);
+  transform: translateY(-3px);
+}
+.bento-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(158,240,26,0) 0%, rgba(158,240,26,0.04) 50%, rgba(158,240,26,0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.bento-card:hover::after { opacity: 1; }
+
+/* Animate gradient text */
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradient-shift 4s linear infinite;
+}

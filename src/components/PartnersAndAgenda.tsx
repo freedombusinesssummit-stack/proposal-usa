@@ -1,5 +1,7 @@
 "use client";
 import AnimatedSection from "./AnimatedSection";
+import { Badge } from "@/components/ui/badge";
+import { Marquee } from "@/components/magicui/marquee";
 
 const prevPartners = ["Estonia e-Residency","Insured Nomads","Binance","Globalization Partners","Startup Island","In.Corp","Evercoach by Mindvalley","Spaces","SafetyWing","Upwork","Ruul","Cinvest","NomadCruise","EC Holdings","TravelMBA"];
 const prevSpeakers = [
@@ -32,44 +34,63 @@ const agenda = {
   ],
 };
 
+function PartnerChip({ name }: { name: string }) {
+  return (
+    <div className="flex items-center justify-center px-5 py-3 rounded-xl text-xs font-semibold mx-2 flex-shrink-0"
+      style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)", minWidth: 140 }}>
+      {name}
+    </div>
+  );
+}
+
 export default function PartnersAndAgenda() {
   return (
     <>
-      {/* PARTNERS — dark background */}
-      <section id="partners-prev" className="py-14 border-b border-carbon-100" style={{ background: "#111827" }}>
+      {/* PARTNERS — dark bg with Marquee */}
+      <section id="partners-prev" className="py-14 border-b border-carbon-800" style={{ background: "#111827" }}>
         <div className="wrap">
           <AnimatedSection>
-            <span className="section-label" style={{ color: "#9ef01a" }}>Track Record</span>
+            <Badge variant="dark" className="mb-3 border border-lime-300/30">Track Record</Badge>
             <h2 className="text-3xl font-black text-white tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Our Previous Partners</h2>
-            <p className="mb-8" style={{ color: "#9ca3af" }}>Trusted by global brands across mobility, fintech, real estate and legal sectors</p>
+            <p className="mb-10" style={{ color: "#9ca3af" }}>Trusted by global brands across mobility, fintech, real estate and legal sectors</p>
           </AnimatedSection>
-          <AnimatedSection delay={80}>
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-2 mb-10">
-              {prevPartners.map((p, i) => (
-                <div key={i} className="rounded-xl py-3 px-3 text-center text-xs font-semibold transition-all duration-200 hover:opacity-80 cursor-default"
-                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)" }}>
-                  {p}
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-          <AnimatedSection delay={150}>
-            <p className="font-bold text-white mb-5">Our Previous Speakers</p>
+        </div>
+
+        {/* Marquee — full width */}
+        <div className="group overflow-hidden">
+          <Marquee speed={35} pauseOnHover>
+            {prevPartners.map((p, i) => <PartnerChip key={i} name={p} />)}
+          </Marquee>
+        </div>
+        <div className="group overflow-hidden mt-3">
+          <Marquee speed={28} reverse pauseOnHover>
+            {[...prevPartners].reverse().map((p, i) => <PartnerChip key={i} name={p} />)}
+          </Marquee>
+        </div>
+
+        <div className="wrap mt-10">
+          <AnimatedSection delay={100}>
+            <p className="font-bold text-white mb-6">Our Previous Speakers</p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
               {prevSpeakers.map((s, i) => (
-                <div key={i} className="text-center">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm mx-auto mb-2" style={{ background: "#9ef01a", color: "#111827" }}>{s.init}</div>
+                <div key={i} className="text-center group cursor-default">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm mx-auto mb-2 transition-transform group-hover:scale-110 duration-200"
+                    style={{ background: "#9ef01a", color: "#111827" }}>{s.init}</div>
                   <p className="text-xs font-bold text-white">{s.name}</p>
                   <p className="text-xs mt-0.5" style={{ color: "#6b7280" }}>{s.org}</p>
                 </div>
               ))}
             </div>
           </AnimatedSection>
-          <AnimatedSection delay={220}>
+
+          <AnimatedSection delay={200}>
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#6b7280" }}>Media Coverage</p>
             <div className="flex flex-wrap gap-2">
               {mediaOutlets.map((m, i) => (
-                <span key={i} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)" }}>{m}</span>
+                <span key={i} className="px-2.5 py-1 rounded-lg text-xs font-medium"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)" }}>
+                  {m}
+                </span>
               ))}
             </div>
           </AnimatedSection>
@@ -80,7 +101,7 @@ export default function PartnersAndAgenda() {
       <section id="agenda" className="py-14 border-b border-carbon-100 bg-white">
         <div className="wrap">
           <AnimatedSection>
-            <span className="section-label">Summit Agenda</span>
+            <Badge variant="success" className="mb-3">Summit Agenda</Badge>
             <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-1" style={{ letterSpacing: "-0.5px" }}>27–28 June 2026</h2>
             <p className="text-carbon-500 mb-8">11 AM to 3 PM (Eastern Standard Time) · Virtual Worldwide</p>
           </AnimatedSection>
@@ -96,7 +117,7 @@ export default function PartnersAndAgenda() {
                 <div className="space-y-2">
                   {day.sessions.map((s, i) => (
                     <AnimatedSection key={i} delay={80 + di * 80 + i * 55}>
-                      <div className="card hover:shadow-sm transition-shadow">
+                      <div className="bento-card p-4">
                         <div className="flex items-start gap-3">
                           <span className="font-black text-lg text-carbon-200 w-5 flex-shrink-0">{s.num}</span>
                           <p className="text-sm font-medium text-carbon-800 flex-1 leading-snug">{s.topic}</p>
