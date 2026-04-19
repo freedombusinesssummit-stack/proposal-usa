@@ -8,7 +8,7 @@ const SLIDES = [
   { id: "audience", label: "Audience" },
   { id: "snapshot", label: "Snapshot" },
   { id: "behavioral", label: "Insights" },
-  { id: "intel", label: "Data Layer" },
+  { id: "intel", label: "Data" },
   { id: "funnel", label: "Funnel" },
   { id: "partners-prev", label: "Partners" },
   { id: "agenda", label: "Agenda" },
@@ -20,101 +20,84 @@ const SLIDES = [
 export default function Navigation() {
   const [active, setActive] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const onScroll = () => {
       setScrolled(window.scrollY > 20);
-      const scrollY = window.scrollY + 120;
+      const mid = window.scrollY + 130;
       for (let i = SLIDES.length - 1; i >= 0; i--) {
         const el = document.getElementById(SLIDES[i].id);
-        if (el && el.offsetTop <= scrollY) { setActive(SLIDES[i].id); break; }
+        if (el && el.offsetTop <= mid) { setActive(SLIDES[i].id); break; }
       }
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     // Animate on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll("[data-animate]").forEach(el => observer.observe(el));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
+    }, { threshold: 0.07 });
+    document.querySelectorAll(".anim").forEach(el => obs.observe(el));
 
-    return () => { window.removeEventListener("scroll", handleScroll); observer.disconnect(); };
+    return () => { window.removeEventListener("scroll", onScroll); obs.disconnect(); };
   }, []);
 
-  const scrollTo = (id: string) => {
+  const go = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
+    setOpen(false);
   };
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-200"
-      style={{ borderBottom: scrolled ? "1px solid #e5e7eb" : "1px solid transparent", boxShadow: scrolled ? "0 1px 8px rgba(0,0,0,0.06)" : "none" }}
-    >
-      <div className="container">
+    <nav className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-200 ${scrolled ? "border-b border-gray-200 shadow-sm" : "border-b border-transparent"}`}>
+      <div className="wrap">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-md flex items-center justify-center text-white font-black text-xs" style={{ background: "#16a34a" }}>FS</div>
-            <span className="font-bold text-gray-900 text-sm tracking-tight hidden sm:block">Freedom Summit</span>
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-md flex items-center justify-center text-white font-black text-xs bg-green-600">FS</div>
+            <span className="font-bold text-gray-900 text-sm hidden sm:block">Freedom Summit</span>
           </div>
 
-          {/* Center nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          {/* Nav links */}
+          <div className="hidden lg:flex items-center gap-5">
             {[
               { id: "about", label: "About" },
               { id: "audience", label: "Audience" },
               { id: "agenda", label: "Agenda" },
               { id: "packages", label: "Packages" },
-            ].map(link => (
-              <button key={link.id} onClick={() => scrollTo(link.id)}
-                className="text-sm font-medium transition-colors"
-                style={{ color: active === link.id ? "#16a34a" : "#6b7280" }}>
-                {link.label}
+            ].map(l => (
+              <button key={l.id} onClick={() => go(l.id)}
+                className={`text-sm font-medium transition-colors ${active === l.id ? "text-green-600" : "text-gray-500 hover:text-gray-800"}`}>
+                {l.label}
               </button>
             ))}
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Progress dots - visible on large screens */}
-            <div className="hidden xl:flex items-center gap-1.5 mr-2">
+            {/* Progress pills */}
+            <div className="hidden xl:flex items-center gap-1 mr-1">
               {SLIDES.map(s => (
-                <button key={s.id} onClick={() => scrollTo(s.id)} title={s.label}
-                  style={{
-                    width: active === s.id ? "16px" : "6px",
-                    height: "6px",
-                    borderRadius: "3px",
-                    background: active === s.id ? "#16a34a" : "#d1d5db",
-                    transition: "all 0.3s ease",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: 0,
-                  }} />
+                <button key={s.id} onClick={() => go(s.id)} title={s.label}
+                  className="rounded-full transition-all duration-300 border-none p-0 cursor-pointer"
+                  style={{ width: active === s.id ? "14px" : "6px", height: "6px", background: active === s.id ? "#16a34a" : "#d1d5db" }} />
               ))}
             </div>
-
-            <a href="mailto:denis@fsummit.net"
-              className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90"
-              style={{ background: "#16a34a" }}>
-              Partner With Us →
-            </a>
-            <button className="lg:hidden p-1.5" onClick={() => setMenuOpen(!menuOpen)}>
+            <a href="mailto:denis@fsummit.net" className="btn-green hidden sm:inline-flex text-sm">Partner With Us →</a>
+            <button className="lg:hidden p-1" onClick={() => setOpen(!open)}>
               <div className="w-5 space-y-1">
-                <span className="block h-0.5 bg-gray-600 transition-all" style={{ transform: menuOpen ? "rotate(45deg) translateY(6px)" : "none" }} />
-                <span className="block h-0.5 bg-gray-600" style={{ opacity: menuOpen ? 0 : 1 }} />
-                <span className="block h-0.5 bg-gray-600 transition-all" style={{ transform: menuOpen ? "rotate(-45deg) translateY(-6px)" : "none" }} />
+                <span className="block h-0.5 bg-gray-600 transition-all" style={{ transform: open ? "rotate(45deg) translateY(6px)" : "none" }} />
+                <span className="block h-0.5 bg-gray-600" style={{ opacity: open ? 0 : 1 }} />
+                <span className="block h-0.5 bg-gray-600 transition-all" style={{ transform: open ? "rotate(-45deg) translateY(-6px)" : "none" }} />
               </div>
             </button>
           </div>
         </div>
       </div>
 
-      {menuOpen && (
-        <div className="lg:hidden border-t border-gray-100 bg-white">
+      {open && (
+        <div className="lg:hidden border-t border-gray-100 bg-white py-2">
           {SLIDES.map(s => (
-            <button key={s.id} onClick={() => scrollTo(s.id)}
-              className="w-full text-left px-6 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all">
+            <button key={s.id} onClick={() => go(s.id)}
+              className={`w-full text-left px-6 py-2.5 text-sm font-medium transition-colors ${active === s.id ? "text-green-600 bg-green-50" : "text-gray-600 hover:bg-gray-50"}`}>
               {s.label}
             </button>
           ))}
