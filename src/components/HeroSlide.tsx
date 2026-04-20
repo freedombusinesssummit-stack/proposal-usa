@@ -28,12 +28,6 @@ function Countdown() {
   );
 }
 
-const META = [
-  { icon: "🎯", label: "500–700 Expected Attendees" },
-  { icon: "📊", label: "10.2K Email Audience" },
-  { icon: "📬", label: "33–52% Open Rate" },
-  { icon: "🌐", label: "30+ Countries" },
-];
 const AVATARS = ["DD","PM","SZ","DC","WW","MC","AR","MU"];
 
 export default function HeroSlide() {
@@ -59,15 +53,15 @@ export default function HeroSlide() {
             ))}
           </div>
 
-          {/* Headings */}
+          {/* Headings — full container width, left-aligned, no maxWidth constraint */}
           <div style={fade(80)}>
-            <h1 className="font-black text-carbon-900 leading-tight mb-1" style={{ fontSize: "clamp(22px, 4vw, 48px)", letterSpacing: "-1.5px" }}>
+            <h1 className="font-black text-carbon-900 leading-tight mb-1 w-full" style={{ fontSize: "clamp(22px, 4vw, 48px)", letterSpacing: "-1.5px" }}>
               Freedom Business Summit 2026
             </h1>
-            <h2 className="font-black text-carbon-900 leading-none mb-4" style={{ fontSize: "clamp(28px, 5.5vw, 62px)", letterSpacing: "-2px", whiteSpace: "nowrap" }}>
+            <h2 className="font-black text-carbon-900 leading-none mb-4 w-full" style={{ fontSize: "clamp(28px, 5.5vw, 62px)", letterSpacing: "-2px", whiteSpace: "nowrap" }}>
               USA Mobility Edition 🇺🇸
             </h2>
-            <p className="font-semibold text-carbon-600 leading-snug mb-5" style={{ fontSize: "clamp(14px, 1.8vw, 20px)", maxWidth: 560 }}>
+            <p className="font-semibold text-carbon-600 leading-snug mb-5 w-full" style={{ fontSize: "clamp(14px, 1.8vw, 20px)" }}>
               A Data-Driven Virtual Summit for Founders, Investors Exploring Inbound & Outbound Strategies
             </p>
           </div>
@@ -122,21 +116,6 @@ export default function HeroSlide() {
         </div>
       </div>
 
-      {/* Meta strip — matches wrap width */}
-      <div className="border-t border-carbon-100">
-        <div className="wrap">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 py-4">
-            {META.map((m, i) => (
-              <div key={i}
-                className="flex items-center gap-2.5 p-3 md:p-4 rounded-xl border border-carbon-200 bg-white hover:border-lime-300 hover:bg-lime-50 transition-all duration-200 group"
-                style={{ opacity: mounted ? 1 : 0, transform: mounted ? "none" : "translateY(10px)", transition: `all 0.55s ease ${520 + i * 80}ms` }}>
-                <span className="text-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-200">{m.icon}</span>
-                <span className="font-semibold text-xs md:text-sm text-carbon-700 leading-tight">{m.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
