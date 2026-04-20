@@ -180,7 +180,7 @@ export default function PackagesSlides() {
             </AnimatedSection>
           </div>
 
-          {/* LIGHT CTA block — replaces the dark one, placed right here */}
+          {/* CTA block — NO button */}
           <AnimatedSection delay={250}>
             <div className="rounded-2xl p-8 md:p-10 text-center" style={{ background: "#f8fff0", border: "2px solid #b5f55a" }}>
               <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#3d8000" }}>Ready to Reach This Audience?</p>
@@ -188,12 +188,42 @@ export default function PackagesSlides() {
                 Speaking &{" "}
                 <AnimatedGradientText className="font-black">Partnership Engagement</AnimatedGradientText>
               </h2>
-              <p className="text-carbon-500 mb-6 max-w-lg mx-auto">
+              <p className="text-carbon-500 max-w-lg mx-auto">
                 8–10 slots per event. Every partner gets qualified leads, audience data, and thought leadership positioning.
               </p>
-              <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.4)" shimmerDuration="1.8s" className="text-base font-bold px-8 py-3.5 mx-auto">
-                Become a Partner →
-              </ShimmerButton>
+            </div>
+          </AnimatedSection>
+
+          {/* READY TO PARTNER — directly under CTA */}
+          <AnimatedSection delay={320}>
+            <div className="mt-5 rounded-2xl border border-carbon-200 bg-white p-6 md:p-8">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="flex-1">
+                  <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#9ef01a" }}>Contact</p>
+                  <h3 className="text-2xl font-black text-carbon-900 mb-2" style={{ letterSpacing: "-0.5px" }}>Ready to Partner?</h3>
+                  <p className="text-sm text-carbon-500 mb-5">We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on May 10th.</p>
+                  <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.4)" shimmerDuration="1.8s" className="text-sm font-bold px-6 py-3">
+                    Become a Partner →
+                  </ShimmerButton>
+                </div>
+                <div className="flex-1 grid grid-cols-1 gap-2">
+                  {[
+                    "Data-driven virtual summit — real intent signals",
+                    "100% global distribution and media exposure",
+                    "Full funnel intent tracking from day one",
+                    "Exclusivity per category and jurisdiction",
+                    "Decision-maker dominant audience (75% founders/execs)",
+                    "Direct access to pre-qualified prospects (0–12 months)",
+                    "Audience surveyed on jurisdiction, budget & timeline",
+                    "8–10 selected partners per event — no overcrowding",
+                  ].map((r, i) => (
+                    <div key={i} className="flex items-start gap-2.5">
+                      <span className="font-black text-sm flex-shrink-0 mt-0.5" style={{ color: "#9ef01a" }}>→</span>
+                      <p className="text-xs text-carbon-600 font-medium leading-snug">{r}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </AnimatedSection>
         </div>

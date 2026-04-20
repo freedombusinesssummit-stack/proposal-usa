@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
-import { WordFadeIn } from "@/components/magicui/word-fade-in";
 
 function Countdown() {
   const target = new Date("2026-06-27T11:00:00-05:00").getTime();
@@ -47,57 +46,42 @@ export default function HeroSlide() {
   });
 
   return (
-    <section id="hero" className="pt-14 overflow-x-hidden" style={{ background: "#fff" }}>
-      {/* USA Background — blurred flag-inspired gradient overlay */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: "radial-gradient(ellipse 80% 60% at 85% 40%, rgba(178,34,34,0.04) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 90% 80%, rgba(0,40,104,0.05) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 95% 20%, rgba(158,240,26,0.06) 0%, transparent 50%)",
-        zIndex: 0,
-      }} />
+    <section id="hero" className="slide-section pt-14 overflow-x-hidden bg-white">
+      <span className="slide-number">01 / 16</span>
 
-      {/* Animated USA-flag–inspired horizontal stripes — very subtle */}
-      <div className="absolute top-14 right-0 w-2/5 h-full pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        {/* Stars field */}
-        <div style={{
-          position: "absolute", top: "8%", right: "5%",
-          width: 160, height: 120,
-          background: "rgba(0,40,104,0.03)",
-          borderRadius: 8,
-        }} />
-        {/* Red stripes */}
-        {[0,1,2,3,4,5,6].map(i => (
-          <div key={i} style={{
-            position: "absolute",
-            top: `${6 + i * 7}%`,
-            right: 0,
-            height: "3%",
-            width: `${75 - i * 4}%`,
-            background: i % 2 === 0 ? "rgba(178,34,34,0.025)" : "transparent",
-            borderRadius: "2px 0 0 2px",
-          }} />
+      {/* Subtle USA decoration */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+        <div style={{ position: "absolute", top: "8%", right: "-3%", width: 380, height: 280, background: "radial-gradient(ellipse at center, rgba(0,40,104,0.045) 0%, transparent 70%)", borderRadius: "50%" }} />
+        <div style={{ position: "absolute", bottom: "25%", right: "8%", width: 260, height: 180, background: "radial-gradient(ellipse at center, rgba(178,34,34,0.03) 0%, transparent 70%)", borderRadius: "50%" }} />
+        {[0,1,2,3,4].map(i => (
+          <div key={i} style={{ position: "absolute", top: `${15 + i * 9}%`, right: 0, height: "2.5px", width: `${20 - i * 3}%`, background: i % 2 === 0 ? "rgba(178,34,34,0.03)" : "transparent", borderRadius: "2px 0 0 2px" }} />
         ))}
       </div>
 
       <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-        <div className="py-10 md:py-16">
+        <div className="py-10 md:py-14">
 
           {/* Pills */}
-          <div className="flex flex-wrap gap-2 mb-6" style={fade(0)}>
+          <div className="flex flex-wrap gap-2 mb-5" style={fade(0)}>
             {["27-28 June 2026", "Virtual Event", "Worldwide Online"].map((t, i) => (
               <span key={i} className="pill">{t}</span>
             ))}
           </div>
 
+          {/* Headings: Freedom Business Summit 2026 — BIGGER, USA Mobility Edition — one line below */}
           <div style={fade(80)}>
-            <p className="text-base md:text-lg font-semibold text-carbon-400 mb-1">Freedom Business Summit 2026</p>
-            <h1 className="font-black text-carbon-900 leading-[0.95] mb-4" style={{ fontSize: "clamp(38px, 8vw, 86px)", letterSpacing: "-2px" }}>
-              <WordFadeIn text="USA Mobility Edition 🇺🇸" delay={60} />
+            <h1 className="font-black text-carbon-900 leading-tight mb-1" style={{ fontSize: "clamp(24px, 4.5vw, 52px)", letterSpacing: "-1.5px" }}>
+              Freedom Business Summit 2026
             </h1>
-            <h2 className="font-semibold text-carbon-600 leading-snug mb-5" style={{ fontSize: "clamp(15px, 2.2vw, 22px)", maxWidth: 560 }}>
-              A Data-Driven Virtual Summit for Founders, Investors Exploring Inbound & Outbound Strategies
+            <h2 className="font-black text-carbon-900 leading-none mb-4 whitespace-nowrap overflow-hidden" style={{ fontSize: "clamp(32px, 7vw, 80px)", letterSpacing: "-2.5px" }}>
+              USA Mobility Edition 🇺🇸
             </h2>
+            <p className="font-semibold text-carbon-600 leading-snug mb-5" style={{ fontSize: "clamp(14px, 1.8vw, 20px)", maxWidth: 540 }}>
+              A Data-Driven Virtual Summit for Founders, Investors Exploring Inbound & Outbound Strategies
+            </p>
           </div>
 
-          <div className="flex flex-col gap-1.5 mb-6" style={fade(200)}>
+          <div className="flex flex-col gap-1.5 mb-5" style={fade(200)}>
             {[
               { bold: "2 days", text: "of content you won't find anywhere" },
               { bold: "10+", text: "keynotes and talks by industry experts" },
@@ -109,16 +93,16 @@ export default function HeroSlide() {
             ))}
           </div>
 
-          <div className="mb-4" style={fade(250)}>
+          <div className="mb-4" style={fade(260)}>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold" style={{ background: "#111827", color: "#9ef01a" }}>
               <span className="w-2 h-2 rounded-full bg-lime-300 animate-pulse flex-shrink-0" />
               Get Early Bird Access! Act Fast
             </span>
           </div>
 
-          <div className="mb-7" style={fade(300)}><Countdown /></div>
+          <div className="mb-7" style={fade(320)}><Countdown /></div>
 
-          <div className="flex flex-wrap gap-3 mb-8" style={fade(360)}>
+          <div className="flex flex-wrap gap-3 mb-8" style={fade(380)}>
             <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.5)" shimmerDuration="1.8s" className="text-sm font-bold px-5 py-2.5">
               Partner With Us →
             </ShimmerButton>
@@ -129,7 +113,7 @@ export default function HeroSlide() {
           </div>
 
           {/* Avatars */}
-          <div className="mb-2" style={fade(410)}>
+          <div className="mb-2" style={fade(430)}>
             <div className="flex -space-x-2.5">
               {AVATARS.map((init, i) => (
                 <div key={i} className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-black flex-shrink-0"
@@ -139,8 +123,7 @@ export default function HeroSlide() {
               ))}
             </div>
           </div>
-
-          <div className="flex items-center gap-2" style={fade(450)}>
+          <div className="flex items-center gap-2" style={fade(470)}>
             <span className="text-yellow-400">★★★★★</span>
             <span className="font-black text-carbon-900 text-sm">4.9</span>
             <span className="text-carbon-400 text-xs">(Previous Attendees Feedback)</span>

@@ -368,3 +368,34 @@
   background-size: 200% auto;
   animation: gradient-shift 4s linear infinite;
 }
+
+/* ===================== PRESENTATION MODE ===================== */
+/* Full-screen sections */
+.slide-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* Section number badge */
+.slide-number {
+  position: absolute;
+  top: 80px;
+  right: 28px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #d1d5db;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 768px) {
+  .slide-section {
+    min-height: auto;
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+  .slide-number { display: none; }
+}

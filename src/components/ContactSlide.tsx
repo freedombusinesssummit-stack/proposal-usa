@@ -16,16 +16,18 @@ const REASONS = [
 
 const CONTACTS = [
   {
+    photo: "/denis.jpg",
     init: "DD",
     name: "Denys Dovgal",
     role: "CEO · Freedom Business Summit",
     lime: true,
     links: [
       { icon: "📧", label: "denis@fsummit.net", href: "mailto:denis@fsummit.net" },
-      { icon: "💬", label: "WhatsApp: +1 415 316 36 38", href: "https://wa.me/14153163638" },
+      { icon: "💬", label: "+1 415 316 36 38", href: "https://wa.me/14153163638" },
     ],
   },
   {
+    photo: "/eleonora.jpg",
     init: "ED",
     name: "Eleonora Davtyan",
     role: "Partners & Sponsorships",
@@ -35,20 +37,22 @@ const CONTACTS = [
     ],
   },
   {
+    photo: "/kristine.jpg",
     init: "KA",
     name: "Kristine Aghabekyan",
     role: "Partners & Sponsorships",
     lime: true,
     links: [
       { icon: "📧", label: "kristine@fsummit.net", href: "mailto:kristine@fsummit.net" },
-      { icon: "💬", label: "WhatsApp: +374 98 625 147", href: "https://wa.me/37498625147" },
+      { icon: "💬", label: "+374 98 625 147", href: "https://wa.me/37498625147" },
     ],
   },
 ];
 
 export default function ContactSlide() {
   return (
-    <section id="contact" className="py-14 bg-white">
+    <section id="contact" className="slide-section py-14 bg-white">
+      <span className="slide-number">16 / 16</span>
       <div className="wrap">
         <AnimatedSection>
           <Badge variant="success" className="mb-3">Contact</Badge>
@@ -58,7 +62,7 @@ export default function ContactSlide() {
           </p>
         </AnimatedSection>
 
-        {/* Reasons — 2 columns, no green background, strict style */}
+        {/* 8 reasons — 2 cols, white bg with border */}
         <AnimatedSection delay={80}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-8">
             {REASONS.map((r, i) => (
@@ -68,42 +72,58 @@ export default function ContactSlide() {
               </div>
             ))}
           </div>
-          <ShimmerButton
-            href="mailto:denis@fsummit.net"
-            background="#9ef01a"
-            shimmerColor="rgba(255,255,255,0.4)"
-            shimmerDuration="1.8s"
-            className="text-sm font-bold px-6 py-3 mb-10"
-          >
+          <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.4)" shimmerDuration="1.8s" className="text-sm font-bold px-6 py-3 mb-10">
             Become a Partner →
           </ShimmerButton>
         </AnimatedSection>
 
-        {/* 3 contact cards horizontal */}
+        {/* 3 contact cards with REAL photos as avatars */}
         <AnimatedSection delay={160}>
           <div className="grid md:grid-cols-3 gap-4 mb-6">
             {CONTACTS.map((c, i) => (
-              <div key={i} className="rounded-xl border border-carbon-200 bg-white p-5"
+              <div key={i} className="rounded-xl border border-carbon-200 bg-white overflow-hidden"
                 style={c.lime ? { borderLeft: "3px solid #9ef01a" } : {}}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0"
-                    style={c.lime ? { background: "#9ef01a", color: "#111827" } : { background: "#f3f4f6", color: "#6b7280" }}>
-                    {c.init}
+                {/* Photo — circular avatar style */}
+                <div className="flex flex-col items-center pt-6 pb-4 px-5">
+                  <div className="relative mb-3">
+                    <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-carbon-200"
+                      style={c.lime ? { borderColor: "#9ef01a" } : {}}>
+                      <img
+                        src={c.photo}
+                        alt={c.name}
+                        className="w-full h-full object-cover object-top"
+                        onError={(e) => {
+                          const el = e.target as HTMLImageElement;
+                          el.style.display = "none";
+                          const parent = el.parentElement;
+                          if (parent) {
+                            parent.style.background = c.lime ? "#f3ffe3" : "#f3f4f6";
+                            parent.style.display = "flex";
+                            parent.style.alignItems = "center";
+                            parent.style.justifyContent = "center";
+                            parent.innerHTML = `<span style="font-size:24px;font-weight:900;color:${c.lime ? '#3d8000' : '#6b7280'}">${c.init}</span>`;
+                          }
+                        }}
+                      />
+                    </div>
+                    {c.lime && (
+                      <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style={{ background: "#9ef01a", color: "#111827" }}>
+                        FS
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <p className="font-bold text-carbon-900 text-sm leading-tight">{c.name}</p>
-                    <p className="text-xs text-carbon-500">{c.role}</p>
+                  <p className="font-bold text-carbon-900 text-sm text-center">{c.name}</p>
+                  <p className="text-xs text-carbon-500 text-center mb-3">{c.role}</p>
+                  <div className="w-full space-y-2">
+                    {c.links.map((l, j) => (
+                      <a key={j} href={l.href}
+                        target={l.href.startsWith("https") ? "_blank" : undefined}
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 py-1.5 px-2.5 rounded-lg text-xs text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium w-full">
+                        <span>{l.icon}</span> {l.label}
+                      </a>
+                    ))}
                   </div>
-                </div>
-                <div className="space-y-2">
-                  {c.links.map((l, j) => (
-                    <a key={j} href={l.href}
-                      target={l.href.startsWith("https") ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 py-2 px-3 rounded-lg text-xs text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
-                      <span>{l.icon}</span> {l.label}
-                    </a>
-                  ))}
                 </div>
               </div>
             ))}
@@ -118,15 +138,12 @@ export default function ContactSlide() {
               <p className="font-bold text-carbon-900">fsummit.net/usa</p>
             </div>
             <a href="https://fsummit.net" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-bold text-carbon-900 transition-all hover:opacity-90"
-              style={{ background: "#9ef01a" }}>
-              Visit →
-            </a>
+              className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-bold text-carbon-900 hover:opacity-90 transition-all"
+              style={{ background: "#9ef01a" }}>Visit →</a>
           </div>
         </AnimatedSection>
       </div>
 
-      {/* Footer */}
       <div className="mt-14 border-t border-carbon-100">
         <div className="wrap">
           <div className="py-5 flex flex-col sm:flex-row items-center justify-between gap-4">

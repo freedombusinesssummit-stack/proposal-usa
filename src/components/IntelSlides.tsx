@@ -1,213 +1,180 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { Badge } from "@/components/ui/badge";
 
-const LEADS = [
-  { name: "George F.", flag: "🇬🇷", country: "Greece", timeline: "1–3 mo", jurisdiction: "Portugal Golden Visa", income: "$150K–$350K", tier: "HOT", score: 22 },
-  { name: "Sarah M.", flag: "🇺🇸", country: "USA", timeline: "1–3 mo", jurisdiction: "Malta Citizenship", income: "$350K–$500K", tier: "HOT", score: 21 },
-  { name: "Aleksei V.", flag: "🇷🇺", country: "Russia", timeline: "1–3 mo", jurisdiction: "UAE Residency", income: "$150K–$350K", tier: "HOT", score: 19 },
-  { name: "Li Wei", flag: "🇨🇳", country: "China", timeline: "6–12 mo", jurisdiction: "EB-5 / Green Card", income: "$500K–$1M+", tier: "HOT", score: 18 },
-  { name: "Fatima Al-R.", flag: "🇦🇪", country: "UAE", timeline: "3–6 mo", jurisdiction: "Portugal NHR", income: "$350K–$500K", tier: "HOT", score: 20 },
-  { name: "Michael T.", flag: "🇿🇦", country: "South Africa", timeline: "6–12 mo", jurisdiction: "Greece Golden Visa", income: "$150K–$350K", tier: "WARM", score: 15 },
-  { name: "Elena P.", flag: "🇧🇷", country: "Brazil", timeline: "6–12 mo", jurisdiction: "Spain Golden Visa", income: "$150K–$350K", tier: "WARM", score: 14 },
-  { name: "Raj K.", flag: "🇮🇳", country: "India", timeline: "6–12 mo", jurisdiction: "UK Innovator Visa", income: "$150K–$350K", tier: "WARM", score: 13 },
+/* ── Exact colours from HTML files ── */
+const G = { green: '#8FD600', greenMid: '#C8F000', gray: '#6B7280', border: '#E5E7EB', light: '#F7F7F5' };
+
+/* ── Funnel steps (from Funnel_Flow.html) ── */
+const funnelSteps = [
+  { id:1, label:'TRAFFIC', color:'#8FD600', bg:'#F2FFD6', border:'#C5EF6A', detail:'Targeted Video Ads', description:'Targeted paid video ads reach the right audience by geography, interest, and background.', tags:['Reach Relevant Audience','Specific Geo','By Interest, Age, Background'] },
+  { id:2, label:'FBS WEBSITE', color:'#D97706', bg:'#FFFBEB', border:'#FCD34D', detail:'Website Sign-up', description:'Visitors land on a high-converting registration page with a compelling offer.', tags:['Landing Page','Registration Form','Clear Value Prop'] },
+  { id:3, label:'SURVEY FUNNEL', color:'#7C3AED', bg:'#F5F3FF', border:'#C4B5FD', detail:'Welcome Emails + Score', description:'A data-rich survey collects deep audience intel and delivers a personalised Index Score.', tags:['Welcome Emails','Score Index','Insights Data Set'] },
+  { id:4, label:'AUDIENCE INSIGHTS', color:'#0369A1', bg:'#EFF8FF', border:'#BAE6FD', detail:'Highly Targeted Output', description:'A qualified, opted-in lead list enriched with geo, interests, and demographics — with full ROI tracking.', tags:['Geo & Demographics','Interest Segments','Opt-in Verified Data'] },
 ];
 
-// Blurred/masked contact data — shows structure but hides actual values
-const CONTACT_MASK = [
-  { email: "g.f●●●@gmail.com", whatsapp: "+30 69●● ●●●●●●", consent: true },
-  { email: "sarah.m●●●@out●.com", whatsapp: "+1 (415) ●●●-●●●●", consent: true },
-  { email: "a.v●●@mail.ru", whatsapp: "+7 903 ●●●-●●●●", consent: true },
-  { email: "liwei●●●@●●.cn", whatsapp: "+86 138 ●●●● ●●●●", consent: true },
-  { email: "f.alr●●●@●●.ae", whatsapp: "+971 50 ●●●-●●●●", consent: true },
-  { email: "m.t●●●@gmail.com", whatsapp: "+27 82 ●●●-●●●●", consent: true },
-  { email: "elena.p●●●@●●.br", whatsapp: "+55 11 ●●●●●●●●", consent: true },
-  { email: "raj.k●●●@●●.in", whatsapp: "+91 98●● ●●●●●●", consent: true },
+/* ── Insight categories (from Audience_Insights.html) ── */
+const insightCats = [
+  { title:'Geography', color:'#8FD600', bg:'#F2FFD6', border:'#C5EF6A', items:['Country & City','Southeast Asia Focus','Region Heatmap','Timezone Clusters'] },
+  { title:'Demographics', color:'#D97706', bg:'#FFFBEB', border:'#FCD34D', items:['Age Groups','Gender Split','Education Level','Income Bracket'] },
+  { title:'Interests', color:'#7C3AED', bg:'#F5F3FF', border:'#C4B5FD', items:['Investment Topics','Business Stage','Travel Frequency','Event History'] },
+  { title:'Index Score', color:'#0369A1', bg:'#EFF8FF', border:'#BAE6FD', items:['Engagement Score','Lead Quality Tier','Segment Tag','Follow-up Priority'] },
+];
+
+/* ── Funnel stages for bars (from Audience_Insights.html) ── */
+const funnelBars = [
+  { label:'Traffic', sub:'Paid Video Ads', pct:100, color:'#8FD600', bg:'#F2FFD6' },
+  { label:'Website Visits', sub:'Landing Page', pct:76, color:'#D97706', bg:'#FFFBEB' },
+  { label:'Survey Starts', sub:'Sign-up Form', pct:56, color:'#7C3AED', bg:'#F5F3FF' },
+  { label:'Qualified Leads', sub:'Opted-in Data', pct:38, color:'#0369A1', bg:'#EFF8FF' },
+];
+
+function StepCard({ step, index }: { step: typeof funnelSteps[0]; index: number }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+      style={{ flex:1, minWidth:0, background: hov ? step.bg : '#fff', border:`1.5px solid ${hov ? step.border : G.border}`, borderRadius:14, padding:'20px 16px', transition:'all 0.2s', position:'relative', boxShadow: hov ? `0 8px 28px ${step.color}18` : '0 1px 4px rgba(0,0,0,0.06)' }}>
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background: hov ? step.color : 'transparent', borderRadius:'14px 14px 0 0', transition:'background 0.2s' }} />
+      <div style={{ position:'absolute', top:10, right:12, fontSize:10, fontWeight:700, color:step.color, opacity:0.35, letterSpacing:1 }}>0{index+1}</div>
+      <div style={{ fontSize:10, fontWeight:800, letterSpacing:1.5, color:step.color, marginBottom:5, textTransform:'uppercase' as const }}>{step.label}</div>
+      <div style={{ display:'inline-block', background:step.bg, border:`1px solid ${step.border}`, color:step.color, fontSize:10, fontWeight:600, padding:'2px 8px', borderRadius:20, marginBottom:9, letterSpacing:0.3 }}>{step.detail}</div>
+      <p style={{ fontSize:11, color:G.gray, lineHeight:1.55, marginBottom:10 }}>{step.description}</p>
+      <div style={{ display:'flex', flexDirection:'column' as const, gap:5 }}>
+        {step.tags.map((tag,i) => (
+          <div key={i} style={{ display:'flex', alignItems:'center', gap:6 }}>
+            <div style={{ width:4, height:4, borderRadius:'50%', background:step.color, flexShrink:0 }} />
+            <span style={{ fontSize:11, color:'#374151', fontWeight:500 }}>{tag}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function InsightCard({ cat }: { cat: typeof insightCats[0] }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+      style={{ flex:1, background: hov ? cat.bg : '#fff', border:`1.5px solid ${hov ? cat.border : G.border}`, borderRadius:12, padding:'15px 13px', transition:'all 0.2s', boxShadow: hov ? `0 4px 18px ${cat.color}16` : '0 1px 3px rgba(0,0,0,0.05)' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:7, marginBottom:11 }}>
+        <div style={{ width:28, height:28, borderRadius:7, background:cat.bg, border:`1px solid ${cat.border}`, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, fontSize:14 }}>
+          {cat.title==='Geography'?'🌍':cat.title==='Demographics'?'👥':cat.title==='Interests'?'⭐':'📊'}
+        </div>
+        <span style={{ fontSize:11, fontWeight:800, color:cat.color, letterSpacing:0.7 }}>{cat.title.toUpperCase()}</span>
+      </div>
+      <div style={{ display:'flex', flexDirection:'column' as const, gap:6 }}>
+        {cat.items.map((item,i) => (
+          <div key={i} style={{ display:'flex', alignItems:'center', gap:6 }}>
+            <div style={{ width:14, height:14, borderRadius:3, background:cat.bg, border:`1px solid ${cat.border}`, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+              <svg width="7" height="7"><polyline points="1,3.5 2.5,5.5 6,1.5" stroke={cat.color} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </div>
+            <span style={{ fontSize:11, color:'#374151', fontWeight:500 }}>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AnimBar({ bar, animate }: { bar: typeof funnelBars[0]; animate: boolean }) {
+  const [w, setW] = useState(0);
+  useEffect(() => {
+    if (!animate) return;
+    const t = setTimeout(() => setW(bar.pct), 200);
+    return () => clearTimeout(t);
+  }, [animate, bar.pct]);
+  return (
+    <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+      <div style={{ width:80, flexShrink:0, textAlign:'right' as const }}>
+        <div style={{ fontSize:11, fontWeight:700, color:'#111' }}>{bar.label}</div>
+        <div style={{ fontSize:10, color:G.gray }}>{bar.sub}</div>
+      </div>
+      <div style={{ flex:1, height:30, background:G.light, borderRadius:6, overflow:'hidden', position:'relative' as const }}>
+        <div style={{ width:`${w}%`, height:'100%', background:bar.color, borderRadius:6, transition:'width 1s cubic-bezier(0.22,1,0.36,1)', display:'flex', alignItems:'center', justifyContent:'flex-end', paddingRight:8, minWidth:36 }}>
+          <span style={{ fontSize:11, fontWeight:800, color:'#fff' }}>{bar.pct}%</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Prospect table ── */
+const LEADS = [
+  { name:"George F.", flag:"🇬🇷", country:"Greece", timeline:"1–3 mo", jurisdiction:"Portugal Golden Visa", income:"$150K–$350K", tier:"HOT", score:22 },
+  { name:"Sarah M.", flag:"🇺🇸", country:"USA", timeline:"1–3 mo", jurisdiction:"Malta Citizenship", income:"$350K–$500K", tier:"HOT", score:21 },
+  { name:"Aleksei V.", flag:"🇷🇺", country:"Russia", timeline:"1–3 mo", jurisdiction:"UAE Residency", income:"$150K–$350K", tier:"HOT", score:19 },
+  { name:"Li Wei", flag:"🇨🇳", country:"China", timeline:"6–12 mo", jurisdiction:"EB-5 / Green Card", income:"$500K–$1M+", tier:"HOT", score:18 },
+  { name:"Fatima Al-R.", flag:"🇦🇪", country:"UAE", timeline:"3–6 mo", jurisdiction:"Portugal NHR", income:"$350K–$500K", tier:"HOT", score:20 },
+  { name:"Michael T.", flag:"🇿🇦", country:"South Africa", timeline:"6–12 mo", jurisdiction:"Greece Golden Visa", income:"$150K–$350K", tier:"WARM", score:15 },
+  { name:"Elena P.", flag:"🇧🇷", country:"Brazil", timeline:"6–12 mo", jurisdiction:"Spain Golden Visa", income:"$150K–$350K", tier:"WARM", score:14 },
+];
+const MASKS = [
+  { email:"g.f●●●@gmail.com", wa:"+30 69●● ●●●●●●" },
+  { email:"sarah.m●●●@out●.com", wa:"+1 (415) ●●●-●●●●" },
+  { email:"a.v●●@mail.ru", wa:"+7 903 ●●●-●●●●" },
+  { email:"liwei●●●@●●.cn", wa:"+86 138 ●●●● ●●●●" },
+  { email:"f.alr●●●@●●.ae", wa:"+971 50 ●●●-●●●●" },
+  { email:"m.t●●●@gmail.com", wa:"+27 82 ●●●-●●●●" },
+  { email:"elena.p●●●@●●.br", wa:"+55 11 ●●●●●●●●" },
 ];
 
 export default function IntelSlides() {
+  const [animated, setAnimated] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setAnimated(true); obs.disconnect(); } }, { threshold: 0.1 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <>
-      {/* DATA FUNNEL */}
-      <section id="intel" className="py-14 border-b border-carbon-100 bg-carbon-50">
+      {/* ── SECTION 09: FBS Index Score Funnel (from Funnel_Flow.html) ── */}
+      <section id="funnel" className="slide-section py-14 border-b border-carbon-100" style={{ background:"#f8fff0" }}>
+        <span className="slide-number">09 / 16</span>
         <div className="wrap">
           <AnimatedSection>
-            <Badge variant="success" className="mb-3">Intelligence Data Layer</Badge>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Every Event is a Data Funnel</h2>
-            <p className="text-carbon-500 mb-10 max-w-2xl">FBS is built as a data funnel to create an Intelligence Audience Layer — aggregating insights on prospect behavior, jurisdiction interest, and mobility intent.</p>
-          </AnimatedSection>
-
-          {/* 4 horizontal cards */}
-          <div className="space-y-3 mb-12">
-            {[
-              { num: "01", text: "How people relocate, invest, incorporate, and diversify globally" },
-              { num: "02", text: "What jurisdictions they're comparing and why" },
-              { num: "03", text: "Which services, regions, and programs they're actively considering" },
-              { num: "04", text: "Timing, intent profile, and mobility index score" },
-            ].map((p, i) => (
-              <AnimatedSection key={i} delay={i * 70}>
-                <div className="bg-white rounded-xl border border-carbon-200 flex items-center gap-5 px-6 py-4 hover:border-lime-200 hover:shadow-sm transition-all">
-                  <span className="font-black text-3xl w-14 text-right flex-shrink-0 tabular-nums" style={{ color: "#d1d5db" }}>{p.num}</span>
-                  <div className="w-px h-8 bg-carbon-200 flex-shrink-0" />
-                  <p className="text-carbon-700 font-medium">{p.text}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          {/* Partner Audience Intelligence Table */}
-          <AnimatedSection delay={300}>
-            <div className="rounded-2xl overflow-hidden border border-carbon-200 bg-white">
-              {/* Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-carbon-100" style={{ background: "#111827" }}>
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-widest mb-0.5" style={{ color: "#9ef01a" }}>Partner Audience Intelligence</p>
-                  <p className="text-sm font-bold text-white">FBS USA 2026 — Prospect Database</p>
-                </div>
-                <div className="flex items-center gap-3 flex-wrap">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background: "rgba(158,240,26,0.15)", color: "#9ef01a" }}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-lime-300 animate-pulse" />
-                    Full Consent · GDPR Compliant
-                  </div>
-                  <div className="text-xs px-3 py-1.5 rounded-full font-medium" style={{ background: "rgba(255,255,255,0.08)", color: "#9ca3af" }}>
-                    364+ Records
-                  </div>
-                </div>
-              </div>
-
-              {/* Table — scrollable on mobile */}
-              <div className="overflow-x-auto">
-                {/* Column headers */}
-                <div className="min-w-[900px]">
-                  <div className="grid text-xs font-bold text-carbon-400 uppercase tracking-wider px-4 py-2.5 border-b border-carbon-100 bg-carbon-50"
-                    style={{ gridTemplateColumns: "150px 90px 80px 160px 130px 130px 100px 70px 56px" }}>
-                    <span>Name / Country</span>
-                    <span>Nationality</span>
-                    <span>Timeline</span>
-                    <span>Preferred Jurisdiction</span>
-                    <span>Annual Income</span>
-                    <span className="flex items-center gap-1">
-                      📧 Email
-                      <span className="text-xs font-normal text-lime-600 normal-case tracking-normal">(shared)</span>
-                    </span>
-                    <span className="flex items-center gap-1">
-                      💬 WhatsApp
-                      <span className="text-xs font-normal text-lime-600 normal-case tracking-normal">(shared)</span>
-                    </span>
-                    <span className="text-center">Tier</span>
-                    <span className="text-center">Score</span>
-                  </div>
-
-                  {/* Rows */}
-                  <div>
-                    {LEADS.map((lead, i) => (
-                      <div key={i}
-                        className="grid items-center px-4 py-3 border-b border-carbon-50 hover:bg-carbon-50 transition-colors min-w-[900px]"
-                        style={{ gridTemplateColumns: "150px 90px 80px 160px 130px 130px 100px 70px 56px", opacity: i === LEADS.length - 1 ? 0.35 : 1 }}>
-                        <div>
-                          <p className="font-semibold text-sm text-carbon-900">{lead.name}</p>
-                          <p className="text-xs text-carbon-400">{lead.flag} {lead.country}</p>
-                        </div>
-                        <span className="text-xs text-carbon-600">{lead.flag} {lead.country}</span>
-                        <span className="text-xs text-carbon-600">{lead.timeline}</span>
-                        <span className="text-xs text-carbon-700 font-medium">{lead.jurisdiction}</span>
-                        <span className="text-xs text-carbon-500">{lead.income}</span>
-
-                        {/* Email — blurred */}
-                        <div className="relative">
-                          <span className="text-xs text-carbon-600 font-mono select-none"
-                            style={{ filter: "blur(3.5px)", userSelect: "none", pointerEvents: "none" }}>
-                            {CONTACT_MASK[i].email}
-                          </span>
-                          <div className="absolute inset-0 flex items-center">
-                            <span className="flex items-center gap-1 text-xs font-semibold" style={{ color: "#9ef01a" }}>
-                              <span className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-                              Included
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* WhatsApp — blurred */}
-                        <div className="relative">
-                          <span className="text-xs text-carbon-600 font-mono select-none"
-                            style={{ filter: "blur(3.5px)", userSelect: "none", pointerEvents: "none" }}>
-                            {CONTACT_MASK[i].whatsapp}
-                          </span>
-                          <div className="absolute inset-0 flex items-center">
-                            <span className="flex items-center gap-1 text-xs font-semibold" style={{ color: "#9ef01a" }}>
-                              <span className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-                              Included
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Tier */}
-                        <div className="text-center">
-                          <span className="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full"
-                            style={{ background: lead.tier === "HOT" ? "#fef2f2" : "#fffbeb", color: lead.tier === "HOT" ? "#dc2626" : "#d97706" }}>
-                            <span className="w-1.5 h-1.5 rounded-full" style={{ background: lead.tier === "HOT" ? "#dc2626" : "#f59e0b" }} />
-                            {lead.tier}
-                          </span>
-                        </div>
-
-                        {/* Score */}
-                        <div className="text-center">
-                          <span className="font-black text-sm text-carbon-900">{lead.score}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Consent footer row */}
-                  <div className="grid items-center px-4 py-3 bg-lime-50 border-t border-lime-200 min-w-[900px]"
-                    style={{ gridTemplateColumns: "150px 90px 80px 160px 130px 130px 100px 70px 56px" }}>
-                    <div className="col-span-5 text-xs text-carbon-500 font-medium">
-                      ✅ All contact data is <strong className="text-carbon-800">opt-in consent</strong> collected at registration
-                    </div>
-                    <div className="text-xs font-bold" style={{ color: "#3d8000" }}>☑ Consent</div>
-                    <div className="text-xs font-bold" style={{ color: "#3d8000" }}>☑ Consent</div>
-                    <div className="col-span-2 text-xs text-carbon-400">GDPR compliant</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Footer */}
-              <div className="px-6 py-4 bg-carbon-50 flex flex-wrap items-center justify-between gap-4 border-t border-carbon-100">
-                <div className="flex items-center gap-6 flex-wrap">
-                  <div className="text-xs text-carbon-500"><span className="font-bold text-carbon-900">364+</span> total prospects</div>
-                  <div className="text-xs text-carbon-500"><span className="font-bold" style={{ color: "#dc2626" }}>27%</span> HOT leads</div>
-                  <div className="text-xs text-carbon-500"><span className="font-bold text-carbon-900">9</span> fields per record</div>
-                  <div className="flex items-center gap-1.5 text-xs font-semibold" style={{ color: "#3d8000" }}>
-                    <span className="w-2 h-2 rounded-full bg-lime-400" />
-                    Email + WhatsApp included
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-carbon-400">
-                  <span className="w-2 h-2 rounded-full bg-lime-400" />
-                  Full consent opt-in · Shared via Airtable or CSV export
-                </div>
-              </div>
+            <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:16 }}>
+              <div style={{ background:'#0D0D0D', borderRadius:7, padding:'4px 10px', fontSize:11, fontWeight:900, color:'#C8F000', letterSpacing:2 }}>FS</div>
+              <span style={{ fontSize:11, fontWeight:700, color:G.gray, letterSpacing:2.5 }}>FREEDOM BUSINESS SUMMIT</span>
             </div>
+            <h2 className="font-black text-carbon-900 mb-3" style={{ fontSize:'clamp(24px, 3.5vw, 40px)', letterSpacing:-1, lineHeight:1.05 }}>
+              FBS: <span style={{ background:'#0D0D0D', color:'#C8F000', padding:'2px 10px', borderRadius:6, display:'inline-block' }}>INDEX SCORE</span> FUNNEL &amp; INSIGHTS
+            </h2>
+            <p style={{ fontSize:14, color:G.gray, lineHeight:1.65, maxWidth:680, marginBottom:32 }}>
+              A purpose-built funnel — <strong style={{ color:'#0D0D0D' }}>targeted ads → website signup → data-rich survey → segmented follow-ups</strong> — turns traffic into a qualified, opt-in lead list.
+            </p>
           </AnimatedSection>
 
-          {/* What partners get */}
-          <AnimatedSection delay={400}>
-            <div className="grid md:grid-cols-3 gap-4 mt-6">
-              {[
-                { title: "Each prospect includes", items: ["Full name + nationality", "Preferred jurisdiction(s)", "Relocation timeline", "Annual income bracket", "Email address (opt-in)", "WhatsApp number (opt-in)", "GMSI Score (Hot/Warm/Cold)"] },
-                { title: "Delivery format", items: ["Airtable shared base", "CSV / Excel export", "Filtered by your category", "Segmented by jurisdiction", "Tagged by timeline", "HOT leads flagged first"] },
-                { title: "Compliance", items: ["100% opt-in consent", "GDPR compliant", "Double opt-in via survey", "Clearly stated data use", "No scraped data", "Your category exclusive"] },
-              ].map((col, i) => (
-                <div key={i} className="bg-white rounded-xl border border-carbon-200 p-5">
-                  <p className="text-xs font-bold text-carbon-400 uppercase tracking-widest mb-3">{col.title}</p>
-                  <div className="space-y-1.5">
-                    {col.items.map((item, j) => (
-                      <div key={j} className="flex items-center gap-2 text-sm text-carbon-700">
-                        <span className="font-bold flex-shrink-0" style={{ color: "#9ef01a" }}>✓</span>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+          {/* Step cards row */}
+          <AnimatedSection delay={80}>
+            <div style={{ display:'flex', alignItems:'stretch', gap:0, marginBottom:20 }}>
+              {funnelSteps.map((step, i) => (
+                <div key={step.id} style={{ display:'flex', alignItems:'stretch', flex:1 }}>
+                  <StepCard step={step} index={i} />
+                  {i < funnelSteps.length - 1 && (
+                    <div style={{ display:'flex', alignItems:'center', justifyContent:'center', width:32, flexShrink:0 }}>
+                      <svg width="32" height="14" viewBox="0 0 32 14" fill="none">
+                        <line x1="0" y1="7" x2="22" y2="7" stroke="#D1D5DB" strokeWidth="2"/>
+                        <polygon points="22,2.5 32,7 22,11.5" fill="#D1D5DB"/>
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Progress bar */}
+            <div style={{ height:5, borderRadius:99, background:G.light, overflow:'hidden', display:'flex', marginBottom:7 }}>
+              {funnelSteps.map((s,i) => <div key={i} style={{ flex:1, background:s.color, opacity:0.65+i*0.09 }} />)}
+            </div>
+            <div style={{ display:'flex' }}>
+              {funnelSteps.map((s,i) => (
+                <div key={i} style={{ flex:1 }}>
+                  <span style={{ fontSize:9, fontWeight:700, color:s.color, letterSpacing:0.5, textTransform:'uppercase' as const }}>{s.label}</span>
                 </div>
               ))}
             </div>
@@ -215,55 +182,167 @@ export default function IntelSlides() {
         </div>
       </section>
 
-      {/* FUNNEL */}
-      <section id="funnel" className="py-14 border-b border-carbon-100 bg-white">
+      {/* ── SECTION 10: Audience Insights Output (from Audience_Insights.html) ── */}
+      <section id="intel" className="slide-section py-14 border-b border-carbon-100 bg-white" ref={ref}>
+        <span className="slide-number">10 / 16</span>
         <div className="wrap">
           <AnimatedSection>
-            <Badge variant="success" className="mb-3">Index Score Funnel</Badge>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>A Purpose-Built Lead Machine</h2>
-            <p className="text-carbon-500 mb-8">Targeted ads → website signup → data-rich survey → segmented follow-ups turns traffic into a qualified, opt-in lead list</p>
+            <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
+              <div style={{ background:'#0D0D0D', borderRadius:7, padding:'4px 10px', fontSize:11, fontWeight:900, color:'#C8F000', letterSpacing:2 }}>FS</div>
+              <span style={{ fontSize:11, fontWeight:700, color:G.gray, letterSpacing:2.5 }}>FREEDOM BUSINESS SUMMIT</span>
+            </div>
+            <h2 className="font-black text-carbon-900 mb-3" style={{ fontSize:'clamp(22px, 3vw, 38px)', letterSpacing:-0.5, lineHeight:1.1 }}>
+              AUDIENCE <span style={{ background:'#0D0D0D', color:'#C8F000', padding:'2px 10px', borderRadius:6 }}>INSIGHTS</span> OUTPUT
+            </h2>
+            <p style={{ fontSize:14, color:G.gray, lineHeight:1.65, maxWidth:580, marginBottom:32 }}>
+              Every lead captured through the FBS funnel is enriched with structured data — geo, demographics, interests, and a proprietary Index Score — ready for targeting and ROI measurement.
+            </p>
           </AnimatedSection>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            {[
-              { step: "01", title: "Traffic", icon: "📡", items: ["Targeted Video Ads", "Specific Geo Targeting", "Interest & Age Filters", "110K+ Unique Reach"], accent: true },
-              { step: "02", title: "FBS Website", icon: "🌐", items: ["Event Landing Page", "Early Bird Registration", "Speaker Lineup", "Countdown Timer"], accent: false },
-              { step: "03", title: "Survey Funnel", icon: "📊", items: ["Welcome Emails", "Mobility Score Index", "Participant Playbook", "Intent Data Collection"], accent: false },
-              { step: "04", title: "Audience Insights", icon: "🎯", items: ["Geo + Demographics", "Interest Segments", "Qualified Lead Lists", "Partner Data Export"], accent: true },
-            ].map((s, i) => (
-              <AnimatedSection key={i} delay={i * 80}>
-                <div className={`h-full rounded-xl p-5 border ${s.accent ? "card-green" : "card"}`}>
-                  <div className="text-2xl mb-2">{s.icon}</div>
-                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#3d8000" }}>Step {s.step}</p>
-                  <p className="font-bold text-carbon-900 mb-3">{s.title}</p>
-                  <div className="space-y-1.5">
-                    {s.items.map((item, j) => (
-                      <div key={j} className="flex items-start gap-1.5 text-xs text-carbon-500">
-                        <span style={{ color: "#70e000" }} className="font-bold">→</span> {item}
-                      </div>
-                    ))}
+
+          {/* Two-column layout: bars + insight cards */}
+          <AnimatedSection delay={80}>
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', gap:20, alignItems:'start' }}>
+              {/* Left: conversion funnel bars */}
+              <div style={{ background:'#fff', border:`1.5px solid ${G.border}`, borderRadius:16, padding:'22px 20px', boxShadow:'0 1px 4px rgba(0,0,0,0.06)' }}>
+                <div style={{ fontSize:10, fontWeight:800, color:G.gray, letterSpacing:2, marginBottom:20 }}>CONVERSION FUNNEL</div>
+                <div style={{ display:'flex', flexDirection:'column' as const, gap:0 }}>
+                  {funnelBars.map((bar, i) => (
+                    <div key={i}>
+                      <AnimBar bar={bar} animate={animated} />
+                      {i < funnelBars.length-1 && (
+                        <div style={{ marginLeft:90, height:12, display:'flex', alignItems:'center' }}>
+                          <svg width="10" height="12" viewBox="0 0 10 12">
+                            <polyline points="5,0 5,8 2,5.5" stroke={G.border} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                {/* Score badge */}
+                <div style={{ marginTop:18, padding:'12px 14px', background:'#F2FFD6', border:'1px solid #C5EF6A', borderRadius:12, display:'flex', alignItems:'center', gap:12 }}>
+                  <div style={{ width:42, height:42, borderRadius:10, background:'#8FD600', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                    <span style={{ fontSize:15, fontWeight:900, color:'#fff' }}>8.4</span>
+                  </div>
+                  <div>
+                    <div style={{ fontSize:11, fontWeight:700, color:'#374151', marginBottom:2 }}>Avg Lead Quality Score</div>
+                    <div style={{ fontSize:11, color:G.gray }}>Opted-in, geo-targeted leads</div>
                   </div>
                 </div>
-              </AnimatedSection>
-            ))}
-          </div>
-          <AnimatedSection delay={400}>
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { phase: "Pre Event", color: "#70e000", bg: "#f3ffe3", border: "#b5f55a", items: ["Geo-targeted video ads", "Press release metrics & reach", "Registration via UTM tracking", "CTR to landing page"] },
-                { phase: "Event Day", color: "#d97706", bg: "#fffbeb", border: "#fde68a", items: ["Keynote or Panel Talk", "Partner logo in live-stream", "Free lead offer (ebook/consult)", "Social mentions via hashtag"] },
-                { phase: "Post Event", color: "#2563eb", bg: "#eff6ff", border: "#bfdbfe", items: ["Full attendee survey", "Behavior & interest data", "Dedicated email broadcast", "Qualified lead count + CTR"] },
-              ].map((phase, i) => (
-                <div key={i} className="rounded-xl p-5 border" style={{ background: phase.bg, borderColor: phase.border }}>
-                  <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: phase.color }}>{phase.phase}</p>
-                  <ul className="space-y-2">
-                    {phase.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-1.5 text-xs text-carbon-600">
-                        <span style={{ color: phase.color }}>•</span> {item}
-                      </li>
-                    ))}
-                  </ul>
+              </div>
+
+              {/* Right: insight cards 2×2 + key outputs */}
+              <div style={{ display:'flex', flexDirection:'column' as const, gap:14 }}>
+                <div style={{ display:'flex', gap:12 }}>
+                  <InsightCard cat={insightCats[0]} />
+                  <InsightCard cat={insightCats[1]} />
                 </div>
-              ))}
+                <div style={{ display:'flex', gap:12 }}>
+                  <InsightCard cat={insightCats[2]} />
+                  <InsightCard cat={insightCats[3]} />
+                </div>
+                {/* Key outputs */}
+                <div style={{ background:'#fff', border:`1.5px solid ${G.border}`, borderRadius:12, padding:'14px 16px', display:'flex', alignItems:'center', flexWrap:'wrap' as const, gap:8 }}>
+                  <span style={{ fontSize:10, fontWeight:700, color:G.gray, letterSpacing:1.5, marginRight:4 }}>KEY OUTPUTS</span>
+                  {[
+                    { label:'Opt-in Lead List', color:'#8FD600' },
+                    { label:'Geo + Interest Tags', color:'#D97706' },
+                    { label:'Survey Responses', color:'#7C3AED' },
+                    { label:'Index Score / Lead', color:'#0369A1' },
+                    { label:'ROI Attribution', color:'#8FD600' },
+                  ].map((item,i) => (
+                    <div key={i} style={{ display:'flex', alignItems:'center', gap:5, background:'#F9FAFB', border:`1.5px solid ${G.border}`, borderRadius:20, padding:'4px 10px' }}>
+                      <div style={{ width:6, height:6, borderRadius:'50%', background:item.color }} />
+                      <span style={{ fontSize:11, fontWeight:600, color:'#374151' }}>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Footer divider */}
+            <div style={{ marginTop:20, paddingTop:16, borderTop:`1px solid ${G.border}`, display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+              <span style={{ fontSize:11, color:G.gray }}>Participants Playbook · Score Index Dataset · Segmented CRM Export</span>
+              <div style={{ background:'#0D0D0D', borderRadius:7, padding:'4px 10px', fontSize:10, fontWeight:900, color:'#C8F000', letterSpacing:1.5 }}>FREEDOM SUMMIT</div>
+            </div>
+          </AnimatedSection>
+
+          {/* Prospect table */}
+          <AnimatedSection delay={200}>
+            <div className="rounded-2xl overflow-hidden border border-carbon-200 bg-white mt-8">
+              <div className="flex items-center justify-between px-5 py-3.5 border-b border-carbon-100" style={{ background:"#111827" }}>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-0.5" style={{ color:"#9ef01a" }}>Partner Audience Intelligence</p>
+                  <p className="text-sm font-bold text-white">FBS USA 2026 — Prospect Database</p>
+                </div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background:"rgba(158,240,26,0.15)", color:"#9ef01a" }}>
+                    <span className="w-1.5 h-1.5 rounded-full bg-lime-300 animate-pulse" />Full Consent · GDPR
+                  </div>
+                  <div className="text-xs px-2.5 py-1.5 rounded-full font-medium" style={{ background:"rgba(255,255,255,0.08)", color:"#9ca3af" }}>364+ Records</div>
+                </div>
+              </div>
+              <div className="overflow-x-auto">
+                <div style={{ minWidth:880 }}>
+                  <div className="grid text-xs font-bold text-carbon-400 uppercase tracking-wider px-4 py-2.5 border-b border-carbon-100 bg-carbon-50"
+                    style={{ gridTemplateColumns:"140px 80px 72px 155px 120px 120px 90px 64px 50px" }}>
+                    <span>Name</span><span>Country</span><span>Timeline</span><span>Jurisdiction</span><span>Income</span>
+                    <span className="text-lime-600">📧 Email</span><span className="text-lime-600">💬 WA</span>
+                    <span className="text-center">Tier</span><span className="text-center">Score</span>
+                  </div>
+                  {LEADS.map((lead,i) => (
+                    <div key={i} className="grid items-center px-4 py-3 border-b border-carbon-50 hover:bg-carbon-50 transition-colors"
+                      style={{ gridTemplateColumns:"140px 80px 72px 155px 120px 120px 90px 64px 50px" }}>
+                      <div>
+                        <p className="font-semibold text-sm text-carbon-900">{lead.name}</p>
+                        <p className="text-xs text-carbon-400">{lead.flag}</p>
+                      </div>
+                      <span className="text-xs text-carbon-600">{lead.country}</span>
+                      <span className="text-xs text-carbon-600">{lead.timeline}</span>
+                      <span className="text-xs text-carbon-700 font-medium">{lead.jurisdiction}</span>
+                      <span className="text-xs text-carbon-500">{lead.income}</span>
+                      <div className="relative h-5">
+                        <span className="text-xs font-mono text-carbon-600 select-none absolute top-0" style={{ filter:"blur(3.5px)", userSelect:"none" }}>{MASKS[i].email}</span>
+                        <span className="absolute inset-0 flex items-center text-xs font-semibold" style={{ color:"#9ef01a" }}>
+                          <span className="w-1.5 h-1.5 rounded-full bg-lime-400 mr-1 flex-shrink-0" />Included
+                        </span>
+                      </div>
+                      <div className="relative h-5">
+                        <span className="text-xs font-mono text-carbon-600 select-none absolute top-0" style={{ filter:"blur(3.5px)", userSelect:"none" }}>{MASKS[i].wa}</span>
+                        <span className="absolute inset-0 flex items-center text-xs font-semibold" style={{ color:"#9ef01a" }}>
+                          <span className="w-1.5 h-1.5 rounded-full bg-lime-400 mr-1 flex-shrink-0" />Included
+                        </span>
+                      </div>
+                      <div className="text-center">
+                        <span className="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full"
+                          style={{ background: lead.tier==="HOT" ? "#fef2f2" : "#fffbeb", color: lead.tier==="HOT" ? "#dc2626" : "#d97706" }}>
+                          <span className="w-1.5 h-1.5 rounded-full" style={{ background: lead.tier==="HOT" ? "#dc2626" : "#f59e0b" }} />{lead.tier}
+                        </span>
+                      </div>
+                      <div className="text-center"><span className="font-black text-sm text-carbon-900">{lead.score}</span></div>
+                    </div>
+                  ))}
+                  {/* Consent row */}
+                  <div className="grid items-center px-4 py-2.5 bg-lime-50 border-t border-lime-200"
+                    style={{ gridTemplateColumns:"140px 80px 72px 155px 120px 120px 90px 64px 50px" }}>
+                    <div className="col-span-5 text-xs text-carbon-500 font-medium">✅ All contact data is <strong className="text-carbon-800">opt-in consent</strong> — collected at registration</div>
+                    <div className="text-xs font-bold" style={{ color:"#3d8000" }}>☑ Consent</div>
+                    <div className="text-xs font-bold" style={{ color:"#3d8000" }}>☑ Consent</div>
+                    <div className="col-span-2 text-xs text-carbon-400">GDPR</div>
+                  </div>
+                </div>
+              </div>
+              <div className="px-5 py-3 bg-carbon-50 flex flex-wrap items-center justify-between gap-3 border-t border-carbon-100">
+                <div className="flex items-center gap-5 flex-wrap text-xs text-carbon-500">
+                  <span><strong className="text-carbon-900">364+</strong> prospects</span>
+                  <span><strong style={{ color:"#dc2626" }}>27%</strong> HOT</span>
+                  <span><strong className="text-carbon-900">9</strong> fields/record</span>
+                  <span className="font-semibold" style={{ color:"#3d8000" }}>✓ Email + WhatsApp</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs text-carbon-400">
+                  <span className="w-2 h-2 rounded-full bg-lime-400" />Full consent · Airtable or CSV
+                </div>
+              </div>
             </div>
           </AnimatedSection>
         </div>
