@@ -4,6 +4,15 @@ import { NumberTicker } from "@/components/magicui/number-ticker";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
 
+const STATS = [
+  { raw: "500–700", label: "Expected Attendees", icon: "🎯" },
+  { raw: "10.2K", label: "Email Audience", icon: "📊" },
+  { raw: "33–52%", label: "Email Open Rate", icon: "📬" },
+  { raw: "30+", label: "Countries", icon: "🌐" },
+  { val: 10, suffix: "", label: "Speakers", icon: "🎤" },
+  { raw: "2", label: "Day Event", icon: "📅" },
+];
+
 const FEATURES = [
   { icon: "📡", title: "Real Intent Signals", text: "Data-driven virtual summit capturing real mobility intent — not vanity traffic." },
   { icon: "🌍", title: "Global Exposure", text: "100% global distribution and media exposure across 30+ countries." },
@@ -13,54 +22,68 @@ const FEATURES = [
 ];
 
 const TOPICS = [
-  { icon: "🇺🇸", text: "Inbound Mobility to the U.S.: Visas, Capital & Market Access" },
-  { icon: "🌍", text: "Second Passports & Residencies for U.S. Citizens" },
-  { icon: "🗺️", text: "Health, Security for the New Global Class: a personal safety net for entrepreneurs & families" },
-  { icon: "💻", text: "Company Structures in the USA: Tax Optimization & Asset Protection" },
-  { icon: "🛸", text: "Legal Tax Optimization for U.S. Citizens" },
-  { icon: "🏠", text: "Global Real Estate for U.S. Investors" },
-  { icon: "🇪🇺", text: "Where Americans Are Moving and Why: Portugal, Panama, Costa Rica, LATAM, Caribbean" },
-  { icon: "🌐", text: "European Residency Programs: Greece, Malta, Portugal Golden Visa for US Citizens" },
-];
-
-const STATS = [
-  { val: 364, suffix: "+", label: "Unique Registrations", green: true },
-  { val: 97, suffix: "", label: "Survey Submissions", green: true },
-  { val: 152, suffix: "", label: "Live Attendees", green: true },
-  { raw: "10.2K", label: "Email List Audience", green: true },
-  { raw: "33–52%", label: "Email Open Rate", green: true },
-  { val: 452, suffix: "", label: "Engaged Video Views", green: true },
+  { icon: "🇺🇸", title: "Inbound Mobility to the U.S.: Visas, Capital & Market Access", text: "How founders and investors enter the US — from EB-5 and E-2 to structuring market access and deploying capital efficiently." },
+  { icon: "🌍", title: "Second Passports & Residencies for U.S. Citizens", text: "Building a Plan B through CBI/RBI programs and strategic residency options beyond the US." },
+  { icon: "🗺️", title: "Health, Security & Mobility: Building a Personal Safety Net", text: "How globally mobile individuals protect their families, assets, and lifestyle across jurisdictions." },
+  { icon: "💻", title: "U.S. Company Structures: Tax Optimization & Asset Protection", text: "How to structure entities in the US for efficiency, scalability, and cross-border operations." },
+  { icon: "🛸", title: "Legal Tax Optimization for U.S. Citizens", text: "What actually works (and what doesn't) when reducing tax exposure as a US person." },
+  { icon: "🏠", title: "Global Real Estate for U.S. Investors", text: "Using property as a tool for residency, diversification, and capital preservation." },
+  { icon: "🇪🇺", title: "Where Americans Are Moving and Why", text: "European residency, LATAM, and Caribbean jurisdictions — what's driving the shift and where opportunities are." },
+  { icon: "🌐", title: "Cross-Border Structuring: Combining Residency, Tax & Business", text: "How to align citizenship, company structure, and tax strategy into one coherent global setup." },
 ];
 
 export default function AboutSlide() {
   return (
     <>
-      {/* ABOUT */}
-      <section id="about" className="slide-section py-14 border-b border-carbon-100 bg-white">
+      {/* ABOUT — Section 02 */}
+      <section id="about" className="slide-section py-16 border-b border-carbon-100 bg-white">
         <span className="slide-number">02 / 16</span>
         <div className="wrap">
           <AnimatedSection>
-            <Badge variant="success" className="mb-3">About the Event</Badge>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-6" style={{ letterSpacing: "-0.5px" }}>What is FBS USA Mobility Edition?</h2>
+            <Badge variant="success" className="mb-4">About the Event</Badge>
+            <h2 className="font-black text-carbon-900 mb-6" style={{ fontSize: "clamp(26px, 4vw, 48px)", letterSpacing: "-1px", lineHeight: 1.1 }}>
+              What is FBS USA Mobility Edition?
+            </h2>
           </AnimatedSection>
           <AnimatedSection delay={80}>
-            <div className="max-w-2xl">
-              <p className="text-carbon-600 leading-relaxed mb-4">
-                FBS USA Edition is our <strong className="text-carbon-900">2nd event focusing on the American market</strong> — the most commercially valuable region in global mobility, investment migration, company incorporation and offshore strategies.
+            <div className="mb-8">
+              <p className="text-carbon-700 leading-relaxed mb-4" style={{ fontSize: "clamp(15px, 1.6vw, 18px)" }}>
+                FBS USA Mobility Edition is our <strong className="text-carbon-900">flagship event focused on the American market</strong> — the core hub of global mobility, capital, and cross-border structuring.
               </p>
-              <p className="text-carbon-600 leading-relaxed mb-6">
-                A two-day <strong className="text-carbon-900">global virtual event</strong> focused on US inbound and outbound mobility strategies for founders, investors, and globally mobile individuals.
+              <p className="text-carbon-700 leading-relaxed mb-4" style={{ fontSize: "clamp(15px, 1.6vw, 18px)" }}>
+                This is not just another regional event. The US sits at the center of global flows — where capital enters, exits, and gets structured.
               </p>
-              <div className="inline-flex items-start gap-3 rounded-xl px-4 py-3" style={{ background: "#f8fff0", border: "1px solid #b5f55a" }}>
-                <span className="text-lg">📊</span>
-                <p className="text-sm font-semibold" style={{ color: "#3d8000" }}>For speakers: full access to audience insights, segmented leads & intent signals</p>
-              </div>
+              <p className="text-carbon-700 leading-relaxed" style={{ fontSize: "clamp(15px, 1.6vw, 18px)" }}>
+                A two-day <strong className="text-carbon-900">virtual summit</strong> designed around inbound and outbound US mobility strategies for founders, investors, and globally mobile individuals.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          {/* Stats grid — bigger numbers */}
+          <AnimatedSection delay={160}>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+              {STATS.map((s, i) => (
+                <div key={i} className="rounded-xl border border-carbon-200 bg-white p-5 hover:border-lime-300 hover:shadow-sm transition-all text-center group">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{s.icon}</div>
+                  <div className="font-black mb-1 gradient-text" style={{ fontSize: "clamp(22px, 3vw, 36px)", letterSpacing: "-0.5px" }}>
+                    {s.raw ? s.raw : <NumberTicker value={s.val!} suffix={s.suffix} duration={1800} />}
+                  </div>
+                  <p className="text-xs text-carbon-400 font-medium">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={240}>
+            <div className="inline-flex items-start gap-3 rounded-xl px-5 py-3.5" style={{ background: "#f8fff0", border: "1px solid #b5f55a" }}>
+              <span className="text-xl">📊</span>
+              <p className="font-semibold" style={{ color: "#3d8000" }}>For speakers: full access to audience insights, segmented leads & intent signals</p>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* FEATURES */}
+      {/* FEATURES — Section 03 */}
       <section id="features" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
         <span className="slide-number">03 / 16</span>
         <div className="wrap">
@@ -90,7 +113,7 @@ export default function AboutSlide() {
         </div>
       </section>
 
-      {/* DIRECTIONS */}
+      {/* DIRECTIONS — Section 04 */}
       <section id="directions" className="slide-section py-14 border-b border-carbon-100 bg-white">
         <span className="slide-number">04 / 16</span>
         <div className="wrap">
@@ -98,12 +121,12 @@ export default function AboutSlide() {
             <Badge variant="success" className="mb-3">Two Directions</Badge>
             <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-8" style={{ letterSpacing: "-0.5px" }}>Inbound & Outbound US Mobility</h2>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <AnimatedSection delay={80}>
               <div className="spotlight-card rounded-xl border border-carbon-200 bg-white p-6 h-full hover:shadow-md hover:-translate-y-0.5 transition-all duration-300" style={{ borderTop: "4px solid #9ef01a" }}>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-2xl font-black" style={{ color: "#9ef01a" }}>→</span>
-                  <span className="font-black text-xl text-carbon-900">Outbound Mobility</span>
+                  <span className="font-black text-xl text-carbon-900">🌍 Outbound Mobility</span>
                 </div>
                 <p className="text-carbon-600 leading-relaxed text-sm mb-4">Americans seeking legitimate ways to reduce their tax exposure, obtain a <strong className="text-carbon-900">Plan B, or renounce citizenship.</strong> Focus on <strong className="text-carbon-900">CBI/RBI Programs (Caribbean), European Residency, Tax-Advantaged Residency (LATAM)</strong></p>
                 <div className="flex flex-wrap gap-2">
@@ -117,7 +140,7 @@ export default function AboutSlide() {
               <div className="spotlight-card rounded-xl border border-carbon-200 bg-white p-6 h-full hover:shadow-md hover:-translate-y-0.5 transition-all duration-300" style={{ borderTop: "4px solid #111827" }}>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-2xl font-black text-carbon-400">←</span>
-                  <span className="font-black text-xl text-carbon-900">Inbound Mobility</span>
+                  <span className="font-black text-xl text-carbon-900">🇺🇸 Inbound Mobility</span>
                 </div>
                 <p className="text-carbon-600 leading-relaxed text-sm mb-4">HNWI from <strong className="text-carbon-900">India, China, and Southeast Asia</strong> seeking U.S. residency/visas for capital protection. Focus on <strong className="text-carbon-900">EB-5, E-2 Investment Visas</strong></p>
                 <div className="flex flex-wrap gap-2">
@@ -131,7 +154,7 @@ export default function AboutSlide() {
         </div>
       </section>
 
-      {/* KEY TOPICS */}
+      {/* KEY TOPICS — Section 05 */}
       <section id="topics" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
         <span className="slide-number">05 / 16</span>
         <div className="wrap">
@@ -142,9 +165,14 @@ export default function AboutSlide() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {TOPICS.map((t, i) => (
               <AnimatedSection key={i} delay={i * 55}>
-                <div className="spotlight-card bg-white rounded-xl border border-carbon-200 flex items-start gap-4 p-4 hover:shadow-sm hover:border-lime-300 hover:-translate-y-0.5 transition-all duration-200 group">
-                  <span className="text-2xl flex-shrink-0 group-hover:scale-110 transition-transform duration-200">{t.icon}</span>
-                  <p className="text-carbon-700 font-medium text-sm leading-relaxed">{t.text}</p>
+                <div className="spotlight-card bg-white rounded-xl border border-carbon-200 p-5 hover:shadow-sm hover:border-lime-300 hover:-translate-y-0.5 transition-all duration-200 h-full group">
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl flex-shrink-0 group-hover:scale-110 transition-transform duration-200 mt-0.5">{t.icon}</span>
+                    <div>
+                      <p className="font-bold text-carbon-900 mb-1.5 text-sm leading-snug">{t.title}</p>
+                      <p className="text-xs text-carbon-500 leading-relaxed">{t.text}</p>
+                    </div>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -152,43 +180,7 @@ export default function AboutSlide() {
         </div>
       </section>
 
-      {/* NUMBERS */}
-      <section id="numbers" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">06 / 16</span>
-        <div className="wrap">
-          <AnimatedSection>
-            <Badge variant="success" className="mb-3">Performance Metrics</Badge>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-8" style={{ letterSpacing: "-0.5px" }}>Freedom Summit in Numbers</h2>
-          </AnimatedSection>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
-            {STATS.map((n, i) => (
-              <AnimatedSection key={i} delay={i * 50}>
-                <div className="spotlight-card rounded-xl border border-carbon-200 bg-white hover:shadow-sm hover:border-lime-200 hover:-translate-y-0.5 transition-all duration-200 text-center py-6 px-4">
-                  <div className="text-2xl font-black tracking-tight mb-1 gradient-text">
-                    {n.raw ? n.raw : <NumberTicker value={n.val!} suffix={n.suffix} duration={1800} />}
-                  </div>
-                  <p className="text-xs text-carbon-400 font-medium">{n.label}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-          <AnimatedSection delay={300}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {[
-                { val: "500–700", label: "Expected Attendees" },
-                { val: "2 Days", label: "Live Stream" },
-                { val: "8", label: "Keynote Talks" },
-                { val: "2", label: "Panel Discussions" },
-              ].map((item, i) => (
-                <div key={i} className="rounded-xl border border-carbon-200 bg-white text-center py-5 px-4 hover:border-lime-200 hover:shadow-sm transition-all">
-                  <div className="text-2xl font-black tracking-tight mb-1 gradient-text">{item.val}</div>
-                  <p className="text-xs text-carbon-400 font-medium">{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      {/* NUMBERS — Section 06 — REMOVED as requested */}
     </>
   );
 }

@@ -70,10 +70,10 @@ export default function HeroSlide() {
 
           {/* Headings: Freedom Business Summit 2026 — BIGGER, USA Mobility Edition — one line below */}
           <div style={fade(80)}>
-            <h1 className="font-black text-carbon-900 leading-tight mb-1" style={{ fontSize: "clamp(24px, 4.5vw, 52px)", letterSpacing: "-1.5px" }}>
+            <h1 className="font-black text-carbon-900 leading-tight mb-1" style={{ fontSize: "clamp(22px, 4vw, 48px)", letterSpacing: "-1.5px" }}>
               Freedom Business Summit 2026
             </h1>
-            <h2 className="font-black text-carbon-900 leading-none mb-4 whitespace-nowrap overflow-hidden" style={{ fontSize: "clamp(32px, 7vw, 80px)", letterSpacing: "-2.5px" }}>
+            <h2 className="font-black text-carbon-900 leading-none mb-4 whitespace-nowrap overflow-hidden" style={{ fontSize: "clamp(28px, 5.5vw, 62px)", letterSpacing: "-2px" }}>
               USA Mobility Edition 🇺🇸
             </h2>
             <p className="font-semibold text-carbon-600 leading-snug mb-5" style={{ fontSize: "clamp(14px, 1.8vw, 20px)", maxWidth: 540 }}>

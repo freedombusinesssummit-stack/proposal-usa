@@ -15,7 +15,7 @@ function Cell({ val }: { val: string }) {
 }
 
 const FLOW = [
-  { dir: "→", tag: "You Receive", label: "Direct Exposure to 1,000+ global founders & investors", green: true },
+  { dir: "→", tag: "You Receive", label: "Direct Exposure to 500–700+ global founders & investors", green: true },
   { dir: "←", tag: "You Deliver", label: "Deliver Keynote or Panel Talk to showcase your expertise", green: false },
   { dir: "→", tag: "You Receive", label: "Lead Generation with Pre-Qualified Prospects filtered by interest", green: true },
   { dir: "←", tag: "You Deliver", label: "Custom video invitation for maximum pre-event exposure", green: false },
@@ -197,32 +197,31 @@ export default function PackagesSlides() {
           {/* READY TO PARTNER — directly under CTA */}
           <AnimatedSection delay={320}>
             <div className="mt-5 rounded-2xl border border-carbon-200 bg-white p-6 md:p-8">
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="flex-1">
-                  <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#9ef01a" }}>Contact</p>
-                  <h3 className="text-2xl font-black text-carbon-900 mb-2" style={{ letterSpacing: "-0.5px" }}>Ready to Partner?</h3>
-                  <p className="text-sm text-carbon-500 mb-5">We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on May 10th.</p>
-                  <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.4)" shimmerDuration="1.8s" className="text-sm font-bold px-6 py-3">
-                    Become a Partner →
-                  </ShimmerButton>
-                </div>
-                <div className="flex-1 grid grid-cols-1 gap-2">
-                  {[
-                    "Data-driven virtual summit — real intent signals",
-                    "100% global distribution and media exposure",
-                    "Full funnel intent tracking from day one",
-                    "Exclusivity per category and jurisdiction",
-                    "Decision-maker dominant audience (75% founders/execs)",
-                    "Direct access to pre-qualified prospects (0–12 months)",
-                    "Audience surveyed on jurisdiction, budget & timeline",
-                    "8–10 selected partners per event — no overcrowding",
-                  ].map((r, i) => (
-                    <div key={i} className="flex items-start gap-2.5">
-                      <span className="font-black text-sm flex-shrink-0 mt-0.5" style={{ color: "#9ef01a" }}>→</span>
-                      <p className="text-xs text-carbon-600 font-medium leading-snug">{r}</p>
-                    </div>
-                  ))}
-                </div>
+              <div className="mb-5">
+                <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: "#9ef01a" }}>Contact</p>
+                <h3 className="text-2xl font-black text-carbon-900 mb-2" style={{ letterSpacing: "-0.5px" }}>Ready to Partner?</h3>
+                <p className="text-sm text-carbon-500 mb-5">We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on May 10th.</p>
+                <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.4)" shimmerDuration="1.8s" className="text-sm font-bold px-6 py-3">
+                  Become a Partner →
+                </ShimmerButton>
+              </div>
+              {/* Benefit boxes — highlighted 2-col grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                {[
+                  { icon: "📡", text: "Data-driven virtual summit — real intent signals" },
+                  { icon: "🌍", text: "100% global distribution and media exposure" },
+                  { icon: "🎯", text: "Full funnel intent tracking from day one" },
+                  { icon: "🔒", text: "Exclusivity per category and jurisdiction" },
+                  { icon: "👔", text: "Decision-maker dominant audience (75% founders/execs)" },
+                  { icon: "⏱️", text: "Direct access to pre-qualified prospects (0–12 months)" },
+                  { icon: "📋", text: "Audience surveyed on jurisdiction, budget & timeline" },
+                  { icon: "✅", text: "8–10 selected partners per event — no overcrowding" },
+                ].map((r, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl border border-carbon-200 bg-carbon-50 hover:border-lime-300 hover:bg-lime-50 transition-all duration-200 group">
+                    <span className="text-lg flex-shrink-0 group-hover:scale-110 transition-transform">{r.icon}</span>
+                    <p className="text-xs text-carbon-700 font-semibold leading-snug">{r.text}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </AnimatedSection>
