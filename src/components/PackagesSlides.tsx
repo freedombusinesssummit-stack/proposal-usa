@@ -79,6 +79,17 @@ const speakingRows = [
   ]},
 ];
 
+const REASONS = [
+  "Data-driven virtual summit — real intent signals",
+  "100% global distribution and media exposure",
+  "Full funnel intent tracking from day one",
+  "Exclusivity per category and jurisdiction",
+  "Decision-maker dominant audience (75% founders/execs)",
+  "Direct access to pre-qualified prospects with active timelines (0–12 months)",
+  "Pre-qualified audience surveyed on jurisdiction, budget & timeline",
+  "8–10 selected partners per event — no overcrowding",
+];
+
 export default function PackagesSlides() {
   return (
     <>
@@ -119,9 +130,11 @@ export default function PackagesSlides() {
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Engagement Options</Badge>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Speaking & Partnership</h2>
-            <p className="text-carbon-500 mb-8">For this event we allocated <strong className="text-carbon-900">8–10 partnerships/speaking slots only</strong>.</p>
+            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Speaking & Partnership Engagement</h2>
+            <p className="text-carbon-500 mb-2">For this event we allocated <strong className="text-carbon-900">8–10 partnerships/speaking slots only</strong>.</p>
+            <p className="text-carbon-500 mb-8">8–10 slots per event. Every partner gets qualified leads, audience data, and thought leadership positioning.</p>
           </AnimatedSection>
+
           <AnimatedSection delay={80}>
             <div className="rounded-xl p-5 mb-8" style={{ background: "#f8fff0", border: "1px solid #b5f55a" }}>
               <p className="text-sm text-carbon-600 mb-1">Speakers & Partners don't invest into "Speaking Slot".</p>
@@ -133,7 +146,8 @@ export default function PackagesSlides() {
               </p>
             </div>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 gap-4 mb-0">
+
+          <div className="grid md:grid-cols-2 gap-4 mb-10">
             <AnimatedSection delay={130}>
               <div className="bento-card relative p-6 h-full" style={{ borderTop: "4px solid #9ef01a" }}>
                 <Badge variant="success" className="mb-3 text-xs">Only ONE Brand Partner Per Event</Badge>
@@ -165,30 +179,22 @@ export default function PackagesSlides() {
               </div>
             </AnimatedSection>
           </div>
-        </div>
-      </section>
 
-      {/* DARK CTA BLOCK — Speaking & Partnership Engagement */}
-      <section className="py-16 border-b border-carbon-800" style={{ background: "#111827" }}>
-        <div className="wrap text-center">
-          <AnimatedSection>
-            <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#9ef01a" }}>Ready to Reach This Audience?</p>
-            <h2 className="font-black text-white leading-tight mb-4" style={{ fontSize: "clamp(36px, 6vw, 64px)", letterSpacing: "-1.5px" }}>
-              Speaking &<br />
-              <span style={{ color: "#9ef01a" }}>Partnership Engagement</span>
-            </h2>
-            <p className="text-carbon-400 mb-8 max-w-lg mx-auto text-base leading-relaxed">
-              8–10 slots per event. Every partner gets qualified leads, audience data, and thought leadership positioning.
-            </p>
-            <ShimmerButton
-              href="mailto:denis@fsummit.net"
-              background="#9ef01a"
-              shimmerColor="rgba(255,255,255,0.4)"
-              shimmerDuration="1.8s"
-              className="text-base font-bold px-8 py-3.5 mx-auto"
-            >
-              Become a Partner →
-            </ShimmerButton>
+          {/* LIGHT CTA block — replaces the dark one, placed right here */}
+          <AnimatedSection delay={250}>
+            <div className="rounded-2xl p-8 md:p-10 text-center" style={{ background: "#f8fff0", border: "2px solid #b5f55a" }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#3d8000" }}>Ready to Reach This Audience?</p>
+              <h2 className="font-black text-carbon-900 leading-tight mb-3" style={{ fontSize: "clamp(28px, 4vw, 44px)", letterSpacing: "-1px" }}>
+                Speaking &{" "}
+                <AnimatedGradientText className="font-black">Partnership Engagement</AnimatedGradientText>
+              </h2>
+              <p className="text-carbon-500 mb-6 max-w-lg mx-auto">
+                8–10 slots per event. Every partner gets qualified leads, audience data, and thought leadership positioning.
+              </p>
+              <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.4)" shimmerDuration="1.8s" className="text-base font-bold px-8 py-3.5 mx-auto">
+                Become a Partner →
+              </ShimmerButton>
+            </div>
           </AnimatedSection>
         </div>
       </section>

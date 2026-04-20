@@ -30,10 +30,10 @@ function Countdown() {
 }
 
 const META = [
-  { label: "500–700", sub: "Expected Attendees" },
-  { label: "10.2K", sub: "Email Audience" },
-  { label: "33–52%", sub: "Open Rate" },
-  { label: "30+", sub: "Countries" },
+  { icon: "🎯", label: "500–700 Expected Attendees" },
+  { icon: "📊", label: "10.2K Email Audience" },
+  { icon: "📬", label: "33–52% Open Rate" },
+  { icon: "🌐", label: "30+ Countries" },
 ];
 const AVATARS = ["DD","PM","SZ","DC","WW","MC","AR","MU"];
 
@@ -47,38 +47,57 @@ export default function HeroSlide() {
   });
 
   return (
-    <section id="hero" className="pt-14 bg-white overflow-x-hidden">
-      <div className="wrap">
+    <section id="hero" className="pt-14 overflow-x-hidden" style={{ background: "#fff" }}>
+      {/* USA Background — blurred flag-inspired gradient overlay */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "radial-gradient(ellipse 80% 60% at 85% 40%, rgba(178,34,34,0.04) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 90% 80%, rgba(0,40,104,0.05) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 95% 20%, rgba(158,240,26,0.06) 0%, transparent 50%)",
+        zIndex: 0,
+      }} />
+
+      {/* Animated USA-flag–inspired horizontal stripes — very subtle */}
+      <div className="absolute top-14 right-0 w-2/5 h-full pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+        {/* Stars field */}
+        <div style={{
+          position: "absolute", top: "8%", right: "5%",
+          width: 160, height: 120,
+          background: "rgba(0,40,104,0.03)",
+          borderRadius: 8,
+        }} />
+        {/* Red stripes */}
+        {[0,1,2,3,4,5,6].map(i => (
+          <div key={i} style={{
+            position: "absolute",
+            top: `${6 + i * 7}%`,
+            right: 0,
+            height: "3%",
+            width: `${75 - i * 4}%`,
+            background: i % 2 === 0 ? "rgba(178,34,34,0.025)" : "transparent",
+            borderRadius: "2px 0 0 2px",
+          }} />
+        ))}
+      </div>
+
+      <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
         <div className="py-10 md:py-16">
 
           {/* Pills */}
-          <div className="flex flex-wrap gap-2 mb-5" style={fade(0)}>
+          <div className="flex flex-wrap gap-2 mb-6" style={fade(0)}>
             {["27-28 June 2026", "Virtual Event", "Worldwide Online"].map((t, i) => (
-              <span key={i} className="pill text-sm font-bold">{t}</span>
+              <span key={i} className="pill">{t}</span>
             ))}
           </div>
 
-          {/* Freedom Business Summit 2026 — H3 size */}
           <div style={fade(80)}>
-            <h3 className="text-xl md:text-2xl font-bold text-carbon-400 mb-2 tracking-tight">Freedom Business Summit 2026</h3>
-          </div>
-
-          {/* USA Mobility Edition — одна строка с флагом, шрифт меньше */}
-          <div className="mb-4" style={fade(120)}>
-            <h1 className="font-black text-carbon-900 leading-none" style={{ fontSize: "clamp(32px, 5.5vw, 64px)", letterSpacing: "-1.5px" }}>
-              <WordFadeIn text="USA Mobility Edition 🇺🇸" delay={55} />
+            <p className="text-base md:text-lg font-semibold text-carbon-400 mb-1">Freedom Business Summit 2026</p>
+            <h1 className="font-black text-carbon-900 leading-[0.95] mb-4" style={{ fontSize: "clamp(38px, 8vw, 86px)", letterSpacing: "-2px" }}>
+              <WordFadeIn text="USA Mobility Edition 🇺🇸" delay={60} />
             </h1>
-          </div>
-
-          {/* Subtitle */}
-          <div className="mb-5" style={fade(200)}>
-            <h2 className="font-semibold text-carbon-600 leading-snug" style={{ fontSize: "clamp(14px, 2vw, 20px)", maxWidth: 540 }}>
+            <h2 className="font-semibold text-carbon-600 leading-snug mb-5" style={{ fontSize: "clamp(15px, 2.2vw, 22px)", maxWidth: 560 }}>
               A Data-Driven Virtual Summit for Founders, Investors Exploring Inbound & Outbound Strategies
             </h2>
           </div>
 
-          {/* Bullets */}
-          <div className="flex flex-col gap-1.5 mb-6" style={fade(240)}>
+          <div className="flex flex-col gap-1.5 mb-6" style={fade(200)}>
             {[
               { bold: "2 days", text: "of content you won't find anywhere" },
               { bold: "10+", text: "keynotes and talks by industry experts" },
@@ -90,19 +109,16 @@ export default function HeroSlide() {
             ))}
           </div>
 
-          {/* Early bird */}
-          <div className="mb-4" style={fade(290)}>
+          <div className="mb-4" style={fade(250)}>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold" style={{ background: "#111827", color: "#9ef01a" }}>
               <span className="w-2 h-2 rounded-full bg-lime-300 animate-pulse flex-shrink-0" />
               Get Early Bird Access! Act Fast
             </span>
           </div>
 
-          {/* Countdown */}
-          <div className="mb-7" style={fade(340)}><Countdown /></div>
+          <div className="mb-7" style={fade(300)}><Countdown /></div>
 
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-3 mb-8" style={fade(390)}>
+          <div className="flex flex-wrap gap-3 mb-8" style={fade(360)}>
             <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.5)" shimmerDuration="1.8s" className="text-sm font-bold px-5 py-2.5">
               Partner With Us →
             </ShimmerButton>
@@ -113,17 +129,18 @@ export default function HeroSlide() {
           </div>
 
           {/* Avatars */}
-          <div className="mb-2" style={fade(430)}>
+          <div className="mb-2" style={fade(410)}>
             <div className="flex -space-x-2.5">
               {AVATARS.map((init, i) => (
                 <div key={i} className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-black flex-shrink-0"
-                  style={{ background: `hsl(${125 + i * 18}, 50%, 32%)`, zIndex: AVATARS.length - i }}>{init}</div>
+                  style={{ background: `hsl(${125 + i * 18}, 50%, 32%)`, zIndex: AVATARS.length - i }}>
+                  {init}
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Rating under avatars */}
-          <div className="flex items-center gap-2" style={fade(470)}>
+          <div className="flex items-center gap-2" style={fade(450)}>
             <span className="text-yellow-400">★★★★★</span>
             <span className="font-black text-carbon-900 text-sm">4.9</span>
             <span className="text-carbon-400 text-xs">(Previous Attendees Feedback)</span>
@@ -131,16 +148,16 @@ export default function HeroSlide() {
         </div>
       </div>
 
-      {/* Meta strip — цифры большие и bold, без эмоджи */}
-      <div className="border-t border-carbon-100">
+      {/* Meta strip */}
+      <div className="border-t border-carbon-100" style={{ position: "relative", zIndex: 1 }}>
         <div className="wrap">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 py-4">
             {META.map((m, i) => (
               <div key={i}
-                className="flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-carbon-200 bg-white hover:border-lime-300 hover:bg-lime-50 transition-all duration-200 text-center"
+                className="flex items-center gap-2.5 p-3 md:p-4 rounded-xl border border-carbon-200 bg-white hover:border-lime-300 hover:bg-lime-50 transition-all duration-200 group"
                 style={{ opacity: mounted ? 1 : 0, transform: mounted ? "none" : "translateY(10px)", transition: `all 0.55s ease ${520 + i * 80}ms` }}>
-                <span className="font-black text-xl md:text-2xl text-carbon-900 leading-none mb-0.5">{m.label}</span>
-                <span className="text-xs text-carbon-400 font-medium">{m.sub}</span>
+                <span className="text-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-200">{m.icon}</span>
+                <span className="font-semibold text-xs md:text-sm text-carbon-700 leading-tight">{m.label}</span>
               </div>
             ))}
           </div>
