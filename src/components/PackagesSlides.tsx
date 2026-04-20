@@ -90,7 +90,6 @@ export default function PackagesSlides() {
             <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>How the Partnership Works</h2>
             <p className="text-carbon-500 mb-10">A structured 8–12 week journey — from pre-event exposure to post-event lead delivery</p>
           </AnimatedSection>
-
           <div className="relative">
             <div className="absolute left-5 top-8 bottom-8 w-0.5 hidden md:block" style={{ background: "linear-gradient(to bottom, #9ef01a, #70e000, rgba(158,240,26,0.15))" }} />
             <AnimatedList delay={90} className="space-y-3">
@@ -134,7 +133,7 @@ export default function PackagesSlides() {
               </p>
             </div>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4 mb-0">
             <AnimatedSection delay={130}>
               <div className="bento-card relative p-6 h-full" style={{ borderTop: "4px solid #9ef01a" }}>
                 <Badge variant="success" className="mb-3 text-xs">Only ONE Brand Partner Per Event</Badge>
@@ -169,7 +168,32 @@ export default function PackagesSlides() {
         </div>
       </section>
 
-      {/* PRICING — BRAND INTEGRATION (separate section) */}
+      {/* DARK CTA BLOCK — Speaking & Partnership Engagement */}
+      <section className="py-16 border-b border-carbon-800" style={{ background: "#111827" }}>
+        <div className="wrap text-center">
+          <AnimatedSection>
+            <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#9ef01a" }}>Ready to Reach This Audience?</p>
+            <h2 className="font-black text-white leading-tight mb-4" style={{ fontSize: "clamp(36px, 6vw, 64px)", letterSpacing: "-1.5px" }}>
+              Speaking &<br />
+              <span style={{ color: "#9ef01a" }}>Partnership Engagement</span>
+            </h2>
+            <p className="text-carbon-400 mb-8 max-w-lg mx-auto text-base leading-relaxed">
+              8–10 slots per event. Every partner gets qualified leads, audience data, and thought leadership positioning.
+            </p>
+            <ShimmerButton
+              href="mailto:denis@fsummit.net"
+              background="#9ef01a"
+              shimmerColor="rgba(255,255,255,0.4)"
+              shimmerDuration="1.8s"
+              className="text-base font-bold px-8 py-3.5 mx-auto"
+            >
+              Become a Partner →
+            </ShimmerButton>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* PRICING — BRAND INTEGRATION */}
       <section id="pricing-brand" className="py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
         <div className="wrap">
           <AnimatedSection>
@@ -177,7 +201,6 @@ export default function PackagesSlides() {
             <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Brand Integration Partnership</h2>
             <p className="text-carbon-500 mb-8">An 8–12 week full summit integration — from pre-event content to summit exposure and post-event data.</p>
           </AnimatedSection>
-
           <AnimatedSection delay={80}>
             <div className="bg-white border border-carbon-200 rounded-xl overflow-hidden mb-6">
               <table className="w-full text-left border-collapse">
@@ -206,8 +229,6 @@ export default function PackagesSlides() {
                 </tbody>
               </table>
             </div>
-
-            {/* Price cards */}
             <div className="grid md:grid-cols-2 gap-4">
               <div className="relative rounded-xl p-6 overflow-hidden" style={{ background: "#f3ffe3", border: "1px solid #b5f55a" }}>
                 <p className="text-xs font-bold text-carbon-400 uppercase tracking-widest mb-2">GROWTH · Early Bird</p>
@@ -227,7 +248,7 @@ export default function PackagesSlides() {
         </div>
       </section>
 
-      {/* PRICING — SPEAKING (separate section) */}
+      {/* PRICING — SPEAKING */}
       <section id="pricing-speaking" className="py-14 border-b border-carbon-100 bg-white">
         <div className="wrap">
           <AnimatedSection>
@@ -235,14 +256,13 @@ export default function PackagesSlides() {
             <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Speaking & Visibility</h2>
             <p className="text-carbon-500 mb-8">Secure your speaking slot without a full partnership commitment. Limited slots per industry.</p>
           </AnimatedSection>
-
           <AnimatedSection delay={80}>
             <div className="bg-white border border-carbon-200 rounded-xl overflow-hidden mb-6">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-carbon-50 border-b border-carbon-200">
                     <th className="px-4 py-3 text-xs font-bold text-carbon-500 uppercase tracking-wide w-1/2">Feature</th>
-                    <th className="px-4 py-3 border-l border-carbon-200 relative" style={{ background: "#f3ffe3" }}>
+                    <th className="px-4 py-3 border-l border-carbon-200" style={{ background: "#f3ffe3" }}>
                       <div className="flex flex-col items-center gap-1">
                         <span className="text-xs font-bold uppercase tracking-wide" style={{ color: "#3d8000" }}>PREMIUM</span>
                         <Badge variant="lime" className="text-xs">✦ Best Choice</Badge>
@@ -269,10 +289,7 @@ export default function PackagesSlides() {
                 </tbody>
               </table>
             </div>
-
-            {/* Price cards */}
             <div className="grid md:grid-cols-2 gap-4">
-              {/* Premium — highlighted with BorderBeam */}
               <div className="relative bento-card p-6 overflow-hidden" style={{ border: "2px solid #9ef01a", background: "#f8fff0" }}>
                 <BorderBeam size={120} duration={10} colorFrom="#9ef01a" colorTo="#4ade80" borderWidth={2} />
                 <div className="flex items-center justify-between mb-2">

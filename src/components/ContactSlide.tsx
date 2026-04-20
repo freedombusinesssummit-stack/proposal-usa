@@ -1,10 +1,21 @@
 "use client";
 import AnimatedSection from "./AnimatedSection";
-import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
+
+const REASONS = [
+  "Data-driven virtual summit — real intent signals",
+  "100% global distribution and media exposure",
+  "Full funnel intent tracking from day one",
+  "Exclusivity per category and jurisdiction",
+  "Decision-maker dominant audience (75% founders/execs)",
+  "Direct access to pre-qualified prospects with active timelines (0–12 months)",
+  "Pre-qualified audience surveyed on jurisdiction, budget & timeline",
+  "8–10 selected partners per event — no overcrowding",
+];
 
 const CONTACTS = [
   {
-    img: "/team/denis.jpeg",
     init: "DD",
     name: "Denys Dovgal",
     role: "CEO · Freedom Business Summit",
@@ -15,7 +26,6 @@ const CONTACTS = [
     ],
   },
   {
-    img: "/team/eleonora.jpeg",
     init: "ED",
     name: "Eleonora Davtyan",
     role: "Partners & Sponsorships",
@@ -25,7 +35,6 @@ const CONTACTS = [
     ],
   },
   {
-    img: "/team/kristine.jpg",
     init: "KA",
     name: "Kristine Aghabekyan",
     role: "Partners & Sponsorships",
@@ -42,65 +51,59 @@ export default function ContactSlide() {
     <section id="contact" className="py-14 bg-white">
       <div className="wrap">
         <AnimatedSection>
-          <span className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3" style={{ background: "#f3ffe3", color: "#3d8000", border: "1px solid #b5f55a" }}>Contact</span>
+          <Badge variant="success" className="mb-3">Contact</Badge>
           <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Ready to Partner?</h2>
-          <p className="text-carbon-500 mb-8 max-w-lg">We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on May 10th.</p>
+          <p className="text-carbon-500 mb-8 max-w-xl">
+            We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on May 10th.
+          </p>
         </AnimatedSection>
 
-        {/* Reasons */}
+        {/* Reasons — 2 columns, no green background, strict style */}
         <AnimatedSection delay={80}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-10">
-            {[
-              "Data-driven virtual summit — real intent signals",
-              "100% global distribution and media exposure",
-              "Full funnel intent tracking from day one",
-              "Exclusivity per category and jurisdiction",
-              "Decision-maker dominant audience (75% founders/execs)",
-            ].map((r, i) => (
-              <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#f8fff0", border: "1px solid #b5f55a" }}>
-                <span className="font-bold flex-shrink-0 text-lg leading-none mt-0.5" style={{ color: "#70e000" }}>→</span>
-                <p className="text-sm text-carbon-700 font-medium">{r}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-8">
+            {REASONS.map((r, i) => (
+              <div key={i} className="flex items-start gap-3 p-3.5 rounded-lg border border-carbon-200 bg-white hover:border-carbon-300 transition-colors">
+                <span className="font-black text-base flex-shrink-0 mt-0.5" style={{ color: "#9ef01a" }}>→</span>
+                <p className="text-sm text-carbon-700 font-medium leading-snug">{r}</p>
               </div>
             ))}
           </div>
-          <a href="mailto:denis@fsummit.net"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-carbon-900 transition-all hover:opacity-90 hover:-translate-y-0.5 mb-12"
-            style={{ background: "#9ef01a" }}>
+          <ShimmerButton
+            href="mailto:denis@fsummit.net"
+            background="#9ef01a"
+            shimmerColor="rgba(255,255,255,0.4)"
+            shimmerDuration="1.8s"
+            className="text-sm font-bold px-6 py-3 mb-10"
+          >
             Become a Partner →
-          </a>
+          </ShimmerButton>
         </AnimatedSection>
 
-        {/* 3 contact cards — horizontal with real photos */}
-        <AnimatedSection delay={150}>
+        {/* 3 contact cards horizontal */}
+        <AnimatedSection delay={160}>
           <div className="grid md:grid-cols-3 gap-4 mb-6">
             {CONTACTS.map((c, i) => (
-              <div key={i} className="rounded-xl border border-carbon-200 bg-white overflow-hidden hover:shadow-md transition-shadow" style={c.lime ? { borderLeft: "3px solid #9ef01a" } : {}}>
-                {/* Photo */}
-                <div className="relative w-full h-48 bg-carbon-100 overflow-hidden">
-                  <Image
-                    src={c.img}
-                    alt={c.name}
-                    fill
-                    className="object-cover object-top"
-                    unoptimized
-                  />
+              <div key={i} className="rounded-xl border border-carbon-200 bg-white p-5"
+                style={c.lime ? { borderLeft: "3px solid #9ef01a" } : {}}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0"
+                    style={c.lime ? { background: "#9ef01a", color: "#111827" } : { background: "#f3f4f6", color: "#6b7280" }}>
+                    {c.init}
+                  </div>
+                  <div>
+                    <p className="font-bold text-carbon-900 text-sm leading-tight">{c.name}</p>
+                    <p className="text-xs text-carbon-500">{c.role}</p>
+                  </div>
                 </div>
-                {/* Info */}
-                <div className="p-4">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div>
-                      <p className="font-bold text-carbon-900 text-sm">{c.name}</p>
-                      <p className="text-xs text-carbon-500">{c.role}</p>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    {c.links.map((l, j) => (
-                      <a key={j} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
-                        className="flex items-center gap-2 py-2 px-3 rounded-lg text-xs text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
-                        <span>{l.icon}</span> {l.label}
-                      </a>
-                    ))}
-                  </div>
+                <div className="space-y-2">
+                  {c.links.map((l, j) => (
+                    <a key={j} href={l.href}
+                      target={l.href.startsWith("https") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 py-2 px-3 rounded-lg text-xs text-carbon-600 border border-carbon-200 hover:bg-carbon-50 transition-colors font-medium">
+                      <span>{l.icon}</span> {l.label}
+                    </a>
+                  ))}
                 </div>
               </div>
             ))}
@@ -109,13 +112,13 @@ export default function ContactSlide() {
 
         {/* Website */}
         <AnimatedSection delay={250}>
-          <div className="rounded-xl flex items-center justify-between p-4" style={{ background: "#f8fff0", border: "1px solid #b5f55a" }}>
+          <div className="rounded-xl p-5 flex items-center justify-between" style={{ background: "#f8fff0", border: "1px solid #b5f55a" }}>
             <div>
               <p className="text-xs text-carbon-500 font-medium mb-0.5">Website</p>
               <p className="font-bold text-carbon-900">fsummit.net/usa</p>
             </div>
             <a href="https://fsummit.net" target="_blank" rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg text-sm font-bold text-carbon-900 hover:opacity-90 transition-all"
+              className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-bold text-carbon-900 transition-all hover:opacity-90"
               style={{ background: "#9ef01a" }}>
               Visit →
             </a>
