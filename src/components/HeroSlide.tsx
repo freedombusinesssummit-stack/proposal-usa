@@ -46,19 +46,10 @@ export default function HeroSlide() {
   });
 
   return (
-    <section id="hero" className="slide-section pt-14 overflow-x-hidden bg-white">
-      <span className="slide-number">01 / 16</span>
+    <section id="hero" className="slide-section pt-14 bg-white overflow-x-hidden">
+      <span className="slide-number">01 / 15</span>
 
-      {/* Subtle USA decoration */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        <div style={{ position: "absolute", top: "8%", right: "-3%", width: 380, height: 280, background: "radial-gradient(ellipse at center, rgba(0,40,104,0.045) 0%, transparent 70%)", borderRadius: "50%" }} />
-        <div style={{ position: "absolute", bottom: "25%", right: "8%", width: 260, height: 180, background: "radial-gradient(ellipse at center, rgba(178,34,34,0.03) 0%, transparent 70%)", borderRadius: "50%" }} />
-        {[0,1,2,3,4].map(i => (
-          <div key={i} style={{ position: "absolute", top: `${15 + i * 9}%`, right: 0, height: "2.5px", width: `${20 - i * 3}%`, background: i % 2 === 0 ? "rgba(178,34,34,0.03)" : "transparent", borderRadius: "2px 0 0 2px" }} />
-        ))}
-      </div>
-
-      <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
+      <div className="wrap">
         <div className="py-10 md:py-14">
 
           {/* Pills */}
@@ -68,15 +59,15 @@ export default function HeroSlide() {
             ))}
           </div>
 
-          {/* Headings: Freedom Business Summit 2026 — BIGGER, USA Mobility Edition — one line below */}
+          {/* Headings */}
           <div style={fade(80)}>
             <h1 className="font-black text-carbon-900 leading-tight mb-1" style={{ fontSize: "clamp(22px, 4vw, 48px)", letterSpacing: "-1.5px" }}>
               Freedom Business Summit 2026
             </h1>
-            <h2 className="font-black text-carbon-900 leading-none mb-4 whitespace-nowrap overflow-hidden" style={{ fontSize: "clamp(28px, 5.5vw, 62px)", letterSpacing: "-2px" }}>
+            <h2 className="font-black text-carbon-900 leading-none mb-4" style={{ fontSize: "clamp(28px, 5.5vw, 62px)", letterSpacing: "-2px", whiteSpace: "nowrap" }}>
               USA Mobility Edition 🇺🇸
             </h2>
-            <p className="font-semibold text-carbon-600 leading-snug mb-5" style={{ fontSize: "clamp(14px, 1.8vw, 20px)", maxWidth: 540 }}>
+            <p className="font-semibold text-carbon-600 leading-snug mb-5" style={{ fontSize: "clamp(14px, 1.8vw, 20px)", maxWidth: 560 }}>
               A Data-Driven Virtual Summit for Founders, Investors Exploring Inbound & Outbound Strategies
             </p>
           </div>
@@ -131,8 +122,8 @@ export default function HeroSlide() {
         </div>
       </div>
 
-      {/* Meta strip */}
-      <div className="border-t border-carbon-100" style={{ position: "relative", zIndex: 1 }}>
+      {/* Meta strip — matches wrap width */}
+      <div className="border-t border-carbon-100">
         <div className="wrap">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 py-4">
             {META.map((m, i) => (

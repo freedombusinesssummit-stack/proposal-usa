@@ -47,7 +47,8 @@ export default function PartnersAndAgenda() {
   return (
     <>
       {/* PARTNERS — dark bg with Marquee */}
-      <section id="partners-prev" className="py-14 border-b border-carbon-800" style={{ background: "#111827" }}>
+      <section id="partners-prev" className="slide-section py-14 border-b border-carbon-800" style={{ background: "#111827" }}>
+        <span className="slide-number" style={{ color: "rgba(158,240,26,0.4)" }}>11 / 15</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="dark" className="mb-3 border border-lime-300/30">Track Record</Badge>
@@ -98,7 +99,8 @@ export default function PartnersAndAgenda() {
       </section>
 
       {/* AGENDA */}
-      <section id="agenda" className="py-14 border-b border-carbon-100 bg-white">
+      <section id="agenda" className="slide-section py-14 border-b border-carbon-100 bg-white">
+        <span className="slide-number">12 / 15</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Summit Agenda</Badge>
