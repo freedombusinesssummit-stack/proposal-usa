@@ -4,6 +4,7 @@ import HeroSlide from "@/components/HeroSlide";
 import AboutSlide from "@/components/AboutSlide";
 import AudienceSlides from "@/components/AudienceSlides";
 import IntelSlides from "@/components/IntelSlides";
+import SpeakerVideos from "@/components/SpeakerVideos";
 import PartnersAndAgenda from "@/components/PartnersAndAgenda";
 import PackagesSlides from "@/components/PackagesSlides";
 import ContactSlide from "@/components/ContactSlide";
@@ -16,6 +17,7 @@ export default function Home() {
       <AboutSlide />
       <AudienceSlides />
       <IntelSlides />
+      <SpeakerVideos />
       <PartnersAndAgenda />
       <PackagesSlides />
       <ContactSlide />

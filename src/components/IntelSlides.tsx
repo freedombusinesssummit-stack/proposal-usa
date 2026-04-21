@@ -8,10 +8,10 @@ const G = { green: '#8FD600', greenMid: '#C8F000', gray: '#6B7280', border: '#E5
 
 /* ── Funnel steps (from Funnel_Flow.html) ── */
 const funnelSteps = [
-  { id:1, label:'TRAFFIC', color:'#8FD600', bg:'#F2FFD6', border:'#C5EF6A', detail:'Targeted Video Ads', description:'Targeted paid video ads reach the right audience by geography, interest, and background.', tags:['Reach Relevant Audience','Specific Geo','By Interest, Age, Background'] },
-  { id:2, label:'FBS WEBSITE', color:'#D97706', bg:'#FFFBEB', border:'#FCD34D', detail:'Website Sign-up', description:'Visitors land on a high-converting registration page with a compelling offer.', tags:['Landing Page','Registration Form','Clear Value Prop'] },
-  { id:3, label:'SURVEY FUNNEL', color:'#7C3AED', bg:'#F5F3FF', border:'#C4B5FD', detail:'Welcome Emails + Score', description:'A data-rich survey collects deep audience intel and delivers a personalised Index Score.', tags:['Welcome Emails','Score Index','Insights Data Set'] },
-  { id:4, label:'AUDIENCE INSIGHTS', color:'#0369A1', bg:'#EFF8FF', border:'#BAE6FD', detail:'Highly Targeted Output', description:'A qualified, opted-in lead list enriched with geo, interests, and demographics — with full ROI tracking.', tags:['Geo & Demographics','Interest Segments','Opt-in Verified Data'] },
+  { id:1, label:'TRAFFIC', color:'#8FD600', bg:'#F2FFD6', border:'#C5EF6A', detail:'Targeted Video Ads', description:'Paid video ads reach the right audience by geography, interest, and background — driving qualified traffic to FBS.', tags:['Reach Relevant Audience','Specific Geo','By Interest, Age, Background'] },
+  { id:2, label:'FBS WEBSITE', color:'#D97706', bg:'#FFFBEB', border:'#FCD34D', detail:'Website Sign-up', description:'Visitors land on the Freedom Business Summit USA page — a high-converting registration with a clear offer.', tags:['Landing Page','Free Access CTA','4.9★ Social Proof'] },
+  { id:3, label:'SURVEY FUNNEL', color:'#7C3AED', bg:'#F5F3FF', border:'#C4B5FD', detail:'Mobility Score Index', description:'Leads calculate their Mobility Score — unlocking the Participants Playbook and segmenting themselves by readiness.', tags:['Mobility Score Quiz','Playbook Unlock','500+ completed'] },
+  { id:4, label:'AUDIENCE INSIGHTS', color:'#0369A1', bg:'#EFF8FF', border:'#BAE6FD', detail:'Highly Targeted Output', description:'A qualified, opted-in lead list enriched with geo, interests, score tier, and demographics — with full ROI tracking.', tags:['Geo & Demographics','Interest Segments','Opt-in Verified Data'] },
 ];
 
 /* ── Insight categories (from Audience_Insights.html) ── */
@@ -133,7 +133,7 @@ export default function IntelSlides() {
   return (
     <>
       {/* ── SECTION 09: FBS Index Score Funnel (from Funnel_Flow.html) ── */}
-      <section id="funnel" className="slide-section py-14 border-b border-carbon-100" style={{ background:"#f8fff0" }}>
+      <section id="funnel" className="slide-section py-14 border-b border-carbon-100 bg-white">
         <span className="slide-number">09 / 16</span>
         <div className="wrap">
           <AnimatedSection>
@@ -260,6 +260,40 @@ export default function IntelSlides() {
               </div>
             </div>
 
+
+            {/* Playbook banner */}
+            <div className="mt-6 rounded-2xl overflow-hidden border border-carbon-200" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+              <div className="flex items-center justify-between px-8 py-6" style={{ background: "linear-gradient(135deg, #0D0D0D 0%, #1a1a1a 100%)" }}>
+                <div>
+                  <div className="flex flex-wrap gap-3 mb-3">
+                    <span className="font-black text-white" style={{ fontSize: "clamp(14px, 2vw, 20px)", background: "#e05a4e", padding: "2px 10px", borderRadius: 4 }}>PARTICIPANTS PLAYBOOK</span>
+                    <span className="font-black text-white" style={{ fontSize: "clamp(14px, 2vw, 20px)", background: "#111", padding: "2px 10px", borderRadius: 4, border: "1px solid #333" }}>FREEDOM SCORE INDEX</span>
+                  </div>
+                  <p className="font-bold text-white mb-1" style={{ fontSize: "clamp(13px, 1.4vw, 16px)", color: "#e5e7eb" }}>STRATEGIES, FRAMEWORKS, DATA INSIGHTS</p>
+                  <p className="font-bold text-white" style={{ fontSize: "clamp(12px, 1.3vw, 15px)", color: "#9ca3af" }}>CONNECT WITH <strong className="text-white">INDUSTRY EXPERTS, SPEAKERS, ATTENDEES</strong></p>
+                  <p className="mt-2 font-bold" style={{ color: "#8FD600", fontSize: "clamp(12px, 1.2vw, 14px)" }}>☆ EXPLORE HOW READY YOU ARE TO GO GLOBAL</p>
+                </div>
+                <div className="hidden md:flex items-center gap-3 flex-shrink-0 ml-6">
+                  <div className="rounded-xl overflow-hidden" style={{ width: 90, boxShadow: "0 8px 24px rgba(0,0,0,0.4)", transform: "rotate(-3deg)" }}>
+                    <div style={{ background: "linear-gradient(135deg, #f4a090 0%, #e05a4e 100%)", padding: "8px 10px" }}>
+                      <p style={{ fontSize: 7, fontWeight: 900, color: "white", opacity: 0.8 }}>FREEDOM BUSINESS SUMMIT</p>
+                      <p style={{ fontSize: 7, fontWeight: 700, color: "white", opacity: 0.7, marginTop: 1 }}>PLAYBOOK</p>
+                    </div>
+                    <div style={{ background: "#0D0D0D", padding: "6px 10px 10px" }}>
+                      <p style={{ fontSize: 10, fontWeight: 900, color: "white", lineHeight: 1.2 }}>FREEDOM BUSINESS SUMMIT 2026</p>
+                      <p style={{ fontSize: 7, color: "#8FD600", marginTop: 3 }}>USA MOBILITY EDITION</p>
+                    </div>
+                  </div>
+                  <div className="rounded-xl overflow-hidden" style={{ width: 90, boxShadow: "0 8px 24px rgba(0,0,0,0.4)", transform: "rotate(2deg)" }}>
+                    <div style={{ background: "#0D0D0D", padding: "8px 10px 10px", border: "1px solid #222" }}>
+                      <p style={{ fontSize: 9, fontWeight: 900, color: "#8FD600", lineHeight: 1.2 }}>MOBILITY SCORE INDEX</p>
+                      <p style={{ fontSize: 7, color: "#6b7280", marginTop: 3 }}>USA EDITION</p>
+                      <p style={{ fontSize: 7, color: "#4b5563", marginTop: 2 }}>PLAN B · RELOCATION · GLOBAL STRUCTURE</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* Footer divider */}
             <div style={{ marginTop:20, paddingTop:16, borderTop:`1px solid ${G.border}`, display:'flex', alignItems:'center', justifyContent:'space-between' }}>
               <span style={{ fontSize:11, color:G.gray }}>Participants Playbook · Score Index Dataset · Segmented CRM Export</span>

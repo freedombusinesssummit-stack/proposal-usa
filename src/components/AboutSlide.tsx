@@ -65,7 +65,7 @@ export default function AboutSlide() {
               {STATS.map((s, i) => (
                 <div key={i} className="rounded-xl border border-carbon-200 bg-white p-5 hover:border-lime-300 hover:shadow-sm transition-all text-center group">
                   <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{s.icon}</div>
-                  <div className="font-black mb-1 gradient-text" style={{ fontSize: "clamp(22px, 3vw, 36px)", letterSpacing: "-0.5px" }}>
+                  <div className="font-black mb-1 text-carbon-900" style={{ fontSize: "clamp(22px, 3vw, 36px)", letterSpacing: "-0.5px" }}>
                     {s.raw ? s.raw : <NumberTicker value={s.val!} suffix={s.suffix} duration={1800} />}
                   </div>
                   <p className="text-xs text-carbon-400 font-medium">{s.label}</p>
@@ -115,20 +115,22 @@ export default function AboutSlide() {
 
       {/* DIRECTIONS — Section 04 */}
       <section id="directions" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">04 / 16</span>
+        <span className="slide-number">04 / 15</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Two Directions</Badge>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-8" style={{ letterSpacing: "-0.5px" }}>Inbound & Outbound US Mobility</h2>
+            <h2 className="font-black text-carbon-900 mb-10" style={{ fontSize: "clamp(28px, 4.5vw, 56px)", letterSpacing: "-1.5px", lineHeight: 1.05 }}>Inbound & Outbound<br/>US Mobility</h2>
           </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="flex flex-col gap-4">
             <AnimatedSection delay={80}>
-              <div className="spotlight-card rounded-xl border border-carbon-200 bg-white p-6 h-full hover:shadow-md hover:-translate-y-0.5 transition-all duration-300" style={{ borderTop: "4px solid #9ef01a" }}>
-                <div className="flex items-center gap-2 mb-4">
+              <div className="rounded-2xl border border-carbon-200 bg-white p-8 hover:shadow-md transition-all duration-300" style={{ borderLeft: "5px solid #9ef01a" }}>
+                <div className="flex items-center gap-3 mb-4">
                   <span className="text-2xl font-black" style={{ color: "#9ef01a" }}>→</span>
-                  <span className="font-black text-xl text-carbon-900">🌍 Outbound Mobility</span>
+                  <h3 className="font-black text-carbon-900" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", letterSpacing: "-0.5px" }}>🌍 Outbound Mobility</h3>
                 </div>
-                <p className="text-carbon-600 leading-relaxed text-sm mb-4">Americans seeking legitimate ways to reduce their tax exposure, obtain a <strong className="text-carbon-900">Plan B, or renounce citizenship.</strong> Focus on <strong className="text-carbon-900">CBI/RBI Programs (Caribbean), European Residency, Tax-Advantaged Residency (LATAM)</strong></p>
+                <p className="text-carbon-600 leading-relaxed mb-5" style={{ fontSize: "clamp(14px, 1.4vw, 17px)", maxWidth: 760 }}>
+                  Americans seeking legitimate ways to reduce their tax exposure, obtain a <strong className="text-carbon-900">Plan B, or renounce citizenship.</strong> Focus on <strong className="text-carbon-900">CBI/RBI Programs (Caribbean), European Residency, Tax-Advantaged Residency (LATAM)</strong>
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {["Caribbean CBI", "European Residency", "LATAM", "Tax Residency", "Second Passport"].map((t, i) => (
                     <Badge key={i} variant="success" className="text-xs">{t}</Badge>
@@ -137,12 +139,14 @@ export default function AboutSlide() {
               </div>
             </AnimatedSection>
             <AnimatedSection delay={150}>
-              <div className="spotlight-card rounded-xl border border-carbon-200 bg-white p-6 h-full hover:shadow-md hover:-translate-y-0.5 transition-all duration-300" style={{ borderTop: "4px solid #111827" }}>
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-2xl font-black text-carbon-400">←</span>
-                  <span className="font-black text-xl text-carbon-900">🇺🇸 Inbound Mobility</span>
+              <div className="rounded-2xl border border-carbon-200 bg-white p-8 hover:shadow-md transition-all duration-300" style={{ borderLeft: "5px solid #111827" }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-2xl font-black text-carbon-300">←</span>
+                  <h3 className="font-black text-carbon-900" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", letterSpacing: "-0.5px" }}>🇺🇸 Inbound Mobility</h3>
                 </div>
-                <p className="text-carbon-600 leading-relaxed text-sm mb-4">HNWI from <strong className="text-carbon-900">India, China, and Southeast Asia</strong> seeking U.S. residency/visas for capital protection. Focus on <strong className="text-carbon-900">EB-5, E-2 Investment Visas</strong></p>
+                <p className="text-carbon-600 leading-relaxed mb-5" style={{ fontSize: "clamp(14px, 1.4vw, 17px)", maxWidth: 760 }}>
+                  HNWI from <strong className="text-carbon-900">India, China, and Southeast Asia</strong> seeking U.S. residency/visas for capital protection. Focus on <strong className="text-carbon-900">EB-5, E-2 Investment Visas</strong>
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {["EB-5 Visa", "E-2 Treaty", "India", "SE Asia", "China"].map((t, i) => (
                     <Badge key={i} variant="outline" className="text-xs">{t}</Badge>
