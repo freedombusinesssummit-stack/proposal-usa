@@ -296,13 +296,12 @@ export default function PackagesSlides() {
             <p className="text-carbon-500 mb-8">Secure your speaking slot without a full partnership commitment. Limited slots per industry.</p>
           </AnimatedSection>
           <AnimatedSection delay={80}>
-            <div className="bg-white border border-carbon-200 rounded-xl overflow-x-auto mb-6" style={{ width: "100%" }}>
-              <table className="w-full text-left border-collapse" style={{ minWidth: "100%", tableLayout: "fixed" }}>
-                <colgroup><col style={{ width: "50%" }}/><col style={{ width: "25%" }}/><col style={{ width: "25%" }}/></colgroup>
+            <div className="bg-white border border-carbon-200 rounded-xl overflow-hidden mb-6">
+              <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-carbon-50 border-b border-carbon-200">
-                    <th className="px-4 py-3 text-xs font-bold text-carbon-500 uppercase tracking-wide">Feature</th>
-                    <th className="px-4 py-3 text-center border-l border-carbon-200" style={{ background: "#f3ffe3" }}>
+                    <th className="px-4 py-3 text-xs font-bold text-carbon-500 uppercase tracking-wide w-1/2">Feature</th>
+                    <th className="px-4 py-3 text-center w-1/4 border-l border-carbon-200" style={{ background: "#f3ffe3" }}>
                       <div className="flex flex-col items-center gap-1">
                         <span className="text-xs font-bold uppercase tracking-wide" style={{ color: "#3d8000" }}>PREMIUM</span>
                         <Badge variant="lime" className="text-xs">✦ Best Choice</Badge>
