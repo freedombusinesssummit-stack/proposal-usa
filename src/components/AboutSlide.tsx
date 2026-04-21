@@ -119,7 +119,7 @@ export default function AboutSlide() {
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Two Directions</Badge>
-            <h2 className="font-black text-carbon-900 mb-10" style={{ fontSize: "clamp(28px, 4.5vw, 56px)", letterSpacing: "-1.5px", lineHeight: 1.05 }}>Inbound & Outbound<br/>US Mobility</h2>
+            <h2 className="font-black text-carbon-900 mb-10 whitespace-nowrap" style={{ fontSize: "clamp(22px, 3.8vw, 46px)", letterSpacing: "-1.2px", lineHeight: 1.05 }}>Inbound & Outbound US Mobility</h2>
           </AnimatedSection>
           <div className="flex flex-col gap-4">
             <AnimatedSection delay={80}>
