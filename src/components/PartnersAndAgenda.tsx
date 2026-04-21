@@ -35,48 +35,36 @@ const agenda = {
 };
 
 const LOGOS = [
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2025/09/osome_logo_blue.png", name: "Osome", dark: false },
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2025/09/MY-PREMIUM-LOGO.png", name: "MYPVIP", dark: false },
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2025/09/photo_2025-09-27_16-48-16-removebg-preview.png", name: "Partner", dark: false },
-  { src: "https://fsummit.net/assets/img/logo-StartupVisa-CA-black-red.svg", name: "StartupVisa CA", dark: false },
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2026/03/Msgi-V-teal.webp", name: "MSGI", dark: false },
-  { src: "https://fsummit.net/images/WorldTalents_logo%20all-01.svg", name: "World Talents", dark: false },
-  { src: "https://fsummit.net/images/ntl-logo.svg", name: "NTL", dark: false },
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2025/11/e-residency-white.png", name: "e-Residency", dark: true },
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2025/12/photo_2025-12-28_09-47-58-removebg-preview.png", name: "Partner", dark: false },
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2025/12/CRS_Logo__1_-removebg-preview-1.png", name: "CRS", dark: false },
-  { src: "https://fsummit.net/images/InCorpLogo%20White2.svg", name: "InCorp", dark: true },
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2025/10/Logo-LACA-White.png", name: "LACA", dark: true },
-  { src: "https://fsummit.net/checkout/wp-content/uploads/2025/11/ocorian-logo-vector.png-3d9db7bf.webp", name: "Ocorian", dark: false },
+  { src: "/logos/osome.svg", name: "Osome", dark: false },
+  { src: "/logos/mypvip.svg", name: "MYPVIP", dark: false },
+  { src: "/logos/partner1.svg", name: "Global Partner", dark: false },
+  { src: "/logos/startupvisa.svg", name: "StartupVisa CA", dark: false },
+  { src: "/logos/msgi.svg", name: "MSGI", dark: false },
+  { src: "/logos/worldtalents.svg", name: "World Talents", dark: false },
+  { src: "/logos/ntl.svg", name: "NTL", dark: false },
+  { src: "/logos/eresidency.svg", name: "e-Residency", dark: false },
+  { src: "/logos/partner2.svg", name: "Mobility Partner", dark: false },
+  { src: "/logos/crs.svg", name: "CRS", dark: false },
+  { src: "/logos/incorp.svg", name: "InCorp", dark: false },
+  { src: "/logos/laca.svg", name: "LACA", dark: false },
+  { src: "/logos/ocorian.svg", name: "Ocorian", dark: false },
 ];
 
 function LogoChip({ logo }: { logo: typeof LOGOS[0] }) {
   return (
     <div className="flex items-center justify-center mx-3 flex-shrink-0"
-      style={{ height: 48, minWidth: 120, padding: "6px 16px",
-        background: logo.dark ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.92)",
-        border: "1px solid rgba(255,255,255,0.12)",
+      style={{ height: 48, minWidth: 120, padding: "8px 18px",
+        background: "rgba(255,255,255,0.93)",
+        border: "1px solid rgba(255,255,255,0.2)",
         borderRadius: 10 }}>
       <img
         src={logo.src}
         alt={logo.name}
         style={{
-          height: 28,
-          maxWidth: 110,
+          height: 26,
+          maxWidth: 112,
           objectFit: "contain",
-          filter: logo.dark ? "brightness(0) invert(1)" : "none",
-          opacity: 0.85,
-        }}
-        onError={(e) => {
-          const el = e.target as HTMLImageElement;
-          el.style.display = "none";
-          const parent = el.parentElement;
-          if (parent) {
-            parent.style.color = "rgba(255,255,255,0.6)";
-            parent.style.fontSize = "11px";
-            parent.style.fontWeight = "700";
-            parent.textContent = logo.name;
-          }
+          opacity: 0.9,
         }}
       />
     </div>
