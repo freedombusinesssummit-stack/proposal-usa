@@ -41,7 +41,7 @@ export default function HeroSlide() {
 
   return (
     <section id="hero" className="slide-section pt-14 bg-white overflow-x-hidden">
-      <span className="slide-number">01 / 15</span>
+      <span className="slide-number">01 / 18</span>
 
       <div className="wrap">
         <div className="py-10 md:py-14">

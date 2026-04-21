@@ -67,7 +67,7 @@ function MuxPlayer({ playbackId }: { playbackId: string }) {
 export default function SpeakerVideos() {
   return (
     <section id="speaker-videos" className="slide-section py-14 border-b border-carbon-100 bg-white">
-      <span className="slide-number">10 / 15</span>
+      <span className="slide-number">11 / 18</span>
       <div className="wrap">
         <AnimatedSection>
           <Badge variant="success" className="mb-3">Sponsored Video Ads</Badge>

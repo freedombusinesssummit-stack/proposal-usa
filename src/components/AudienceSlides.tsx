@@ -43,7 +43,7 @@ export default function AudienceSlides() {
     <>
       {/* AUDIENCE PROFILE */}
       <section id="audience" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">06 / 15</span>
+        <span className="slide-number">06 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Audience Profile</Badge>
@@ -117,7 +117,7 @@ export default function AudienceSlides() {
 
       {/* SNAPSHOT */}
       <section id="snapshot" className="slide-section py-14 border-b border-carbon-100 bg-carbon-50">
-        <span className="slide-number">07 / 15</span>
+        <span className="slide-number">07 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Audience Snapshot</Badge>
@@ -156,7 +156,7 @@ export default function AudienceSlides() {
 
       {/* BEHAVIORAL */}
       <section id="behavioral" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">08 / 15</span>
+        <span className="slide-number">08 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Behavioral Insights</Badge>

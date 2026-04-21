@@ -37,7 +37,7 @@ export default function AboutSlide() {
     <>
       {/* ABOUT — Section 02 */}
       <section id="about" className="slide-section py-16 border-b border-carbon-100 bg-white">
-        <span className="slide-number">02 / 16</span>
+        <span className="slide-number">02 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-4">About the Event</Badge>
@@ -85,7 +85,7 @@ export default function AboutSlide() {
 
       {/* FEATURES — Section 03 */}
       <section id="features" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
-        <span className="slide-number">03 / 16</span>
+        <span className="slide-number">03 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Why Partner with FBS</Badge>
@@ -115,7 +115,7 @@ export default function AboutSlide() {
 
       {/* DIRECTIONS — Section 04 */}
       <section id="directions" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">04 / 15</span>
+        <span className="slide-number">04 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Two Directions</Badge>
@@ -160,7 +160,7 @@ export default function AboutSlide() {
 
       {/* KEY TOPICS — Section 05 */}
       <section id="topics" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
-        <span className="slide-number">05 / 16</span>
+        <span className="slide-number">05 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Agenda Themes</Badge>

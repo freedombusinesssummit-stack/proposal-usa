@@ -52,7 +52,7 @@ const CONTACTS = [
 export default function ContactSlide() {
   return (
     <section id="contact" className="slide-section py-14 bg-white">
-      <span className="slide-number">16 / 16</span>
+      <span className="slide-number">18 / 18</span>
       <div className="wrap">
         <AnimatedSection>
           <Badge variant="success" className="mb-3">Contact</Badge>

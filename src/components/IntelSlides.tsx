@@ -134,7 +134,7 @@ export default function IntelSlides() {
     <>
       {/* ── SECTION 09: FBS Index Score Funnel (from Funnel_Flow.html) ── */}
       <section id="funnel" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">09 / 16</span>
+        <span className="slide-number">09 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:16 }}>
@@ -184,7 +184,7 @@ export default function IntelSlides() {
 
       {/* ── SECTION 10: Audience Insights Output (from Audience_Insights.html) ── */}
       <section id="intel" className="slide-section py-14 border-b border-carbon-100 bg-white" ref={ref}>
-        <span className="slide-number">10 / 16</span>
+        <span className="slide-number">10 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
