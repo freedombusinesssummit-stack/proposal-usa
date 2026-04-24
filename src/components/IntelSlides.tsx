@@ -103,22 +103,22 @@ function AnimBar({ bar, animate }: { bar: typeof funnelBars[0]; animate: boolean
 
 /* ── Prospect table ── */
 const LEADS = [
-  { name:"George F.", flag:"🇬🇷", country:"Greece", timeline:"1–3 mo", jurisdiction:"Portugal Golden Visa", income:"$150K–$350K", tier:"HOT", score:22 },
-  { name:"Sarah M.", flag:"🇺🇸", country:"USA", timeline:"1–3 mo", jurisdiction:"Malta Citizenship", income:"$350K–$500K", tier:"HOT", score:21 },
-  { name:"Aleksei V.", flag:"🇷🇺", country:"Russia", timeline:"1–3 mo", jurisdiction:"UAE Residency", income:"$150K–$350K", tier:"HOT", score:19 },
-  { name:"Li Wei", flag:"🇨🇳", country:"China", timeline:"6–12 mo", jurisdiction:"EB-5 / Green Card", income:"$500K–$1M+", tier:"HOT", score:18 },
-  { name:"Fatima Al-R.", flag:"🇦🇪", country:"UAE", timeline:"3–6 mo", jurisdiction:"Portugal NHR", income:"$350K–$500K", tier:"HOT", score:20 },
-  { name:"Michael T.", flag:"🇿🇦", country:"South Africa", timeline:"6–12 mo", jurisdiction:"Greece Golden Visa", income:"$150K–$350K", tier:"WARM", score:15 },
-  { name:"Elena P.", flag:"🇧🇷", country:"Brazil", timeline:"6–12 mo", jurisdiction:"Spain Golden Visa", income:"$150K–$350K", tier:"WARM", score:14 },
+  { name:"James W.", flag:"🇺🇸", country:"USA", timeline:"1–3 mo", jurisdiction:"Greece Golden Visa", income:"$350K–$500K", tier:"HOT", score:23 },
+  { name:"Sarah M.", flag:"🇺🇸", country:"USA", timeline:"1–3 mo", jurisdiction:"Caribbean CBI — Grenada", income:"$250K–$400K", tier:"HOT", score:21 },
+  { name:"Raj K.", flag:"🇮🇳", country:"India", timeline:"1–3 mo", jurisdiction:"EB-5 / Green Card", income:"$500K–$1M+", tier:"HOT", score:22 },
+  { name:"Nguyen T.", flag:"🇻🇳", country:"Vietnam", timeline:"3–6 mo", jurisdiction:"EB-5 Investor Visa", income:"$500K–$1M+", tier:"HOT", score:19 },
+  { name:"Michael B.", flag:"🇺🇸", country:"USA", timeline:"3–6 mo", jurisdiction:"Portugal NHR / D7 Visa", income:"$150K–$350K", tier:"HOT", score:20 },
+  { name:"Arjun S.", flag:"🇮🇳", country:"India", timeline:"6–12 mo", jurisdiction:"EB-5 Regional Center", income:"$350K–$500K", tier:"WARM", score:16 },
+  { name:"David L.", flag:"🇺🇸", country:"USA", timeline:"6–12 mo", jurisdiction:"Malta CBI Program", income:"$500K–$1M+", tier:"WARM", score:15 },
 ];
 const MASKS = [
-  { email:"g.f●●●@gmail.com", wa:"+30 69●● ●●●●●●" },
+  { email:"james.w●●●@gmail.com", wa:"+1 (650) ●●●-●●●●" },
   { email:"sarah.m●●●@out●.com", wa:"+1 (415) ●●●-●●●●" },
-  { email:"a.v●●@mail.ru", wa:"+7 903 ●●●-●●●●" },
-  { email:"liwei●●●@●●.cn", wa:"+86 138 ●●●● ●●●●" },
-  { email:"f.alr●●●@●●.ae", wa:"+971 50 ●●●-●●●●" },
-  { email:"m.t●●●@gmail.com", wa:"+27 82 ●●●-●●●●" },
-  { email:"elena.p●●●@●●.br", wa:"+55 11 ●●●●●●●●" },
+  { email:"raj.k●●●@●●.in", wa:"+91 98●● ●●●●●●" },
+  { email:"nguyen.t●●●@●●.vn", wa:"+84 90●● ●●●●●●" },
+  { email:"m.b●●●@gmail.com", wa:"+1 (212) ●●●-●●●●" },
+  { email:"arjun.s●●●@●●.in", wa:"+91 95●● ●●●●●●" },
+  { email:"david.l●●●@gmail.com", wa:"+1 (310) ●●●-●●●●" },
 ];
 
 export default function IntelSlides() {

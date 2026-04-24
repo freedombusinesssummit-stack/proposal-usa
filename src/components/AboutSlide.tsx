@@ -119,16 +119,16 @@ export default function AboutSlide() {
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Two Directions</Badge>
-            <h2 className="font-black text-carbon-900 mb-10 whitespace-nowrap" style={{ fontSize: "clamp(22px, 3.8vw, 46px)", letterSpacing: "-1.2px", lineHeight: 1.05 }}>Inbound & Outbound US Mobility</h2>
+            <h2 className="font-black text-carbon-900 mb-8" style={{ fontSize: "clamp(20px, 2.8vw, 36px)", letterSpacing: "-0.8px", lineHeight: 1.1 }}>Inbound & Outbound US Mobility</h2>
           </AnimatedSection>
           <div className="flex flex-col gap-4">
             <AnimatedSection delay={80}>
-              <div className="rounded-2xl border border-carbon-200 bg-white p-8 hover:shadow-md transition-all duration-300" style={{ borderLeft: "5px solid #9ef01a" }}>
+              <div className="rounded-xl border border-carbon-200 bg-white p-6 hover:shadow-md transition-all duration-300" style={{ borderLeft: "4px solid #9ef01a" }}>
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-2xl font-black" style={{ color: "#9ef01a" }}>→</span>
-                  <h3 className="font-black text-carbon-900" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", letterSpacing: "-0.5px" }}>🌍 Outbound Mobility</h3>
+                  <h3 className="font-black text-carbon-900" style={{ fontSize: "clamp(17px, 1.8vw, 22px)", letterSpacing: "-0.3px" }}>🌍 Outbound Mobility</h3>
                 </div>
-                <p className="text-carbon-600 leading-relaxed mb-5" style={{ fontSize: "clamp(14px, 1.4vw, 17px)", maxWidth: 760 }}>
+                <p className="text-carbon-600 leading-relaxed mb-4 text-sm" style={{ maxWidth: 760 }}>
                   Americans seeking legitimate ways to reduce their tax exposure, obtain a <strong className="text-carbon-900">Plan B, or renounce citizenship.</strong> Focus on <strong className="text-carbon-900">CBI/RBI Programs (Caribbean), European Residency, Tax-Advantaged Residency (LATAM)</strong>
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -139,12 +139,12 @@ export default function AboutSlide() {
               </div>
             </AnimatedSection>
             <AnimatedSection delay={150}>
-              <div className="rounded-2xl border border-carbon-200 bg-white p-8 hover:shadow-md transition-all duration-300" style={{ borderLeft: "5px solid #111827" }}>
+              <div className="rounded-xl border border-carbon-200 bg-white p-6 hover:shadow-md transition-all duration-300" style={{ borderLeft: "4px solid #111827" }}>
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-2xl font-black text-carbon-300">←</span>
-                  <h3 className="font-black text-carbon-900" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", letterSpacing: "-0.5px" }}>🇺🇸 Inbound Mobility</h3>
+                  <h3 className="font-black text-carbon-900" style={{ fontSize: "clamp(17px, 1.8vw, 22px)", letterSpacing: "-0.3px" }}>🇺🇸 Inbound Mobility</h3>
                 </div>
-                <p className="text-carbon-600 leading-relaxed mb-5" style={{ fontSize: "clamp(14px, 1.4vw, 17px)", maxWidth: 760 }}>
+                <p className="text-carbon-600 leading-relaxed mb-4 text-sm" style={{ maxWidth: 760 }}>
                   HNWI from <strong className="text-carbon-900">India, China, and Southeast Asia</strong> seeking U.S. residency/visas for capital protection. Focus on <strong className="text-carbon-900">EB-5, E-2 Investment Visas</strong>
                 </p>
                 <div className="flex flex-wrap gap-2">
