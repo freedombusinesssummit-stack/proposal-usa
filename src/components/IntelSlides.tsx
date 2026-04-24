@@ -103,22 +103,32 @@ function AnimBar({ bar, animate }: { bar: typeof funnelBars[0]; animate: boolean
 
 /* ── Prospect table ── */
 const LEADS = [
-  { name:"James W.", flag:"🇺🇸", country:"USA", timeline:"1–3 mo", jurisdiction:"Greece Golden Visa", income:"$350K–$500K", tier:"HOT", score:23 },
-  { name:"Sarah M.", flag:"🇺🇸", country:"USA", timeline:"1–3 mo", jurisdiction:"Caribbean CBI — Grenada", income:"$250K–$400K", tier:"HOT", score:21 },
-  { name:"Raj K.", flag:"🇮🇳", country:"India", timeline:"1–3 mo", jurisdiction:"EB-5 / Green Card", income:"$500K–$1M+", tier:"HOT", score:22 },
-  { name:"Nguyen T.", flag:"🇻🇳", country:"Vietnam", timeline:"3–6 mo", jurisdiction:"EB-5 Investor Visa", income:"$500K–$1M+", tier:"HOT", score:19 },
-  { name:"Michael B.", flag:"🇺🇸", country:"USA", timeline:"3–6 mo", jurisdiction:"Portugal NHR / D7 Visa", income:"$150K–$350K", tier:"HOT", score:20 },
-  { name:"Arjun S.", flag:"🇮🇳", country:"India", timeline:"6–12 mo", jurisdiction:"EB-5 Regional Center", income:"$350K–$500K", tier:"WARM", score:16 },
-  { name:"David L.", flag:"🇺🇸", country:"USA", timeline:"6–12 mo", jurisdiction:"Malta CBI Program", income:"$500K–$1M+", tier:"WARM", score:15 },
+  { name:"James W.", flag:"🇺🇸", country:"USA", timeline:"1–3 mo", jurisdiction:"Portugal Golden Visa", income:"$350K–$500K", tier:"HOT", score:24 },
+  { name:"Sarah M.", flag:"🇺🇸", country:"USA", timeline:"1–3 mo", jurisdiction:"Caribbean CBI — Grenada", income:"$250K–$400K", tier:"HOT", score:22 },
+  { name:"Raj K.", flag:"🇮🇳", country:"India", timeline:"1–3 mo", jurisdiction:"EB-5 / Green Card", income:"$500K–$1M+", tier:"HOT", score:23 },
+  { name:"Nguyen T.", flag:"🇻🇳", country:"Vietnam", timeline:"1–3 mo", jurisdiction:"EB-5 Investor Visa", income:"$500K–$1M+", tier:"HOT", score:21 },
+  { name:"Emily R.", flag:"🇺🇸", country:"USA", timeline:"3–6 mo", jurisdiction:"Greece Golden Visa", income:"$350K–$500K", tier:"HOT", score:20 },
+  { name:"Michael B.", flag:"🇺🇸", country:"USA", timeline:"3–6 mo", jurisdiction:"Malta CBI Program", income:"$500K–$1M+", tier:"HOT", score:19 },
+  { name:"Arjun S.", flag:"🇮🇳", country:"India", timeline:"3–6 mo", jurisdiction:"EB-5 Regional Center", income:"$350K–$500K", tier:"HOT", score:18 },
+  { name:"Lisa T.", flag:"🇺🇸", country:"USA", timeline:"3–6 mo", jurisdiction:"Portugal NHR / D7 Visa", income:"$150K–$350K", tier:"WARM", score:16 },
+  { name:"Tuan N.", flag:"🇻🇳", country:"Vietnam", timeline:"6–12 mo", jurisdiction:"EB-5 Direct Investment", income:"$350K–$500K", tier:"WARM", score:15 },
+  { name:"David L.", flag:"🇺🇸", country:"USA", timeline:"6–12 mo", jurisdiction:"Caribbean CBI — St. Kitts", income:"$250K–$400K", tier:"WARM", score:14 },
+  { name:"Priya M.", flag:"🇮🇳", country:"India", timeline:"6–12 mo", jurisdiction:"EB-5 / Investor Visa", income:"$500K–$1M+", tier:"WARM", score:13 },
+  { name:"Robert C.", flag:"🇺🇸", country:"USA", timeline:"12 mo+", jurisdiction:"Portugal D7 / NHR", income:"$150K–$350K", tier:"COLD", score:10 },
 ];
 const MASKS = [
   { email:"james.w●●●@gmail.com", wa:"+1 (650) ●●●-●●●●" },
   { email:"sarah.m●●●@out●.com", wa:"+1 (415) ●●●-●●●●" },
   { email:"raj.k●●●@●●.in", wa:"+91 98●● ●●●●●●" },
   { email:"nguyen.t●●●@●●.vn", wa:"+84 90●● ●●●●●●" },
+  { email:"emily.r●●●@gmail.com", wa:"+1 (646) ●●●-●●●●" },
   { email:"m.b●●●@gmail.com", wa:"+1 (212) ●●●-●●●●" },
   { email:"arjun.s●●●@●●.in", wa:"+91 95●● ●●●●●●" },
+  { email:"lisa.t●●●@gmail.com", wa:"+1 (917) ●●●-●●●●" },
+  { email:"tuan.n●●●@●●.vn", wa:"+84 91●● ●●●●●●" },
   { email:"david.l●●●@gmail.com", wa:"+1 (310) ●●●-●●●●" },
+  { email:"priya.m●●●@●●.in", wa:"+91 97●● ●●●●●●" },
+  { email:"robert.c●●●@gmail.com", wa:"+1 (347) ●●●-●●●●" },
 ];
 
 export default function IntelSlides() {
@@ -369,8 +379,8 @@ export default function IntelSlides() {
               <div className="px-5 py-3 bg-carbon-50 flex flex-wrap items-center justify-between gap-3 border-t border-carbon-100">
                 <div className="flex items-center gap-5 flex-wrap text-xs text-carbon-500">
                   <span><strong className="text-carbon-900">364+</strong> prospects</span>
-                  <span><strong style={{ color:"#dc2626" }}>27%</strong> HOT</span>
-                  <span><strong className="text-carbon-900">9</strong> fields/record</span>
+                  <span><strong style={{ color:"#dc2626" }}>50%</strong> HOT</span>
+                  <span><strong className="text-carbon-900">12</strong> records · 9 fields each</span>
                   <span className="font-semibold" style={{ color:"#3d8000" }}>✓ Email + WhatsApp</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-carbon-400">
