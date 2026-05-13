@@ -90,6 +90,25 @@ const REASONS = [
   "8–10 selected partners per event — no overcrowding",
 ];
 
+
+function Phase({ label, bg, badgeBg, badgeColor, items }: {
+  label: string; bg: string; badgeBg: string; badgeColor: string; items: string[];
+}) {
+  return (
+    <div className="p-6 border-b last:border-b-0 md:border-b-0 md:border-r last:border-r-0 border-carbon-100" style={{ background: bg }}>
+      <div className="inline-flex px-3 py-1.5 rounded-lg text-sm font-black mb-5" style={{ background: badgeBg, color: badgeColor }}>{label}</div>
+      <div className="space-y-2.5">
+        {items.map((item, i) => (
+          <div key={i} className="flex items-start gap-2.5">
+            <span className="text-xs font-black text-carbon-400 mt-0.5 w-4 flex-shrink-0">{i + 1}.</span>
+            <p className="text-sm text-carbon-600 leading-snug">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function PackagesSlides() {
   return (
     <>
@@ -196,6 +215,81 @@ export default function PackagesSlides() {
             </div>
           </AnimatedSection>
 
+          {/* PARTNERS ENGAGEMENT - How It Works Timeline */}
+          <AnimatedSection delay={300}>
+            <div className="mt-5 rounded-2xl border border-carbon-200 bg-white overflow-hidden">
+              <div className="px-7 pt-7 pb-5 border-b border-carbon-100">
+                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#9ef01a" }}>Partners Engagement</p>
+                <h3 className="font-black text-carbon-900 mb-2" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", letterSpacing: "-0.5px" }}>PARTNERS ENGAGEMENT</h3>
+                <p className="text-carbon-500 max-w-2xl text-sm leading-relaxed">
+                  Our partners get direct access to real data on audience behavior, investment interests, and mobility trends -{" "}
+                  <strong className="text-carbon-900">the kind of intelligence that drives deals.</strong>
+                </p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-0">
+                <div className="p-6 md:border-r border-b md:border-b-0 border-carbon-100">
+                  <div className="inline-flex px-3 py-1.5 rounded-lg text-sm font-black mb-5" style={{ background: "#9ef01a", color: "#111827" }}>Pre Event Exposure</div>
+                  <div className="space-y-2.5">
+                    {["Geo-targeted video ads (Impressions & CPM)", "Press release metrics and reach", "Registration driven by ads (UTM)", "CTR to landing page"].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2.5">
+                        <span className="text-xs font-black text-carbon-400 mt-0.5 w-4 flex-shrink-0">{i + 1}.</span>
+                        <p className="text-sm text-carbon-600 leading-snug">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-6 md:border-r border-b md:border-b-0 border-carbon-100" style={{ background: "#fefce8" }}>
+                  <div className="inline-flex px-3 py-1.5 rounded-lg text-sm font-black mb-5" style={{ background: "#fde047", color: "#713f12" }}>Event Brand Awareness</div>
+                  <div className="space-y-2.5">
+                    {["Keynote or panel Talk", "Partner logo during live-stream", "Free lead offer (ebook, consult, QR scan)", "Social mentions using event hashtag", "Live sessions viewers"].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2.5">
+                        <span className="text-xs font-black text-carbon-400 mt-0.5 w-4 flex-shrink-0">{i + 1}.</span>
+                        <p className="text-sm text-carbon-600 leading-snug">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-6" style={{ background: "#eff6ff" }}>
+                  <div className="inline-flex px-3 py-1.5 rounded-lg text-sm font-black mb-5" style={{ background: "#bfdbfe", color: "#1e3a8a" }}>Post Event Engagement</div>
+                  <div className="space-y-2.5">
+                    {["Full attendee survey", "Behavior and interest data", "Dedicated email broadcast & Articles", "Number of qualified leads", "Open & Click CTR data"].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2.5">
+                        <span className="text-xs font-black text-carbon-400 mt-0.5 w-4 flex-shrink-0">{i + 1}.</span>
+                        <p className="text-sm text-carbon-600 leading-snug">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="px-7 py-5 border-t border-carbon-100" style={{ background: "#f9fafb" }}>
+                <p className="text-sm font-bold text-carbon-900 text-center mb-4">
+                  Partnership Engagement Timeline 8-12 Weeks{" "}
+                  <span className="font-normal text-carbon-500">(From Pre to Post Event)</span>
+                </p>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold text-carbon-400 flex-shrink-0">Week 1</span>
+                  <div className="flex-1 relative h-8 flex items-center">
+                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-2 rounded-full overflow-hidden" style={{ background: "#e5e7eb" }}>
+                      <div className="h-full w-full rounded-full" style={{ background: "linear-gradient(90deg, #9ef01a 0%, #fde047 50%, #93c5fd 100%)" }} />
+                    </div>
+                    {[{ left: "0%", label: "Pre Event", color: "#9ef01a" }, { left: "42%", label: "Event", color: "#fde047" }, { left: "72%", label: "Post Event", color: "#93c5fd" }].map((m, i) => (
+                      <div key={i} className="absolute flex flex-col items-center" style={{ left: m.left }}>
+                        <div className="w-4 h-4 rounded-full border-2 border-white shadow" style={{ background: m.color }} />
+                        <span className="text-carbon-500 mt-1 whitespace-nowrap font-semibold" style={{ fontSize: "9px" }}>{m.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-xs font-bold text-carbon-400 flex-shrink-0">Week 12</span>
+                </div>
+                <p className="text-center text-xs text-carbon-400 mt-4">
+                  Brand Integration includes full 8-12 week integration - 
+                  <strong className="text-carbon-700">not just the event day</strong>
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
+
+
           {/* READY TO PARTNER — directly under CTA */}
           <AnimatedSection delay={320}>
             <div className="mt-5 rounded-2xl border border-carbon-200 bg-white p-6 md:p-8">
@@ -210,18 +304,18 @@ export default function PackagesSlides() {
               {/* Benefit boxes — highlighted 2-col grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
                 {[
-                  { icon: "📡", text: "Data-driven virtual summit — real intent signals" },
-                  { icon: "🌍", text: "100% global distribution and media exposure" },
-                  { icon: "🎯", text: "Full funnel intent tracking from day one" },
-                  { icon: "🔒", text: "Exclusivity per category and jurisdiction" },
-                  { icon: "👔", text: "Decision-maker dominant audience (75% founders/execs)" },
-                  { icon: "⏱️", text: "Direct access to pre-qualified prospects (0–12 months)" },
-                  { icon: "📋", text: "Audience surveyed on jurisdiction, budget & timeline" },
-                  { icon: "✅", text: "8–10 selected partners per event — no overcrowding" },
-                ].map((r, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl border border-carbon-200 bg-carbon-50 hover:border-lime-300 hover:bg-lime-50 transition-all duration-200 group">
-                    <span className="text-lg flex-shrink-0 group-hover:scale-110 transition-transform">{r.icon}</span>
-                    <p className="text-xs text-carbon-700 font-semibold leading-snug">{r.text}</p>
+                  "Data-driven virtual summit - real intent signals",
+                  "100% global distribution and media exposure",
+                  "Full funnel intent tracking from day one",
+                  "Exclusivity per category and jurisdiction",
+                  "Decision-maker dominant audience (75% founders/execs)",
+                  "Direct access to pre-qualified prospects (0-12 months)",
+                  "Audience surveyed on jurisdiction, budget & timeline",
+                  "8-10 selected partners per event - no overcrowding",
+                ].map((text, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl border border-carbon-200 bg-carbon-50 hover:border-lime-300 hover:bg-lime-50 transition-all duration-200">
+                    <span className="font-black text-sm flex-shrink-0 mt-0.5" style={{ color: "#9ef01a" }}>&rarr;</span>
+                    <p className="text-xs text-carbon-700 font-semibold leading-snug">{text}</p>
                   </div>
                 ))}
               </div>
@@ -229,6 +323,66 @@ export default function PackagesSlides() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* PARTNERS ENGAGEMENT TIMELINE — standalone section */}
+      <section id="engagement-timeline" className="slide-section py-14 border-b border-carbon-100 bg-white">
+        <span className="slide-number">15b / 18</span>
+        <div className="wrap">
+          <AnimatedSection delay={80}>
+            <div className="rounded-2xl border border-carbon-200 bg-white overflow-hidden">
+              <div className="px-7 pt-7 pb-5 border-b border-carbon-100">
+                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#9ef01a" }}>Partners Engagement</p>
+                <h3 className="font-black text-carbon-900 mb-2" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", letterSpacing: "-0.5px" }}>PARTNERS ENGAGEMENT</h3>
+                <p className="text-carbon-500 max-w-2xl text-sm leading-relaxed">
+                  Our partners get direct access to real data on audience behavior, investment interests, and mobility trends - the kind of intelligence that drives deals.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-0">
+                <Phase
+                  label="Pre Event Exposure"
+                  bg="white"
+                  badgeBg="#9ef01a"
+                  badgeColor="#111827"
+                  items={["Geo-targeted video ads (Impressions & CPM)", "Press release metrics and reach", "Registration driven by ads (UTM)", "CTR to landing page"]}
+                />
+                <Phase
+                  label="Event Brand Awareness"
+                  bg="#fefce8"
+                  badgeBg="#fde047"
+                  badgeColor="#713f12"
+                  items={["Keynote or panel Talk", "Partner logo during live-stream", "Free lead offer (ebook, consult, QR scan)", "Social mentions using event hashtag", "Live sessions viewers"]}
+                />
+                <Phase
+                  label="Post Event Engagement"
+                  bg="#eff6ff"
+                  badgeBg="#bfdbfe"
+                  badgeColor="#1e3a8a"
+                  items={["Full attendee survey", "Behavior and interest data", "Dedicated email broadcast and Articles", "Number of qualified leads", "Open and Click CTR data"]}
+                />
+              </div>
+              <div className="px-7 py-5 border-t border-carbon-100" style={{ background: "#f9fafb" }}>
+                <p className="text-sm font-bold text-carbon-900 text-center mb-4">
+                  Partnership Engagement Timeline 8-12 Weeks (From Pre to Post Event)
+                </p>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-xs font-bold text-carbon-400 flex-shrink-0">Week 1</span>
+                  <div className="flex-1 h-2 rounded-full" style={{ background: "linear-gradient(90deg, #9ef01a 0%, #fde047 50%, #93c5fd 100%)" }} />
+                  <span className="text-xs font-bold text-carbon-400 flex-shrink-0">Week 12</span>
+                </div>
+                <div className="flex justify-between px-2 mb-2">
+                  <span className="text-xs font-semibold" style={{ color: "#3d8000" }}>Pre Event</span>
+                  <span className="text-xs font-semibold" style={{ color: "#713f12" }}>Event Day</span>
+                  <span className="text-xs font-semibold" style={{ color: "#1e3a8a" }}>Post Event</span>
+                </div>
+                <p className="text-center text-xs text-carbon-400 mt-2">
+                  Brand Integration includes full 8-12 week presence - not just the event day
+                </p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
 
       {/* PRICING — BRAND INTEGRATION */}
       <section id="pricing-brand" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
@@ -344,6 +498,39 @@ export default function PackagesSlides() {
                 <span className="text-4xl font-black text-carbon-900 tracking-tight">$1,750</span>
                 <p className="text-xs text-carbon-400 mt-1 mb-4">Standard (May 31st): <span className="line-through">$2,250</span></p>
                 <a href="mailto:denis@fsummit.net" className="inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-bold border border-carbon-200 text-carbon-700 hover:border-lime-300 hover:text-carbon-900 transition-all">Claim Business Slot →</a>
+              </div>
+            </div>
+          </AnimatedSection>
+
+
+          {/* READY TO PARTNER — directly under CTA */}
+          <AnimatedSection delay={320}>
+            <div className="mt-5 rounded-2xl border border-carbon-200 bg-white p-6 md:p-8">
+              <div className="mb-5">
+                <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: "#9ef01a" }}>Contact</p>
+                <h3 className="text-2xl font-black text-carbon-900 mb-2" style={{ letterSpacing: "-0.5px" }}>Ready to Partner?</h3>
+                <p className="text-sm text-carbon-500 mb-5">We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on May 31st.</p>
+                <ShimmerButton href="mailto:denis@fsummit.net" background="#9ef01a" shimmerColor="rgba(255,255,255,0.4)" shimmerDuration="1.8s" className="text-sm font-bold px-6 py-3">
+                  Become a Partner →
+                </ShimmerButton>
+              </div>
+              {/* Benefit boxes — highlighted 2-col grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                {[
+                  "Data-driven virtual summit - real intent signals",
+                  "100% global distribution and media exposure",
+                  "Full funnel intent tracking from day one",
+                  "Exclusivity per category and jurisdiction",
+                  "Decision-maker dominant audience (75% founders/execs)",
+                  "Direct access to pre-qualified prospects (0-12 months)",
+                  "Audience surveyed on jurisdiction, budget & timeline",
+                  "8-10 selected partners per event - no overcrowding",
+                ].map((text, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl border border-carbon-200 bg-carbon-50 hover:border-lime-300 hover:bg-lime-50 transition-all duration-200">
+                    <span className="font-black text-sm flex-shrink-0 mt-0.5" style={{ color: "#9ef01a" }}>&rarr;</span>
+                    <p className="text-xs text-carbon-700 font-semibold leading-snug">{text}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </AnimatedSection>
