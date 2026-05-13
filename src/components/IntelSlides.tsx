@@ -142,9 +142,124 @@ export default function IntelSlides() {
 
   return (
     <>
+      {/* ── MOBILITY SCORE INDEX ── */}
+      <section id="mobility-score" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
+        <span className="slide-number">09 / 18</span>
+        <div className="wrap">
+          <AnimatedSection>
+            <Badge variant="success" className="mb-3">Mobility Score Index</Badge>
+            <h2 className="font-black text-carbon-900 mb-3" style={{ fontSize: "clamp(26px, 4vw, 48px)", letterSpacing: "-1px", lineHeight: 1.05 }}>
+              Mobility Score Index
+            </h2>
+            <p className="text-carbon-600 mb-2" style={{ fontSize: "clamp(14px, 1.5vw, 18px)", maxWidth: 680 }}>
+              A survey tool that shows interest level on relocation and investments. We turn audience into clear segments based on intent and behavior.
+            </p>
+            <p className="text-carbon-500 mb-8 text-sm max-w-2xl leading-relaxed">
+              A purpose-built funnel: <strong className="text-carbon-900">targeted ads → website signup → data-rich survey → segmented follow-ups</strong> turns traffic into a qualified, opt-in lead list with geography, interests, and clear ROI tracking.
+            </p>
+          </AnimatedSection>
+
+          {/* Two columns: what it aggregates + tiers */}
+          <div className="grid md:grid-cols-2 gap-5 mb-6">
+            {/* Left: aggregates insights on */}
+            <AnimatedSection delay={80}>
+              <div className="bg-white rounded-xl border border-carbon-200 p-6 h-full">
+                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#3d8000" }}>Aggregates Insights On</p>
+                <div className="space-y-4">
+                  {[
+                    { num: "01", title: "How people relocate, invest, incorporate, and diversify globally", desc: "Movement patterns, capital flows, and structural preferences across jurisdictions." },
+                    { num: "02", title: "What jurisdictions they're comparing and why", desc: "Side-by-side country intent — which programs are being actively evaluated." },
+                    { num: "03", title: "Which services, regions, and programs they're actively considering", desc: "Real-time signal on advisory, legal, real estate, and financial services demand." },
+                    { num: "04", title: "Timing, intent profile, and mobility index score", desc: "0–12 month readiness, decision stage, and GMSI tier classification." },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <span className="font-black text-2xl flex-shrink-0 tabular-nums" style={{ color: "#d1d5db", lineHeight: 1.1 }}>{item.num}</span>
+                      <div>
+                        <p className="font-bold text-carbon-900 text-sm mb-1 leading-snug">{item.title}</p>
+                        <p className="text-xs text-carbon-400 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* Right: Score tiers + what partners get */}
+            <AnimatedSection delay={140}>
+              <div className="flex flex-col gap-4 h-full">
+                {/* Score tiers */}
+                <div className="bg-white rounded-xl border border-carbon-200 p-5">
+                  <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#3d8000" }}>GMSI Score Tiers</p>
+                  <div className="space-y-3">
+                    {[
+                      { tier: "HOT", score: "18–30", color: "#dc2626", bg: "#fef2f2", border: "#fecaca", desc: "Active intent, 0–6 month timeline, budget confirmed" },
+                      { tier: "WARM", score: "10–17", color: "#d97706", bg: "#fffbeb", border: "#fde68a", desc: "Researching options, 6–12 month horizon, comparing programs" },
+                      { tier: "COLD", score: "0–9", color: "#6b7280", bg: "#f9fafb", border: "#e5e7eb", desc: "Early awareness, no confirmed timeline or budget" },
+                    ].map((t, i) => (
+                      <div key={i} className="flex items-start gap-3 p-3 rounded-lg border" style={{ background: t.bg, borderColor: t.border }}>
+                        <div className="flex-shrink-0 text-center">
+                          <div className="text-xs font-black px-2.5 py-1 rounded-md" style={{ background: t.color, color: "white" }}>{t.tier}</div>
+                          <div className="text-xs font-bold mt-1" style={{ color: t.color }}>{t.score}</div>
+                        </div>
+                        <p className="text-xs text-carbon-600 leading-relaxed">{t.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Data driven insight */}
+                <div className="rounded-xl p-5 flex-1" style={{ background: "#111827", border: "1px solid #1f2937" }}>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#9ef01a" }}>Data-Driven Funnel Outcome</p>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "#9ca3af" }}>
+                    Our funnel helps understand how people <strong style={{ color: "white" }}>move, invest, and build across borders</strong> — what their interest signals are and their real mobility index score.
+                  </p>
+                  <div className="space-y-2">
+                    {[
+                      "Geo + income segmentation",
+                      "Jurisdiction comparison signals",
+                      "Service category intent",
+                      "Advisor readiness status",
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#9ef01a" }} />
+                        <span className="text-xs font-medium" style={{ color: "#d1d5db" }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          {/* Funnel flow mini-visual */}
+          <AnimatedSection delay={200}>
+            <div className="rounded-xl border border-carbon-200 bg-white p-5">
+              <p className="text-xs font-bold uppercase tracking-widest mb-4 text-carbon-400">Purpose-Built Funnel</p>
+              <div className="flex items-center gap-2 flex-wrap">
+                {[
+                  { step: "Targeted Ads", icon: "📡", color: "#8FD600", bg: "#F2FFD6" },
+                  { step: "Website Signup", icon: "🌐", color: "#D97706", bg: "#FFFBEB" },
+                  { step: "Mobility Survey", icon: "📋", color: "#7C3AED", bg: "#F5F3FF" },
+                  { step: "Segmented Follow-ups", icon: "🎯", color: "#0369A1", bg: "#EFF8FF" },
+                  { step: "Qualified Lead List", icon: "✅", color: "#16a34a", bg: "#f0fdf4" },
+                ].map((s, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-semibold" style={{ background: s.bg, borderColor: s.color + "40", color: s.color }}>
+                      <span>{s.icon}</span>
+                      {s.step}
+                    </div>
+                    {i < 4 && <span className="text-carbon-300 font-bold text-sm flex-shrink-0">→</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* ── SECTION 09: FBS Index Score Funnel (from Funnel_Flow.html) ── */}
       <section id="funnel" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">09 / 18</span>
+        <span className="slide-number">10 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:16 }}>
@@ -194,7 +309,7 @@ export default function IntelSlides() {
 
       {/* ── SECTION 10: Audience Insights Output (from Audience_Insights.html) ── */}
       <section id="intel" className="slide-section py-14 border-b border-carbon-100 bg-white" ref={ref}>
-        <span className="slide-number">10 / 18</span>
+        <span className="slide-number">11 / 18</span>
         <div className="wrap">
           <AnimatedSection>
             <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:14 }}>
