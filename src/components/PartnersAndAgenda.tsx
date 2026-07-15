@@ -141,7 +141,7 @@ export default function PartnersAndAgenda() {
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Summit Agenda</Badge>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-1" style={{ letterSpacing: "-0.5px" }}>27–28 June 2026</h2>
+            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-1" style={{ letterSpacing: "-0.5px" }}>28–29 October 2026</h2>
             <p className="text-carbon-500 mb-8">11 AM to 3 PM (Eastern Standard Time) · Virtual Worldwide</p>
           </AnimatedSection>
           <div className="grid md:grid-cols-2 gap-8">

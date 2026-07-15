@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "FBS 2026 — USA Mobility Edition | Partner Proposal",
-  description: "Freedom Business Summit 2026 · USA Mobility Edition · Speaking & Partnership Engagement · 27–28 June 2026",
+  description: "Freedom Business Summit 2026 · USA Mobility Edition · Speaking & Partnership Engagement · 28–29 October 2026",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
