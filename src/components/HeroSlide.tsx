@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 function Countdown() {
-  const target = new Date("2026-10-28T11:00:00-05:00").getTime();
+  const target = new Date("2027-02-24T11:00:00-05:00").getTime();
   const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
   useEffect(() => {
     const tick = () => {
@@ -48,7 +48,7 @@ export default function HeroSlide() {
 
           {/* Pills */}
           <div className="flex flex-wrap gap-2 mb-5" style={fade(0)}>
-            {["28-29 October 2026", "Virtual Event", "Worldwide Online"].map((t, i) => (
+            {["24-25 February 2027", "Virtual Event", "Worldwide Online"].map((t, i) => (
               <span key={i} className="pill">{t}</span>
             ))}
           </div>
@@ -56,7 +56,7 @@ export default function HeroSlide() {
           {/* Headings — full container width, left-aligned, no maxWidth constraint */}
           <div style={fade(80)}>
             <h1 className="font-black text-carbon-900 leading-tight mb-1 w-full" style={{ fontSize: "clamp(22px, 4vw, 48px)", letterSpacing: "-1.5px" }}>
-              Freedom Business Summit 2026
+              Freedom Business Summit 2027
             </h1>
             <h2 className="font-black text-carbon-900 leading-none mb-4 w-full" style={{ fontSize: "clamp(28px, 5.5vw, 62px)", letterSpacing: "-2px", whiteSpace: "nowrap" }}>
               USA Mobility Edition 🇺🇸

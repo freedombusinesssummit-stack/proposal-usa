@@ -405,7 +405,7 @@ export default function IntelSlides() {
                       <p style={{ fontSize: 7, fontWeight: 700, color: "white", opacity: 0.7, marginTop: 1 }}>PLAYBOOK</p>
                     </div>
                     <div style={{ background: "#0D0D0D", padding: "6px 10px 10px" }}>
-                      <p style={{ fontSize: 10, fontWeight: 900, color: "white", lineHeight: 1.2 }}>FREEDOM BUSINESS SUMMIT 2026</p>
+                      <p style={{ fontSize: 10, fontWeight: 900, color: "white", lineHeight: 1.2 }}>FREEDOM BUSINESS SUMMIT 2027</p>
                       <p style={{ fontSize: 7, color: "#8FD600", marginTop: 3 }}>USA MOBILITY EDITION</p>
                     </div>
                   </div>
@@ -432,7 +432,7 @@ export default function IntelSlides() {
               <div className="flex items-center justify-between px-5 py-3.5 border-b border-carbon-100" style={{ background:"#111827" }}>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest mb-0.5" style={{ color:"#9ef01a" }}>Partner Audience Intelligence</p>
-                  <p className="text-sm font-bold text-white">FBS USA 2026 — Prospect Database</p>
+                  <p className="text-sm font-bold text-white">FBS USA 2027 — Prospect Database</p>
                 </div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background:"rgba(158,240,26,0.15)", color:"#9ef01a" }}>

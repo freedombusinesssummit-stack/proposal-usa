@@ -19,14 +19,14 @@ const prevSpeakers = [
 const mediaOutlets = ["Khaleej Times","Gulf News","EIN Presswire","Associated Press","Dezan Shira","CoinMarketCap","Al Bayan","Hala London TV","Thailand Business News","ASEAN Briefing"];
 const agenda = {
   day1: [
-    { num: 1, time: "30 min", topic: "How Founders and Investors Actually Enter the U.S. in 2026", type: "Keynote 1" },
+    { num: 1, time: "30 min", topic: "How Founders and Investors Actually Enter the U.S. in 2027", type: "Keynote 1" },
     { num: 2, time: "45 min", topic: "Company Setup in the U.S.: The Hidden Gate Behind Most Visas", type: "Keynote 2" },
     { num: 3, time: "30 min", topic: "Why India, Vietnam & Southeast Asia Are Betting on the U.S.", type: "Keynote 3" },
     { num: 4, time: "45 min", topic: "Moving Money and Families Safely. EB-5 Overview", type: "Keynote 4" },
     { num: 5, time: "60 min", topic: "Inbound Capital & Real Estate: Why Foreign Investors Buy U.S. Property First", type: "Panel Talk 1" },
   ],
   day2: [
-    { num: 1, time: "30 min", topic: "EU Residency Programs & Top CBI Programs for 2026 for US Citizens", type: "Keynote 5" },
+    { num: 1, time: "30 min", topic: "EU Residency Programs & Top CBI Programs for 2027 for US Citizens", type: "Keynote 5" },
     { num: 2, time: "45 min", topic: "Legal Tax Optimization for U.S. Citizens Abroad", type: "Keynote 6" },
     { num: 3, time: "30 min", topic: "Global Real Estate Investments Opportunities", type: "Keynote 7" },
     { num: 4, time: "45 min", topic: "Second Passports Americans Are Actually Buying", type: "Keynote 8" },
@@ -141,7 +141,7 @@ export default function PartnersAndAgenda() {
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Summit Agenda</Badge>
-            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-1" style={{ letterSpacing: "-0.5px" }}>28–29 October 2026</h2>
+            <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-1" style={{ letterSpacing: "-0.5px" }}>24–25 February 2027</h2>
             <p className="text-carbon-500 mb-8">11 AM to 3 PM (Eastern Standard Time) · Virtual Worldwide</p>
           </AnimatedSection>
           <div className="grid md:grid-cols-2 gap-8">

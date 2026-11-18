@@ -58,7 +58,7 @@ export default function ContactSlide() {
           <Badge variant="success" className="mb-3">Contact</Badge>
           <h2 className="text-3xl font-black text-carbon-900 tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Ready to Partner?</h2>
           <p className="text-carbon-500 mb-8 max-w-xl">
-            We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on October 10th.
+            We only work with <strong className="text-carbon-900">8–10 selected partners per event.</strong> Reach out now to secure your slot before the Early Bird deadline on February 6th.
           </p>
         </AnimatedSection>
 
@@ -151,7 +151,7 @@ export default function ContactSlide() {
               <div className="w-6 h-6 rounded-md flex items-center justify-center font-black text-xs" style={{ background: "#9ef01a", color: "#111827" }}>FS</div>
               <span className="font-bold text-sm text-carbon-900">Freedom Business Summit</span>
             </div>
-            <p className="text-xs text-carbon-400">© 2026 Freedom Business Summit · fsummit.net · All Rights Reserved</p>
+            <p className="text-xs text-carbon-400">© 2027 Freedom Business Summit · fsummit.net · All Rights Reserved</p>
           </div>
         </div>
       </div>
