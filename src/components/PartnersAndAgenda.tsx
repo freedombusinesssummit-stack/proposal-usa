@@ -1,22 +1,7 @@
 "use client";
 import AnimatedSection from "./AnimatedSection";
 import { Badge } from "@/components/ui/badge";
-import { Marquee } from "@/components/magicui/marquee";
 
-const prevPartners = ["Estonia e-Residency","Insured Nomads","Binance","Globalization Partners","Startup Island","In.Corp","Evercoach by Mindvalley","Spaces","SafetyWing","Upwork","Ruul","Cinvest","NomadCruise","EC Holdings","TravelMBA"];
-const prevSpeakers = [
-  { name: "Pandu Biasramadhan", org: "InCorp Indonesia", init: "PB" },
-  { name: "Philippe A. May", org: "EC Holdings · SG", init: "PM" },
-  { name: "Sergei Zunajev", org: "e-Residency of Estonia", init: "SZ" },
-  { name: "David Cantor", org: "CitizenRemote · Italy", init: "DC" },
-  { name: "William Wang", org: "RNS.ID · Palau", init: "WW" },
-  { name: "Max Chernov", org: "YouTuber · Singapore", init: "MC" },
-  { name: "Alex Recouso", org: "Citizen X Global", init: "AR" },
-  { name: "Mohammed Ungsi", org: "Embassy Indonesia · UAE", init: "MU" },
-  { name: "Kristin Surak", org: "London School of Economics", init: "KS" },
-  { name: "Deniz Kozakci", org: "Turkish Business Council UAE", init: "DK" },
-];
-const mediaOutlets = ["Khaleej Times","Gulf News","EIN Presswire","Associated Press","Dezan Shira","CoinMarketCap","Al Bayan","Hala London TV","Thailand Business News","ASEAN Briefing"];
 const agenda = {
   day1: [
     { num: 1, time: "30 min", topic: "How Founders and Investors Actually Enter the U.S. in 2027", type: "Keynote 1" },
@@ -71,73 +56,12 @@ function LogoChip({ logo }: { logo: typeof LOGOS[0] }) {
   );
 }
 
-function PartnerChip({ name }: { name: string }) {
-  return (
-    <div className="flex items-center justify-center px-5 py-3 rounded-xl text-xs font-semibold mx-2 flex-shrink-0"
-      style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)", minWidth: 140 }}>
-      {name}
-    </div>
-  );
-}
-
 export default function PartnersAndAgenda() {
   return (
     <>
-      {/* PARTNERS — dark bg with Marquee */}
-      <section id="partners-prev" className="slide-section py-14 border-b border-carbon-800" style={{ background: "#111827" }}>
-        <span className="slide-number" style={{ color: "rgba(158,240,26,0.4)" }}>12 / 18</span>
-        <div className="wrap">
-          <AnimatedSection>
-            <Badge variant="dark" className="mb-3 border border-lime-300/30">Track Record</Badge>
-            <h2 className="text-3xl font-black text-white tracking-tight mb-2" style={{ letterSpacing: "-0.5px" }}>Our Previous Partners</h2>
-            <p className="mb-10" style={{ color: "#9ca3af" }}>Trusted by global brands across mobility, fintech, real estate and legal sectors</p>
-          </AnimatedSection>
-        </div>
-
-        {/* Marquee — full width */}
-        <div className="group overflow-hidden">
-          <Marquee speed={35} pauseOnHover>
-            {prevPartners.map((p, i) => <PartnerChip key={i} name={p} />)}
-          </Marquee>
-        </div>
-        <div className="group overflow-hidden mt-3">
-          <Marquee speed={28} reverse pauseOnHover>
-            {[...prevPartners].reverse().map((p, i) => <PartnerChip key={i} name={p} />)}
-          </Marquee>
-        </div>
-
-        <div className="wrap mt-10">
-          <AnimatedSection delay={100}>
-            <p className="font-bold text-white mb-6">Our Previous Speakers</p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
-              {prevSpeakers.map((s, i) => (
-                <div key={i} className="text-center group cursor-default">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm mx-auto mb-2 transition-transform group-hover:scale-110 duration-200"
-                    style={{ background: "#9ef01a", color: "#111827" }}>{s.init}</div>
-                  <p className="text-xs font-bold text-white">{s.name}</p>
-                  <p className="text-xs mt-0.5" style={{ color: "#6b7280" }}>{s.org}</p>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={200}>
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#6b7280" }}>Media Coverage</p>
-            <div className="flex flex-wrap gap-2">
-              {mediaOutlets.map((m, i) => (
-                <span key={i} className="px-2.5 py-1 rounded-lg text-xs font-medium"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)" }}>
-                  {m}
-                </span>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
       {/* AGENDA */}
       <section id="agenda" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">13 / 18</span>
+        <span className="slide-number">12 / 17</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Summit Agenda</Badge>

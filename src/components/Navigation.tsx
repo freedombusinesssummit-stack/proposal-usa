@@ -13,7 +13,6 @@ const SLIDES = [
   { id: "behavioral", label: "Insights" },
   { id: "intel", label: "Data" },
   { id: "funnel", label: "Funnel" },
-  { id: "partners-prev", label: "Partners" },
   { id: "agenda", label: "Agenda" },
   { id: "flow", label: "Flow" },
   { id: "packages", label: "Packages" },

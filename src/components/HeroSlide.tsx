@@ -41,14 +41,14 @@ export default function HeroSlide() {
 
   return (
     <section id="hero" className="slide-section pt-14 bg-white overflow-x-hidden">
-      <span className="slide-number">01 / 18</span>
+      <span className="slide-number">01 / 17</span>
 
       <div className="wrap">
         <div className="py-10 md:py-14">
 
           {/* Pills */}
           <div className="flex flex-wrap gap-2 mb-5" style={fade(0)}>
-            {["24-25 February 2027", "Virtual Event", "Worldwide Online"].map((t, i) => (
+            {["4th Edition", "24-25 February 2027", "Virtual Event", "Worldwide Online"].map((t, i) => (
               <span key={i} className="pill">{t}</span>
             ))}
           </div>

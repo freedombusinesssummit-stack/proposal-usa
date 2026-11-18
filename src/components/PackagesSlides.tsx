@@ -15,7 +15,7 @@ function Cell({ val }: { val: string }) {
 }
 
 const FLOW = [
-  { dir: "→", tag: "You Receive", label: "Direct Exposure to 500–700+ global founders & investors", green: true },
+  { dir: "→", tag: "You Receive", label: "Direct Exposure to 500+ global founders & investors", green: true },
   { dir: "←", tag: "You Deliver", label: "Deliver Keynote or Panel Talk to showcase your expertise", green: false },
   { dir: "→", tag: "You Receive", label: "Lead Generation with Pre-Qualified Prospects filtered by interest", green: true },
   { dir: "←", tag: "You Deliver", label: "Custom video invitation for maximum pre-event exposure", green: false },
@@ -114,7 +114,7 @@ export default function PackagesSlides() {
     <>
       {/* ENGAGEMENT FLOW */}
       <section id="flow" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
-        <span className="slide-number">14 / 18</span>
+        <span className="slide-number">13 / 17</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Engagement Flow</Badge>
@@ -147,7 +147,7 @@ export default function PackagesSlides() {
 
       {/* PACKAGES OVERVIEW */}
       <section id="packages" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">15 / 18</span>
+        <span className="slide-number">14 / 17</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Engagement Options</Badge>
@@ -219,7 +219,7 @@ export default function PackagesSlides() {
 
       {/* PARTNERS ENGAGEMENT TIMELINE — standalone section */}
       <section id="engagement-timeline" className="slide-section py-14 border-b border-carbon-100 bg-white">
-        <span className="slide-number">15b / 18</span>
+        <span className="slide-number">14b / 17</span>
         <div className="wrap">
           <AnimatedSection delay={80}>
             <div className="rounded-2xl border border-carbon-200 bg-white overflow-hidden">
@@ -279,7 +279,7 @@ export default function PackagesSlides() {
 
       {/* PRICING — BRAND INTEGRATION */}
       <section id="pricing-brand" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
-        <span className="slide-number">16 / 18</span>
+        <span className="slide-number">15 / 17</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Pricing · Brand Integration</Badge>
@@ -335,7 +335,7 @@ export default function PackagesSlides() {
 
       {/* PRICING — SPEAKING */}
       <section id="pricing-speaking" className="slide-section py-14 border-b border-carbon-100" style={{ background: "#f8fff0" }}>
-        <span className="slide-number">17 / 18</span>
+        <span className="slide-number">16 / 17</span>
         <div className="wrap">
           <AnimatedSection>
             <Badge variant="success" className="mb-3">Pricing · Speaking</Badge>
